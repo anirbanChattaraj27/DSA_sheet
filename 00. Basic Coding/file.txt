@@ -1,0 +1,30 @@
+https://www.youtube.com/watch?v=aInhXAUOJoY&list=PL6Zs6LgrJj3u7lgjGEWzqnk4ZKKRfXE99&index=1
+
+// important
+https://www.youtube.com/playlist?list=PL6Zs6LgrJj3u7lgjGEWzqnk4ZKKRfXE99
+
+// intro to overlapping
+https://www.youtube.com/watch?v=Vk3EjoMn-1c
+
+// insert interavals
+https://www.youtube.com/watch?v=nALxbxZnzks 
+
+merge interavals
+https://www.youtube.com/watch?v=uO1Pe5MCGAc
+
+// longest substring without repetateting char
+https://www.youtube.com/watch?v=zKrEIlwbF5A
+
+array
+https://www.youtube.com/watch?v=zjSn7r569I4&t=249s
+
+prdct of array
+https://www.youtube.com/watch?v=w-qeVOijccg
+
+spiral 2D array
+https://www.youtube.com/watch?v=dm25MsWHYuk
+
+3sum
+https://www.youtube.com/watch?v=bZrgAfkrs9M
+
+

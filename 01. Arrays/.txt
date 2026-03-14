@@ -1,0 +1,15 @@
+arr [45, 56, 78, 98]
+arr.length  == 4
+arr[arr.length-1]  == 98
+
+reverse array -> convert to list then reverse then convert to array
+
+int arr[] = {1,2,3,4,5};
+List<Integer> list = ArrayslasList(arr);
+Collections.reverse(list);
+arr = list.toArray(new int[arr.length]);
+
+
+
+Arrays.sort(arr, 2,5) // this will sort from 3rd index to 6th index
+
