@@ -1,0 +1,14 @@
+public class O10_power_of_a_num {
+
+    // Recursive Function
+    static int power(int base, int x) {
+        if (x == 0) // Base Condition
+            return 1;
+        return (base * power(base, x - 1));
+    }
+
+    public static void main(String[] args) {
+        int base = 4, x = 3;
+        System.out.println("Required Power is " + power(base, x));
+    }
+}

@@ -1,0 +1,7 @@
+https://prepinsta.com/java-program/print-elements-in-sorted-order-using-row-column-wise-sorted-matrix/
+
+https://prepinsta.com/java-program/search-an-element-in-a-matrix/
+
+https://prepinsta.com/java-program/to-find-all-symmetric-elements-in-an-array/
+
+https://prepinsta.com/java-program/common-elements-in-all-rows-of-a-given-matrix/
