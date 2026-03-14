@@ -1,4 +1,4 @@
-public class O1 {
+public class O1_basic {
     
     public static void main(String[] args){
         int n = 5;
