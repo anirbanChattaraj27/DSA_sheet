@@ -9,6 +9,9 @@ public class O12_next_greater {
                     System.out.print(arr[j] + " ");
                     break;
                 }
+                else{
+                    System.out.print("-");
+                }
             }
         }
     }
@@ -31,8 +34,8 @@ public class O12_next_greater {
 
     // Driver code
     public static void main(String[] args) {
-        int[] arr = { 30, 50, 20, 15, 25 };
+        int[] arr = { 60, 70, 20, 15, 25 };
         int size = arr.length;
-        nextGreater(arr, size);
+        nextGreater2(arr, size);
     }
 }
