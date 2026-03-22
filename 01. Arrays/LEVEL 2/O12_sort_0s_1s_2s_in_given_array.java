@@ -12,16 +12,16 @@ public class O12_sort_0s_1s_2s_in_given_array {
         int k = arr.length-1;
         
         while(i <= k) {
-            if(arr[i] == 0 ) {
+            if(arr[i] == 0 ) { // i, j starting from same location, so even if arr[i] points to 0, i,j swap with each other
                 swap(arr, i, j);
                 i++;
                 j++;  
             }
 
-            else if (arr[i] == 1) {
+            else if (arr[i] == 1) { // when arr[i] will point to 1 then i will only move i, and j points to 1
                 i++;
             }
-            else if (arr[i] == 2) {
+            else if (arr[i] == 2) { // when arr[i] is 2 I will swap it with K, as K is at last idx so i will move k as k--
                 swap(arr, i, k);
                 k--;
             }

@@ -8,6 +8,6 @@ public class O2_array_is_sorted_roateded {
                 count++;
             }
         }
-        return count <=1;
+        return count <=1; 
     }
 }
