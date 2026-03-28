@@ -51,7 +51,7 @@ public class O1_1_Subset_sum_equalTO_target_Recursion {
     public static void main(String[] args) {
 
         int[] arr = {1, 2, 3, 4};
-        int k = 4;
+        int k = 9;
 
         boolean result = subsetSumToK(arr.length, k, arr);
 

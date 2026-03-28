@@ -36,7 +36,7 @@ public class O7_count_pairs_with_given_sum {
     }
 
     public static void main(String args[]) {
-        int[] arr = { 10, 2, 15, 2, 9, 1, 3, 10};
+        int[] arr = { 10, 2, 15, 2, 9, 1, 3, 10, 9, 4}; // it can make 4 pairs [(10,3), (10,3), (9,4), (9,4)]
         int sum = 13;
         System.out.println("count using MAP ->" + usingMap2(arr, arr.length, sum));
         getPairsCount1 (arr, sum);

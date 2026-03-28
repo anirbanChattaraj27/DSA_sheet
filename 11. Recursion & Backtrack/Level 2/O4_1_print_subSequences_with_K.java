@@ -45,7 +45,7 @@ public class O4_1_print_subSequences_with_K {
         int sum = 0;
         int K = 7;
 
-        printSubSequences(0, list, sum, K, arr3, n3);
+        printSubSequences(0, list, sum, K, arr1, n1);
 
     }
 }

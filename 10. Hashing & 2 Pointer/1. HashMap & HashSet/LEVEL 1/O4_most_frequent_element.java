@@ -45,13 +45,15 @@ public class O4_most_frequent_element {
         int res = 0;
         res = Collections.max(map.entrySet(), Map.Entry.comparingByValue()).getKey();
         
+/* USING THIS BELLOW FORMULA, I can solve ----> https://leetcode.com/problems/majority-element-ii/ */
+
         // int count = 0;
         // for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
         //     if (count < entry.getValue()) {
         //         res = entry.getKey();
         //         count = entry.getValue();
         //     }
-        // }
+        // }  
 
         return res;
     }

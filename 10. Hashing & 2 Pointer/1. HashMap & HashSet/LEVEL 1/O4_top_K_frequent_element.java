@@ -1,6 +1,8 @@
 // https://leetcode.com/problems/top-k-frequent-elements/
 
-//  check test cases from online and if it can pass other testcases then it will be fine
+// WRONG
+// use PQ to solve this
+//  leetcode test cases failed
 
 import java.util.*;
 import java.util.Map;

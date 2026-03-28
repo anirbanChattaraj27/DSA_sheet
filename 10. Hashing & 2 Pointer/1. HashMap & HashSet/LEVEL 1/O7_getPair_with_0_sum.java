@@ -41,7 +41,7 @@ class O7_getPair_with_0_sum {
 	// Driver's code
 	public static void main(String arg[])
 	{
-		int arr[] = {4,8,1,-1,5};
+		int arr[] = {4, 2, -3, 1, 6};
 
 		// Function call
 		if (subArrayExists(arr))

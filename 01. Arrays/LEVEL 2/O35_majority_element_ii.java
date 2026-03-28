@@ -4,6 +4,11 @@ import java.util.*;
 
 public class O35_majority_element_ii {
     
+    // my sol
+    // I will use a map, and store all the elements there, now I will run a loop and check for the keys
+    // if any key's value is more than n/3 store them in a list, return the list.
+
+    // Leetcode sol
     public List<Integer> majorityElement(int[] nums) {
         // Create a frequency map to store the count of each element
         Map<Integer, Integer> elementCountMap = new HashMap<>();
