@@ -13,8 +13,6 @@
 */
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
 
 // rotate array means shifing array
 
@@ -35,7 +33,7 @@ public class O18_rotate_array_by_k_elements {
     public static void rightRotate(int arr[], int k) {
 
         int n = arr.length;
-        k = k % n;
+        k = k % n; // in some test cases K can be greater than n so to pass those test cases use this as corner  casenes
         
         // part 1 reverse || total reverse
         reverse(arr, 0, n - 1); // this will reverse 1st part upto k-1
