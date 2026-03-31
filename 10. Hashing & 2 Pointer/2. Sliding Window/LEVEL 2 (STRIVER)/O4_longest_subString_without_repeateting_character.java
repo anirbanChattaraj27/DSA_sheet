@@ -18,7 +18,7 @@
 // LEETCODE medium but for me its hard
 import java.util.*;
 
-public class O5_longest_subString_without_repeateting_character {
+public class O4_longest_subString_without_repeateting_character {
 
     // STRIVER O(2N)
     public static int lengthOfLongestSubstring(String str) {

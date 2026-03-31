@@ -14,7 +14,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class O2_fruits_into_basket {
+public class O6_fruits_into_basket {
 
     public int totalFruit(int[] arr) {
         int ans = 0;
