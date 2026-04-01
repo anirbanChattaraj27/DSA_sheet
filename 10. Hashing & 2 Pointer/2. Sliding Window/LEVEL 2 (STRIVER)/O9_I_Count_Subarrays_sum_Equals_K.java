@@ -4,10 +4,13 @@
     Explanation: The subarrays that sum up to 6 are [3, 1, 2] and [2, 4].
  */
 
+// LEETCODE: 560
+// https://leetcode.com/problems/subarray-sum-equals-k/
+
  import java.util.*;
      
 
-public class O7_I_Count_Subarrays_sum_Equals_K {
+public class O9_I_Count_Subarrays_sum_Equals_K {
 
     // O(n^3)
     public static int findAllSubarraysWithGivenSum1(int arr[], int k) {
