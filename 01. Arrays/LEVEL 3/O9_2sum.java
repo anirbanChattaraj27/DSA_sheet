@@ -1,8 +1,28 @@
+
+/* LEETCODE: 1
+https://leetcode.com/problems/two-sum/description/
+
+
+Given an array arr[] of n integers and a target value, check if there exists a 
+pair whose sum equals the target. This is a variation of the 2-Sum problem.
+
+Examples: 
+
+Input: arr[] = [0, -1, 2, -3, 1], target = -2
+Output: true
+Explanation: There is a pair (1, -3) with the sum equal to given target, 1 + (-3) = -2.
+
+Input: arr[] = [1, -2, 1, 0, 5], target = 0
+Output: false
+Explanation: There is no pair with sum equals to given target.
+*/
+
+
 import java.util.*;
 
 public class O9_2sum {
 
-     public String twoSumExists(int[] arr, int target) {
+     public static boolean twoSumExists(int[] arr, int target) {
         int n = arr.length;
         // Outer loop picks one element at a time
         for (int i = 0; i < n; i++) {
@@ -10,16 +30,16 @@ public class O9_2sum {
             for (int j = i + 1; j < n; j++) {
                 // If sum equals target, return "YES"
                 if (arr[i] + arr[j] == target) {
-                    return "YES";
+                    return true;
                 }
             }
         }
         // No pair found that sums to target
-        return "NO";
+        return false; 
     }
 
     // Function to return indices of two numbers that sum to target (variant 2)
-    public int[] twoSumIndices(int[] arr, int target) {
+    public static int[] twoSumIndices(int[] arr, int target) {
         int n = arr.length;
         // Outer loop picks one element at a time
         for (int i = 0; i < n; i++) {
@@ -35,25 +55,28 @@ public class O9_2sum {
         return new int[]{-1, -1};
     }
 
-    // Better Approch
-    public String twoSumExists2(int[] arr, int target) {
+
+
+
+    // Optimized Approch
+    public static boolean twoSumExists2(int[] arr, int target) {
         HashMap<Integer, Integer> map = new HashMap<>();
         // Iterate over all elements
         for (int i = 0; i < arr.length; i++) {
             int complement = target - arr[i];
             // Check if complement exists in map
             if (map.containsKey(complement)) {
-                return "YES";  // Pair found
+                return true;  // Pair found
             }
             // Store current element and its index
             map.put(arr[i], i);
         }
         // No pair found
-        return "NO";
+        return false;
     }
 
     // Variant 2: Return indices of two numbers that sum to target using hashing
-    public int[] twoSumIndices2(int[] arr, int target) {
+    public static int[] twoSumIndices2(int[] arr, int target) {
         HashMap<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < arr.length; i++) {
             int complement = target - arr[i];
@@ -70,8 +93,8 @@ public class O9_2sum {
 
 
 
-    // OPTIMIZES WAY
-    public String twoSumExists3(int[] arr, int target) {
+    // Better WAY
+    public static boolean twoSumExists3(int[] arr, int target) {
         int n = arr.length;
         
         // Create an array of pairs [value, original_index]
@@ -96,7 +119,7 @@ public class O9_2sum {
             
             if (sum == target) {
                 // Found the pair, return "YES"
-                return "YES";
+                return true;
             } else if (sum < target) {
                 // Sum is less than target, so move left pointer right to increase sum
                 left++;
@@ -107,11 +130,11 @@ public class O9_2sum {
         }
         
         // If loop ends without returning, no pair found
-        return "NO";
+        return false;
     }
 
     // Variant 2: Return indices of two numbers that sum to target
-    public int[] twoSumIndices3(int[] arr, int target) {
+    public static int[] twoSumIndices3(int[] arr, int target) {
         int n = arr.length;
         int[][] numsWithIndex = new int[n][2];
         
@@ -143,5 +166,17 @@ public class O9_2sum {
         return new int[] {-1, -1};
     }
 
+
+
+    public static void main(String[] args){
+
+        int[] arr = { 0, -1, 2, -3, 1 };
+        int target = -2;
+
+        if (twoSumExists2(arr, target))
+            System.out.println("true");
+        else
+            System.out.println("false");
+    }
 
 }
