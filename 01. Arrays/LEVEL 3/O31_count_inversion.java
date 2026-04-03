@@ -12,7 +12,7 @@
     Explanation: Given array has five inversions: (20, 6), (20, 4), (20, 5), (6, 4), (6, 5)
 */
 
-public class O30_count_inversion {
+public class O31_count_inversion {
     // static int arr[] = new int[] { 1, 6, 4, 5 };
 
     static int getInvCount(int arr[]) {
@@ -25,20 +25,10 @@ public class O30_count_inversion {
         return inv_count;
     }
 
-    static void printInversion(int arr[]){
-        int inv_count = 0;
-
-        for (int i=0; i<arr.length; i++){
-            
-        }
-        
-        
-    }
-
     // Driver method to test the above function
     public static void main(String[] args) {
-        int arr[] = { 1, 6, 4, 5 };
+        int arr[] = { 8, 4, 2, 1 };
         System.out.println("Number of inversions are " + getInvCount(arr)); //(6,4), (6,5)
-        printInversion(arr); 
+        // printInversion(arr); 
     }
 }

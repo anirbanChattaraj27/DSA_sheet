@@ -1,9 +1,10 @@
 // Qs link --> https://www.geeksforgeeks.org/merge-two-sorted-arrays-o1-extra-space/
 // dont see the solution from gfg.... what i have done this is the solution
 
+import java.util.*;
 
 public class O36_4_merge_without_xtra_space{
-     // Function to in-place merge two sorted arrays X[] and Y[]
+    // Function to in-place merge two sorted arrays X[] and Y[]
     // invariant: `X[]` and `Y[]` are sorted at any point
     public static void merge(int[] X, int[] Y)
     {

@@ -2,7 +2,7 @@
 
 import java.util.*;
 
-public class O35_majority_element_ii {
+public class O35_majority_element_II {
     
     // my sol
     // I will use a map, and store all the elements there, now I will run a loop and check for the keys
