@@ -2,7 +2,7 @@
 // o/p -> 9
 // Explain -> 5+1+3 largest k size window sum is 9
 
-public class O1_max_sum_subarray_Size_K {
+public class O1_I_max_sum_subarray_Size_K {
 
     public static int getSumSizeK_bruteForce(int arr[], int k) {
 
@@ -42,32 +42,23 @@ public class O1_max_sum_subarray_Size_K {
         return maxSum;
     }
 
-    // striver
-    public static int getSumSizeK_Window2(int[] arr, int k) {
+
+    static int getSumSizeK_Window2(int[] arr, int k) {
         int n = arr.length;
-        if (n < k) {
-            System.out.println("Invalid input: Array size is smaller than k");
-            return -1;
+        if (n < k) return -1;
+
+        // compute sum of first window
+        int windowSum = 0;
+        for (int i = 0; i < k; i++) {
+            windowSum += arr[i];
         }
 
-        int left = 0;
-        int right = k - 1;
-        int sum = 0;
+        int maxSum = windowSum;
 
-        // Calculate the initial window sum
-        for (int i = left; i <= right; i++) {
-            sum += arr[i];
-        }
-
-        int maxSum = sum;
-
-        // Sliding window using while loop
-        while (right < n - 1) {
-            sum = sum - arr[left];
-            left++;
-            right++;
-            sum = sum + arr[right];
-            maxSum = Math.max(maxSum, sum);
+        // slide the window
+        for (int i = k; i < n; i++) {
+            windowSum += arr[i] - arr[i - k]; // basically i am subtracting 1st element of array and adding next element of array || K' value is constant and "i" keeps changing its value || 1st iteration: 4-4 || 2nd iteration: 5-4 ||
+            maxSum = Math.max(maxSum, windowSum);
         }
 
         return maxSum;

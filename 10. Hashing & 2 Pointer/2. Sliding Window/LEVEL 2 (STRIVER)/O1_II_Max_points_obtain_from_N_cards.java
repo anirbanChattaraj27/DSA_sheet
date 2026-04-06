@@ -8,7 +8,7 @@
  * here in this example i can pick 1st 4 elements from front or last 4 elements or 2 elements from front and 2 elemnts from last OR 3 elements from front or 1 element from the end
  */
 
-public class O1_Max_points_obtain_from_N_cards {
+public class O1_II_Max_points_obtain_from_N_cards {
     public static int maxScore(int[] nums, int k) {
         int lsum = 0, rsum = 0, maxSum = 0;
 
