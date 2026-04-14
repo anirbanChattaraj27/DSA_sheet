@@ -23,7 +23,7 @@ public class O24_longest_palindrome_in_arr {
         return -1;
     }
     
-    // Function to find the largest palindromic number
+    // Optimal way 
     static int largestPalindrome(int[] A, int n) {
         int res = -1;
 

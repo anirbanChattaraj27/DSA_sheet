@@ -37,7 +37,7 @@ public class O6_first_occurence_element{
 
 
     public static void main(String[] args) {
-        int array[] = {12, 20, 45, 45, 45, 56, 78};
+        int array[] = {12, 20, 45, 45, 45, 45, 45, 45, 56, 78};
         int x = 45;
 
         int result = firstOccurence(array, x);

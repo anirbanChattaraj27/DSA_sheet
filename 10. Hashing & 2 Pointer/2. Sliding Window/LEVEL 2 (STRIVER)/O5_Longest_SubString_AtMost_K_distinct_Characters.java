@@ -4,9 +4,11 @@ APPROCH:
 I/P: S = "aaabbccd" K = 2
 O/P: 5
 
-explanation: I have to chk total K characters, like here it is 2 so look for 2 unique charaters longest length
+explanation: I have to chk total K characters, like here it is 2 so look for 2 unique 
+charaters longest length
 
-we will take a map, and start putting elements into it, now when K will become greater than K's value, it will erase the map and chkk for another substring from next index
+we will take a map, and start putting elements into it, now when K will become greater 
+than K's value, it will erase the map and chkk for another substring from next index
 
 key,val   
 |    |
@@ -29,7 +31,9 @@ key,val
 |a->1|
 ---------> abbccd
 
-SO, I have to print a substring where i will have at most K unique character, and if substring have more than k distinct character it will erase the map and look for another substring from next index
+SO, I have to print a substring where i will have at most K unique character, and 
+if substring have more than k distinct character it will erase the map and look for 
+another substring from next index
 */
 import java.util.HashMap;
 

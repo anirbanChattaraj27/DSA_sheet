@@ -50,7 +50,7 @@ public class O11_subArray_with_K_different_integers {
                 if (map.size() > k)
                     break;
             }
-        }
+        } 
 
         // Return total valid subarrays
         return count;

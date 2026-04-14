@@ -13,9 +13,7 @@ Output: 2
 Explanation: 2 is the only minimum element in the array.
  */
 
-import java.util.*;
-
-public class O4_III_minimum_in_roated_sorted_array {
+public class O4_III_minimum_in_rotated_sorted_array {
 
     // LS - O(n)
     static int findMin1(int[] arr) {
@@ -57,7 +55,7 @@ public class O4_III_minimum_in_roated_sorted_array {
         while (low <= high) {
             int mid = (low + high) / 2;
 
-            //search space is already sorted then arr[low] will always be the minimum in that search space:
+            //if array is already sorted then arr[low] will always be the minimum:
             if (arr[low] <= arr[high]) {
                 ans = Math.min(ans, arr[low]);
                 break;

@@ -55,7 +55,7 @@ public class O2_II_MAX_Consecutives_ONEs_II {
         }
 
         return res;
-    }
+    }  
 
     public static void main(String[] args) {
         int[] arr = {1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1};

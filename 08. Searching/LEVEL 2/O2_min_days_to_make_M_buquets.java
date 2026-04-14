@@ -1,6 +1,6 @@
 // copy: 2
 
-import java.util.*;
+
 
 public class O2_min_days_to_make_M_buquets {
 

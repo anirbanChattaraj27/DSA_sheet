@@ -32,7 +32,7 @@ public class O1_I_max_sum_subarray_Size_K {
 
         for (int end = 0; end < arr.length; end++) {
             sum = sum + arr[end];
-
+ 
             if (end >= k - 1) {
                 maxSum = Math.max(sum, maxSum);
                 sum = sum - arr[start];

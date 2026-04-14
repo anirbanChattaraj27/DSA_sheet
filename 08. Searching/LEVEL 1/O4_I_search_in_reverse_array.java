@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class O4_I_search_in_reverse_array {
 
     // GFG  ||  array
-    static int search1(int[] arr, int key) {
+    static int search1(int[] arr, int x) {
       
         // Initialize two pointers, lo and hi, at the start and end of the array
         int lo = 0, hi = arr.length - 1;
@@ -32,14 +32,14 @@ public class O4_I_search_in_reverse_array {
             int mid = lo + (hi - lo) / 2;
 
             // If key found, return the index
-            if (arr[mid] == key)
+            if (x  == arr[mid])
                 return mid;
 
             // If Left half is sorted
-            if (arr[mid] >= arr[lo]) {
+            if (arr[mid] > arr[lo]) {
               
                 // If the key lies within this sorted half, move the hi pointer to mid - 1
-                if (key >= arr[lo] && key < arr[mid])
+                if (x < arr[mid] && x >= arr[lo])
                     hi = mid - 1;
               
                 // Otherwise, move the lo pointer to mid + 1
@@ -51,7 +51,7 @@ public class O4_I_search_in_reverse_array {
             else {
               
                 // If the key lies within this sorted half, move the lo pointer to mid + 1
-                if (key > arr[mid] && key <= arr[hi])
+                if (x > arr[mid] && x <= arr[hi])
                     lo = mid + 1;
               
                 // Otherwise, move the hi pointer to mid - 1

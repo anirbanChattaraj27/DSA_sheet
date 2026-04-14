@@ -31,10 +31,10 @@ public class O35_majority_element_II {
                 majorityElements.add(element);
             }
         }
-        
         return majorityElements;
     }
 
+    
     public static void main(String[] args) {
         
     }

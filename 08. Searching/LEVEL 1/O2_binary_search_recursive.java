@@ -2,14 +2,15 @@
 public class O2_binary_search_recursive {
     
     public static int binaryFunction(int[] arr, int low, int high, int x){
-        if(low <= high){
-            int mid = (high+low) / 2;
-            // int mid = low +(high-low) / 2;
 
-            if(arr[mid] == x)
+        if(low <= high){
+
+            int mid = low + (high-low) / 2;
+
+            if(x == arr[mid])
                 return mid;
 
-            if(arr[mid] > x) // if arr[mid] is greater than Key then move to left
+            if(x < arr[mid]) // if arr[mid] is greater than Key then move to left
                 return binaryFunction(arr, low, mid-1, x);
 
             else  // if arr[mid] is smaller than Key then move to right
@@ -38,3 +39,4 @@ public class O2_binary_search_recursive {
 
     }
 }
+
