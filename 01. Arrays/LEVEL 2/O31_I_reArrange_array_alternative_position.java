@@ -29,7 +29,6 @@ Explanation:
 So nums is rearranged to [1,-1].
 
  */
-import java.util.*;
 
 public class O31_I_reArrange_array_alternative_position {
 

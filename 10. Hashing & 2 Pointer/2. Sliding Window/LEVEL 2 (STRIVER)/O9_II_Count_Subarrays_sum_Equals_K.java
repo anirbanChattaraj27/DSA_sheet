@@ -11,11 +11,9 @@ Explanation: All valid subarrays are: {1, 0, 1}, {0, 1, 1}, {1, 1}, {1, 0, 1}, {
 
 
 Input: arr[] = {0, 0, 0, 0, 0}, k = 0
-Output: 15
+Output: 15 
 Explanation: All subarrays have a sum equal to 0, and there are a total of 15 subarrays.
  */
-
-import java.util.*;
 
 public class O9_II_Count_Subarrays_sum_Equals_K {
 

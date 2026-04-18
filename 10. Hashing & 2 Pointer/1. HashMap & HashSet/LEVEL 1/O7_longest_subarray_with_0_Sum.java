@@ -1,4 +1,5 @@
-/*
+/* NO LEETCODE
+https://takeuforward.org/data-structure/length-of-the-longest-subarray-with-zero-sum
 Example 1:
 Input: N = 6, array[] = {9, -3, 3, -1, 6, -5}
 Result: 5
@@ -9,7 +10,7 @@ Since we require the length of the longest subarray, our answer is 5!
 
 import java.util.HashMap;
 
-public class O10_longest_subarray_with_0_Sum {
+public class O7_longest_subarray_with_0_Sum {
 
     public static int maxLen1(int[] a) {
         int max = 0;

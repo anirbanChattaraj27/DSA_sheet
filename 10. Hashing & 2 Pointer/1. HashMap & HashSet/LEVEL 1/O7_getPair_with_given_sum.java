@@ -68,6 +68,7 @@ public class O7_getPair_with_given_sum {
     
 
 
+    // similar to 2Sum problem, BUT in 2SUm I need to print indices not elements
     // did not get ans for count pair with given sum using bellow approch
     // using hashing O(n)
     public static int pairSum3(int[] arr, int n, int sum){

@@ -14,7 +14,7 @@ Output: [2]
  */
 import java.util.*;
 
-public class O1_find_missing_num {
+public class O13_find_missing_num {
     public static List<Integer> findDisappearedNumbers(int[] arr) {
         HashSet<Integer>hs=new HashSet<>();
 
