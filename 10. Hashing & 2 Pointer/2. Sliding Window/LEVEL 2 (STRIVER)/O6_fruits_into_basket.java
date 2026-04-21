@@ -65,7 +65,7 @@ public class O6_fruits_into_basket {
     }
 
     public static void main(String[] args) {
-        O2_fruits_into_basket solution = new O2_fruits_into_basket();
+        O6_fruits_into_basket solution = new O6_fruits_into_basket();
         int[] arr = {1, 2, 2, 2, 3, 3, 4, 5, 5, 5, 6, 7};
         System.out.println("Max number of fruits: " + solution.totalFruit(arr)); // Output: 4
     }

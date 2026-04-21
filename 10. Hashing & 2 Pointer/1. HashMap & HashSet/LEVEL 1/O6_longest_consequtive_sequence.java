@@ -56,7 +56,7 @@ public class O6_longest_consequtive_sequence {
             if(!hashSet.contains(x-1)){ // if hashSet doesn't contains value element-1 then if block executes
                 int currentNum = x;
                 int currentCount = 1;
-                
+                 
                 while(hashSet.contains(currentNum +1)){
                     currentNum += 1;
                     currentCount += 1;

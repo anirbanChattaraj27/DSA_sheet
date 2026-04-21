@@ -1,3 +1,5 @@
+// I can not use 2 pointer here as it contains negetive values, if it contains only positive numbers then I can use prev approch here\\
+
 
 // https://www.geeksforgeeks.org/longest-sub-array-sum-k/
 // https://takeuforward.org/data-structure/longest-subarray-with-given-sum-k/
@@ -70,43 +72,12 @@ public class O3_II_Longest_subArray_with_sum_K {
                 preSumMap.put(sum, i);
             }
         }
-
         return maxLen;
     }
     
-    // using 2 pointer (Optimal approch)
-    public static int getLongestSubarray3(int[] a, long k) {
-        int n = a.length; // size of the array.
-
-        int left = 0, right = 0; // 2 pointers
-        long sum = a[0];
-        int maxLen = 0;
-        while (right < n) {
-            // if sum > k, reduce the subarray from left
-            // until sum becomes less or equal to k:
-            while (left <= right && sum > k) {
-                sum -= a[left];
-                left++;
-            }
-
-            // if sum = k, update the maxLen i.e. answer:
-            if (sum == k) {
-                maxLen = Math.max(maxLen, right - left + 1);
-            }
-
-            // Move forward thw right pointer:
-            right++;
-            if (right < n) {
-                sum += a[right];
-            }
-        }
-
-        return maxLen;
-    }
-
     public static void main(String[] args) {
-        int[] a = {2, 3, 5, 1, 9};
-        long k = 10;
+        int[] a = {10, 5, 2, 7, 1, -10};
+        int k = 15;
         int len = getLongestSubarray1(a, k);
         System.out.println("The length of the longest subarray is: " + len);
     }

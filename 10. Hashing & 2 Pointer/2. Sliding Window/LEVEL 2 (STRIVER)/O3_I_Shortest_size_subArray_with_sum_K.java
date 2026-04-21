@@ -79,7 +79,6 @@ public class O3_I_Shortest_size_subArray_with_sum_K {
     }
 
     
-
     public static void main(String[] args) {
 
         int[] arr = { 1, 4, 45, 6, 0, 19};
