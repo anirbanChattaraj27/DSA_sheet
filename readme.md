@@ -130,3 +130,58 @@ DSA_Sheet/
 │
 ├── Pattern Based Problems
 └── README.md
+
+
+📊 Progress & Metrics
+Category	Status
+📌 Problems Solved	300+
+📚 Topics Covered	16+
+📈 Consistency	Daily Practice
+🚀 Status	Actively Improving
+🧩 Learning Philosophy
+
+This repo is built on pattern recognition + progressive difficulty
+
+Instead of random problem solving:
+
+📌 Understand the pattern
+🔁 Apply across problems
+⚡ Optimize solutions
+🧠 Build intuition
+🛠️ How to Use
+git clone https://github.com/your-username/DSA_Sheet.git
+Recommended Flow:
+Start with Basic Coding
+Move topic-by-topic
+Follow LEVEL progression
+Practice consistently
+Revisit weak areas
+💡 Why This Stands Out (For Recruiters)
+✔️ Demonstrates strong DSA foundation
+✔️ Shows consistency & discipline
+✔️ Covers real interview patterns
+✔️ Organized like a learning system
+✔️ Clean, production-quality Java code
+🤝 Contributions
+
+Feel free to:
+
+Add new problems
+Improve solutions
+Suggest optimizations
+📬 Connect With Me
+
+📧 Email: anirbanchattaraj9@gmail.com
+
+⭐ Support
+
+If this repo helped you:
+
+⭐ Star the repository
+🔁 Share with others
+🚀 Final Note
+
+"Mastering DSA is not about solving more problems,
+but understanding the right patterns."
+
+<p align="center"> 🚀 Built with consistency & discipline <br> 💻 — Anirban </p> ```
