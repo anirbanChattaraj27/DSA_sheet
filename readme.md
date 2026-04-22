@@ -202,7 +202,7 @@ Have questions or need help?
 Reach out anytime! I'm happy to discuss DSA concepts, solutions, or anything related to problem-solving.
 
 📧 **Email:** anirbanchattaraj9@gmail.com  
-🔗 **GitHub:** [Anirban Chattaraj](anirbanChattaraj27)
+🔗 **GitHub:** [Anirban Chattaraj](https://github.com/anirbanChattaraj27)
 
 ---
 
@@ -247,4 +247,4 @@ This project is open source and available under the **MIT License**.
 
 **Last Updated:** May, 2026  
 **Version:** 1.0.0  
-**Status:** Actively Maintained ✅
+ 
