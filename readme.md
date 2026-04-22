@@ -1,164 +1,132 @@
-# 🚀 DSA_Sheet – Basic to Advanced (Java)
+# 🚀 DSA_Sheet – Master Data Structures & Algorithms in Java
 
-![Java](https://img.shields.io/badge/Language-Java-orange)
-![DSA](https://img.shields.io/badge/Focus-Data%20Structures%20%26%20Algorithms-blue)
-![Status](https://img.shields.io/badge/Progress-Ongoing-green)
-![Repository](https://img.shields.io/badge/DSA-Practice-red)
-
-Welcome to **DSA_Sheet** 👋
-
-This repository contains **Data Structures and Algorithms problems from Basic to Advanced**, all implemented in **Java**.
-It is created for **improving problem-solving skills and preparing for coding interviews**.
+<p align="center">
+  <img src="https://img.shields.io/badge/Language-Java-orange?style=for-the-badge&logo=java" />
+  <img src="https://img.shields.io/badge/DSA-Problem%20Solving-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Solved-300%2B-success?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Level-Basic%20to%20Advanced-red?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Status-Ongoing-brightgreen?style=for-the-badge" />
+</p>
 
 ---
 
-# 📚 About This Repository
+## 👨‍💻 About Me
 
-This project is a **structured collection of DSA problems** covering multiple topics.
+Hi 👋, I'm **Anirban**  
+💼 **Java Backend Developer** | 💡 **DSA Enthusiast**
 
-✨ Goals of this repository:
+- 🔥 Solved **300+ DSA Problems**
+- 🧠 Strong in **Data Structures & Algorithms**
+- ⚡ Focused on **clean & optimized Java code**
+- 🎯 Preparing for **Product-Based Companies**
 
-* Strengthen **DSA concepts**
-* Improve **problem-solving skills**
-* Prepare for **coding interviews**
-* Practice **clean and optimized Java solutions**
-
-All codes are written in **Java with clear structure and readable logic**.
+📩 **Reach me at:**  
+👉 **anirbanchattaraj9@gmail.com**
 
 ---
 
-# 📂 Repository Structure
+## 📌 About This Repository
+
+📚 This repository is a **complete DSA roadmap** from **Basic → Advanced**, implemented in **Java**
+
+✨ **What makes this special?**
+
+- ✔️ Topic-wise structured learning  
+- ✔️ Level-wise progression (Easy → Hard)  
+- ✔️ Covers real **interview problems**  
+- ✔️ Focus on **patterns & logic building**  
+- ✔️ Clean, readable Java solutions  
+
+---
+
+## 🧠 Topics Covered
+
+<p>
+✅ Arrays & 2D Arrays <br>
+✅ Strings & Substrings <br>
+✅ Linked List (Singly, Doubly, Circular) <br>
+✅ Stack & Queue <br>
+✅ Sorting & Searching <br>
+✅ Hashing & Two Pointer <br>
+✅ Sliding Window <br>
+✅ Recursion & Backtracking <br>
+✅ Trees (Binary Tree, BST) <br>
+✅ Graphs <br>
+✅ Greedy Algorithms <br>
+✅ Dynamic Programming <br>
+✅ Pattern Problems
+</p>
+
+---
+
+## 📂 Repository Structure
 
 ```bash
-DSA_Sheet
+DSA_Sheet/
 │
 ├── 00. Basic Coding
-│   ├── Basic Numbers
-│   ├── Number Conversion
-│   └── Advanced Numbers
 │
-├── Arrays
-├── Strings
-├── Recursion
-├── Dynamic Programming
-├── Trees
-├── Graphs
-└── More DSA Topics...
-```
-
-Each folder contains **Java solutions to multiple problems** organized topic-wise.
-
----
-
-# 💻 Language Used
-
-```java
-Language: Java
-IDE: Eclipse / IntelliJ / VS Code
-Concepts: DSA, Problem Solving, Algorithms
-```
-
----
-
-# 🎯 Who Should Use This Repository?
-
-This repository is useful for:
-
-✔ Beginners learning **Data Structures & Algorithms**
-✔ Students preparing for **placements & coding interviews**
-✔ Programmers practicing **Java DSA problems**
-✔ Anyone improving **logical thinking & algorithm skills**
-
----
-
-# 📈 Learning Path (Basic → Advanced)
-
-The problems follow a progressive order:
-
-```
-Basic Coding
-   ↓
-Number Problems
-   ↓
-Arrays
-   ↓
-Strings
-   ↓
-Recursion
-   ↓
-Dynamic Programming
-   ↓
-Trees
-   ↓
-Graphs
-```
-
-This helps learners **gradually build strong DSA fundamentals**.
-
----
-
-# ⚡ How to Use This Repository
-
-### 1️⃣ Clone the repository
-
-```bash
-git clone https://github.com/anirbanChattaraj27/DSA_basic_to_advance.git
-```
-
-### 2️⃣ Open the project
-
-Open it in your preferred IDE like:
-
-* Eclipse
-* IntelliJ IDEA
-* VS Code
-
-### 3️⃣ Start Practicing
-
-Navigate topic-wise and start solving problems.
-
----
-
-# 🔄 Updating the Repository
-
-Whenever new problems are added:
-
-```bash
-git add .
-git commit -m "Added new DSA problems"
-git push origin main
-```
-
----
-
-# 🤝 Contributions
-
-Contributions are welcome!
-
-If you want to contribute:
-
-```bash
-1. Fork the repository
-2. Create a new branch
-3. Add your solution
-4. Submit a Pull Request
-```
-
----
-
-# ⭐ Support the Repository
-
-If you find this repository helpful:
-
-⭐ **Star the repository**
-🍴 **Fork it for practice**
-📢 **Share with others learning DSA**
-
----
-
-# 📬 Connect With Me
-
-If you want to discuss **DSA, coding, or Java**, feel free to connect.
-
-Happy Coding 🚀
-Keep Practicing 💻
+├── 01. Arrays
+│   ├── LEVEL 1
+│   ├── LEVEL 2
+│   └── LEVEL 3
+│
+├── 02. 2D Array
+│
+├── 03. String
+│   ├── Basic
+│   ├── SubString
+│   └── hashing
+│
+├── 04. Linked List
+│   ├── Circular LL
+│   ├── Doubly LL
+│   └── Singly LL
+│
+├── 05. Stack
+│   ├── LEVEL 1
+│   └── LEVEL 3
+│
+├── 06. Queue
+│
+├── 07. Sorting
+│
+├── 08. Searching
+│   ├── LEVEL 1
+│   ├── LEVEL 2
+│   └── LEVEL 3 (qs from other chapters)
+│
+├── 09. Heap
+│
+├── 10. Hashing & 2 Pointer
+│   ├── HashMap & HashSet (LEVEL 1)
+│   ├── Sliding Window
+│   └── SubArray
+│
+├── 11. Recursion & Backtracking
+│   ├── Level 1
+│   ├── Level 2
+│   ├── Level 3
+│   └── problemsLIST.txt
+│
+├── 12. Tree
+│   ├── Binary Tree 1
+│   ├── Binary Tree 2
+│   ├── Binary Search Tree
+│   ├── commitment.txt
+│   └── problemsLIST.txt
+│
+├── 13. Graph
+│
+├── 14. Greedy
+│
+├── 15. Dynamic Programming
+│   ├── LEVEL 1 - 1D_2D
+│   ├── LEVEL 2 - subSequences
+│   ├── LEVEL 3 - DP on STRINGS
+│   └── LEVEL 4 - Stocks
+│
+├── 16. Pattern Problems
+│
+├── Pattern Based Problems
+└── README.md
