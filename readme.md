@@ -245,6 +245,6 @@ This project is open source and available under the **MIT License**.
 
 ---
 
-**Last Updated:** April 22, 2026  
+**Last Updated:** May, 2026  
 **Version:** 1.0.0  
 **Status:** Actively Maintained ✅
