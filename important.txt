@@ -1,0 +1,74 @@
+https://chatgpt.com/share/67d060e6-5b2c-8004-92c2-e28da715e2bb
+
+Queue<Integer> q = new PriorityQueue<>(); ?
+ANS:    By declaring q as a Queue, you ensure that your code depends only on the queue behavior, not on the specific implementation.
+            ~ Queue is an interface in Java that defines the behavior of a queue (FIFO - First In, First Out).
+            ~ LinkedList is a class that implements the Queue interface, meaning it provides the necessary methods for queue operations like add(), remove(), and peek().
+
+        ✔ Use Case: When you need a queue that supports both FIFO and deque operations (removing from both ends).
+        ✔ Implements: Queue, Deque, List
+        ✔ Underlying Data Structure: Doubly Linked List
+
+Queue<Integer> queue = new LinkedList<>();
+queue.add(10);
+queue.add(20);
+queue.add(30);
+System.out.println(queue.poll()); // 10 (FIFO)
+
+
+Queue<Integer> queue = new ArrayDeque<>();
+ANS:    offer() / add(): O(1)
+        poll() / remove(): O(1)
+        peek(): O(1)
+
+        ✔ Use Case: When you need a faster queue than LinkedList (since it avoids pointer overhead).
+        ✔ Implements: Queue, Deque
+        ✔ Underlying Data Structure: Resizable Array (like an ArrayList but optimized for deque operations)
+        ✔ Order: FIFO (Queue Mode) or LIFO (Stack Mode)
+
+Queue<Integer> queue = new ArrayDeque<>();
+queue.add(10);
+queue.add(20);
+queue.add(30);
+System.out.println(queue.poll()); // 10 (FIFO)
+
+
+Queue<Integer> queue = new PriorityQueue<>();
+ANS:    offer() / add(): O(log n)
+        poll() / remove(): O(log n)
+        peek(): O(1)
+
+        ✔ Use Case: When you need priority-based retrieval, not FIFO.
+        ✔ Implements: Queue
+        ✔ Underlying Data Structure: Binary Heap
+        ✔ Order: Elements are ordered based on priority (Natural Ordering or Custom Comparator).
+
+USING MIN HEAP:
+    Queue<Integer> queue = new PriorityQueue<>();
+    queue.add(30);
+    queue.add(10);
+    queue.add(20);
+    System.out.println(queue.poll()); // 10 (smallest first)
+
+USING MAX HEAP:
+    Queue<Integer> queue = new PriorityQueue<>(Collections.reverseOrder());
+    queue.add(30);
+    queue.add(10);
+    queue.add(20);  
+    System.out.println(queue.poll()); // 30 (largest first)
+
+
+
+SUMMERY:
+    ~ Use LinkedList if you need a doubly linked list with deque functionality.
+    ~ Use ArrayDeque if you need a fast, memory-efficient queue.
+    ~ Use PriorityQueue if you need elements sorted based on priority.
+🚀 Best Practice: Prefer ArrayDeque over LinkedList for a standard queue due to better performance.
+
+
+Feature	              LinkedList	      ArrayDeque	PriorityQueue
+FIFO Order	           ✅ Yes	           ✅ Yes	   ❌ No (Sorted)
+Faster than L.List?	   ❌ No	               ✅ Yes	   ❌ No (Heap Operations)
+Null Allowed?	       ✅ Yes	           ❌ No	       ❌ No
+Custom Sorting?	       ❌ No	               ❌ No	       ✅ Yes
+Best Use Case	       General-Queue      Fast-Queue	 Priority-based

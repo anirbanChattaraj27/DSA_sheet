@@ -3,7 +3,7 @@ public class O2_III_Max_Consecutive_same_element {
 public static int countConsecutiveOnes(int[] arr) {
 
         int maxConsecutiveOne = 0;
-        int count = 1; // initialize to 1, make
+        int count = 1; // initialize to 1, bcz if I am staying at same element and poininting to next element it will count 1 instead of 2
         
         for (int i = 0; i < arr.length-1; i++) {
 

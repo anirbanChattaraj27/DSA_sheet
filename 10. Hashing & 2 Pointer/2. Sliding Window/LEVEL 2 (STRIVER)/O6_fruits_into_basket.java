@@ -4,7 +4,7 @@
 // prblm: https://leetcode.com/problems/fruit-into-baskets/description/
 // * I have to pick 1 type of fruit from basket
 // * I can not put more than 1 type of fruit in 1 basket
-// * I have 2 basket and iside that i have to put maximum fruit of any 2 type BUT,
+// * I have 2 basket and inside that i have to put maximum fruit of any 2 type BUT,
 //   I can not put randomly I have to pick 2 Unique type fruit in the same window
 //   i.e. 1 2 2 2 3 3 4 5 5 5 6 7
 //   222 33 count is 5 this is a window THIS IS ALLOWED
