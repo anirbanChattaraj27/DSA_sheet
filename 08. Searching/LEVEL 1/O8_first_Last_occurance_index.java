@@ -16,11 +16,11 @@ Input: arr[] = [1, 2, 3], x = 4
 Output: -1 -1
 Explanation: No occurrence of 4 in the array, so, output is [-1, -1]
  */
-
+ 
 
 import java.util.*;
 
-public class O15_first_Last_occurance_index {
+public class O8_first_Last_occurance_index {
 
     // Function for finding first and last occurrence of x
     static ArrayList<Integer> find1(int[] arr, int x) {

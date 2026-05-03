@@ -36,25 +36,27 @@ public class O19_remove_loop {
     public void removeLoop() {
 		Node fastPtr = head;
 		Node slowPtr = head;
+		Node temp = head;
 
 		while(fastPtr != null && fastPtr.next != null) {
 			fastPtr = fastPtr.next.next;
 			slowPtr = slowPtr.next;
 
 			if(fastPtr == slowPtr) {
-				remove(slowPtr);
-				return;
+				while(temp.next != slowPtr.next){
+				temp = temp.next;
+				slowPtr = slowPtr.next;
+			}
+			
+			slowPtr.next = null;
+			return;
 			}
 		}
 	}
 
 	private void remove(Node slowPtr) {
-		Node temp = head;
-		while(temp.next != slowPtr.next){
-			temp = temp.next;
-			slowPtr = slowPtr.next;
-		}
-		slowPtr.next = null;
+		
+		
 	}
 
     // creating loop
@@ -79,6 +81,7 @@ public class O19_remove_loop {
 		O19_remove_loop list = new O19_remove_loop();
 		list.createALoopInLinkedList();
 		list.removeLoop();
+
         list.display();
     }
 }

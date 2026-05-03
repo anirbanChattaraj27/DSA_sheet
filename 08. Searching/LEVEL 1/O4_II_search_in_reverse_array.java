@@ -13,12 +13,12 @@ public class O4_II_search_in_reverse_array {
         while (lo <= hi) {
             int mid = (lo + hi) / 2;
 
-            //if mid points the target
+            // if mid points the target
             if (arr[mid] == x) {
                 return true;
             }
 
-            //Edge case:
+            // Edge case:
             if (arr[lo] == arr[mid] && arr[mid] == arr[hi]) {
                 lo = lo + 1;
                 hi = hi - 1;

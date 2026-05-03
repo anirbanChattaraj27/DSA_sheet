@@ -58,10 +58,23 @@ public class O18_starting_point_ofLOOP_in_LL {
         O18_starting_point_ofLOOP_in_LL list = new O18_starting_point_ofLOOP_in_LL();
         
         list.createALoopInLinkedList();
-        System.out.println(list.containsLoop());
+        System.out.println(list.containsLoop().data);
     }
 }
 
 
+/*
 
+1 → 2 → 3 → 4 → 5 → 6 → 7
+            ↑           ↓
+            ← ← ← ← ← ← ←
 
+loop starts at 4
+fast and slow ptr meets at 5
+
+Step	slowPtr	 entry
+1	      6	       2
+2         7	       3
+3         4	       4
+They meet at node 4.
+*/

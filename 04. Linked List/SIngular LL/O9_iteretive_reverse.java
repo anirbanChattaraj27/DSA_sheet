@@ -62,7 +62,6 @@ public class O9_iteretive_reverse {
             // i can also initailize the current node
             Node next = current.next;
 
-
             current.next = previous; // current node points to previos node
             // update
             previous = current;  // previos node mein save kar lenge current node ki value
