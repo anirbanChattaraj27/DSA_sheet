@@ -16,7 +16,7 @@ public class O9_reverse_middle_of_LL {
     }
 
     // diaply LL 
-    public void display(){
+    public void display() {
         if (head == null){
             System.out.println("Empty list");
             return;
@@ -52,7 +52,7 @@ public class O9_reverse_middle_of_LL {
             return head;
         }
 
-        // skip the first left-1 nodes
+        // skip nodes upto left-1
         Node current = head;  // current starts from head
         Node prev = null;   // prev starts from null
         for (int i = 0; current != null && i < left - 1; i++) {  // i starts from head and goes upto left-1 means if left is 2 means loop starts from 3 so 3-1=2 upto 2nd node i will continue
@@ -72,7 +72,7 @@ public class O9_reverse_middle_of_LL {
             if (next != null) {
                 next = next.next;
             }
-        }
+        } 
 
         if (last != null) {
             last.next = prev;
