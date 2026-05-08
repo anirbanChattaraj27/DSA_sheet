@@ -1,6 +1,3 @@
-import java.util.*;
-
-// Time Complexity is : O(n^2)
 // Space Complexity is : O(1)
 
 // i/p -> 12, 14, 15, 7, 15, 17, 5
@@ -52,7 +49,7 @@ public class O8_span_of_stock{
 
         int[] arr = {12, 14, 15, 7, 15, 17, 5};
         int size = arr.length;
-        prevGreater(arr, size);
+        usingPrevGreater(arr, size);
         stockSpan(arr, size);
     }
 }
