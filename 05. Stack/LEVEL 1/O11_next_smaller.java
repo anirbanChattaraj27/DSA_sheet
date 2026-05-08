@@ -82,7 +82,7 @@ class Solution {
     }
 }
 
-public class O11_next_smaller_element {
+public class O11_next_smaller {
 
     public static void main(String[] args) {
 

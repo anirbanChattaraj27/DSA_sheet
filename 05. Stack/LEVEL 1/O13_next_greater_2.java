@@ -60,7 +60,7 @@ class Solution {
     }
 }
 
-public class O13_II_next_greater_2_optimized {
+public class O13_next_greater_2 {
     public static void main(String[] args) {
         int[] arr = {5, 7, 1, 7, 6, 0};
 
