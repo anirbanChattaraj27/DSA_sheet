@@ -15,6 +15,7 @@ public class O25_move_last_element_to_first {
 
     // diaply LL 
     public void display(){
+        
         if (head == null){
             System.out.println("Empty list");
             return;
