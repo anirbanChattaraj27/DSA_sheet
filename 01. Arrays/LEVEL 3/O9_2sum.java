@@ -22,6 +22,8 @@ import java.util.*;
 
 public class O9_2sum {
 
+
+
      public static boolean twoSumExists(int[] arr, int target) {
         int n = arr.length;
         // Outer loop picks one element at a time
@@ -56,9 +58,35 @@ public class O9_2sum {
     }
 
 
+    // OPTIMIZED: USING 2 pointer
+    static boolean twoSum(int[] arr, int target){
+       
+        Arrays.sort(arr);
+
+        int left = 0, right = arr.length - 1;
+
+        // Iterate while left pointer is less than right
+        while (left < right) {
+            int sum = arr[left] + arr[right];
+
+            // Check if the sum matches the target
+            if (sum == target)
+                return true;
+            else if (sum < target)
+            
+            // Move left pointer to the right
+                left++; 
+            else
+            
+            // Move right pointer to the left
+                right--;
+        }
+        // If no pair is found
+        return false;
+    }
 
 
-    // Optimized Approch
+    // Optimized Approch MAP
     public static boolean twoSumExists2(int[] arr, int target) {
         HashMap<Integer, Integer> map = new HashMap<>();
         // Iterate over all elements
@@ -90,7 +118,6 @@ public class O9_2sum {
         // No pair found
         return new int[] { -1, -1 };
     }
-
 
 
     // Better WAY
