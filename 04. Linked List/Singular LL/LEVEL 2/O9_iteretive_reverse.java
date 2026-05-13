@@ -46,43 +46,22 @@ public class O9_iteretive_reverse {
         lastNode.next = newNode;
     }
 
-    // easy do this
-    // reverse function
-    public void reverseList() {
-        if(head == null || head.next == null) {
-            return;
-        }
+    public ListNode reverseList(ListNode head) {
+    ListNode prev = null; // Start prev as null to correctly set the new tail's next pointer
+    ListNode curr = head;
 
-        // initializing 2 pointers
-        Node previous = head;
-        Node current = head.next;
+    while (curr != null) {
+        ListNode next = curr.next; // Save the next node
 
-        while(current != null) {
-            // initializing 1 more pointer
-            // i can also initailize the current node
-            Node next = current.next;
-
-            current.next = previous; // current node points to previos node
-            // update
-            previous = current;  // previos node mein save kar lenge current node ki value
-            current = next;  // current node mein save kar lenge next node ki value
-        }
-        head.next = null;  // here we make head's next null
-        head = previous;  // previous will be our new head  // bcz current node will be null so previous  will points on last node so this will become new head
+        curr.next = prev;          // Reverse the link
+        
+        // move prev and curr to forward
+        prev = curr;               // prev points to curr
+        curr = next;               // curr points to next
     }
 
-    public Node reverseList2(Node head){
-        Node prev = null;
-        Node curr = head;
-
-        while(curr != null){
-            Node forward = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = forward;
-        }
-        return prev;
-    }
+    return prev; // prev will point to the new head at the end
+}
 
     public static void main(String[] args) {
         O9_iteretive_reverse list = new O9_iteretive_reverse();
@@ -93,7 +72,7 @@ public class O9_iteretive_reverse {
         list.addLast("xyz");
         list.display();
 
-        list.reverseList();
+        // list.reverseList();
         list.display();
     }
 }
