@@ -1,4 +1,7 @@
-// to remove a loop, i need a pointer which is previous of slowPtr when slowPtr meets starting position of looop means from where loop is starting then previos ptr of slowPtr will be just before the position of index of sarting loop point then from there make previos pointer as null so no loops will be there
+// to remove a loop, i need a pointer which is previous of slowPtr when slowPtr 
+// meets starting position of looop means from where loop is starting then previos 
+// ptr of slowPtr will be just before the position of index of sarting loop point then 
+// from there make previos pointer as null so no loops will be there
 
 
 public class O19_remove_loop {

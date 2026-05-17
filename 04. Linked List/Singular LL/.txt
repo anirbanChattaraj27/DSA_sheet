@@ -1,0 +1,29 @@
+1. reverse
+2. reverse K groups -------------------> yet to solve
+3. reverse middle of LL --> yet to solve
+4. reverse pairs ----------------------> yet to solve
+5. rotate LL --------------------------> yet to solve
+6. search element
+7. middle node
+8. nth node from end of LL
+9. palindrome LL
+
+10. move element to first
+11. add node at any given position
+12. remove duplicates from sorted
+13. remove duplicates from unsorted ---> yet to solve
+14. insert into a sorted LL
+15. remove given key from LL
+16. contains loop or not
+17. starting point of loop
+18. remove loop -------------------------> yet to solve
+19. length of loop
+20. LL sorted or not, ascending and descending 
+21. sort LL
+22. merge 2 LL
+23. sort 0 1 2 --------------------------> yet to solve
+24. intersection point of a LL
+24. segregate odd even based on index
+25. segregate odd even based on values
+26. add 2 numbers
+27. happy number ------------------------> yet to solve
