@@ -1,0 +1,62 @@
+4. TWO POINTER
+	Two Sum II (Leetcode 167)💹
+	3Sum (Leetcode 15)💹
+	Container With Most Water (Leetcode 11)💹
+	Trapping Rain Water Problem	— Leetcode 42 💹
+	Minimum Size Subarray Sum— Leetcode 209 💹
+EASY
+	Consecutive Same Elements💹
+	Move Zeros To End— Leetcode 283💹
+	Reverse a String Preserving Space Positions 💹
+	Sort an Array of 0s, 1s and 2s— Leetcode 75 💹
+	Closest Pair Sum💹
+	Smallest Subarray > Sum— Leetcode 209 💹
+	Intersection of Arrays with Distinct-----Leetcode 349 💹
+	Valid Palindrome— Leetcode 125
+	Merge Two Sorted Arrays— Leetcode 88
+	Squares of a Sorted Array— Leetcode 977
+	Backspace String Compare— Leetcode 844
+	Dutch National Flag Problem— Leetcode 75
+
+MEDIUM
+	Longest Consecutive Sequence-----Leetcode 128 💹
+	Sum of Two Equals Third💹
+	Subarrays with Max in Range💹 
+	The Celebrity Problem — Leetcode 277 💹 
+	Find Duplicate Number — Leetcode 287 (HASH)
+	Longest Substring with K Unique— Leetcode 340
+HARD
+	4 Sum - Check for Quadruple----Leetcode 18
+
+
+**********************************3SUM BASED PROBLEMS******************************************
+	-----------------------------------3Sum on Unsorted Input----------------------------
+All Triplets with Zero Sum — Leetcode 15 💹
+All Triplets with Given Sum 💹
+Triplet Sum Closest to Given Sum — Leetcode 16 💹
+Pythagorean Triplet 💹
+All Pythagorean Triplets 💹
+Count Triplets with Smaller Sum — Leetcode 259 💹
+All Unique Triplets with Given Sum (Variation of LC 15)
+Triplets with Sum of 2 Equal to 3rd 
+Three Closest Elements from Three Sorted Arrays 
+
+**********************************************2SUM BASED PROBLEMS****************************************************
+	---------------------------------2Sum on Unsorted Input-------------------------------
+2Sum (Pair with Given Sum) — Leetcode 1 💹
+2Sum II — Leetcode 167 💹
+Count Pairs with Given Sum 💹
+Pair with Given Product 💹
+Pair Difference Equals K — Leetcode 532 💹
+Boats to Save People — Leetcode 881 💹
+Closest Number in Sorted Array — 💹
+Pairs with Sum Less than Target — Leetcode 2824 💹
+Merge Two Sorted Arrays — Leetcode 88 💹
+Squares of a Sorted Array — Leetcode 977
+Pair with Sum Closest to X 
+Sum of Two Elements whose Sum is Closest to Zero 
+Smallest Difference Pair Between Two Unsorted Arrays 
+All Pairs with a Given Sum in Two Unsorted Arrays 
+Count Pairs with Absolute Difference Equal to K — Leetcode 2006 
+Pair Sum in an Absolute Sorted Array 
+Find the Closest Pair from Two Sorted Arrays

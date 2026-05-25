@@ -1,0 +1,93 @@
+3. SLIDING WINDOW
+A. VARIABLE SIZED
+
+Variable and Dynamic
+	• Fruits Into Basket 
+	• Longest Substring At Most K Distinct 
+	• Longest Consecutive Same Elements 
+	• Longest Subarray At Most K 
+	• Maximum Consecutive Ones 
+	• Maximum Consecutive Ones II 
+	• Smallest Subarray with a Given Sum 
+	• Longest Substring with K Distinct Characters 
+	• Fruits into Baskets 
+
+ii. Expanding Shrinking
+	• Longest Substring Without Repeating Characters 
+	• Minimum Window Substring 
+	• Number of Substrings Containing All Characters 
+	• Longest Repeating Character Replacement 
+	• Length of Longest Substring Without Repeating Characters 
+	• Longest Substring with At Most Two Distinct Characters 
+	• Longest K Unique Characters Substring 
+	• Count of Subarrays with Sum Equals K in Binary Array 
+	• Permutation in String 
+	• Minimum Window Substring 
+	• Longest Repeating Character Replacement 
+	• Find All Anagrams in a String 
+	• Subarrays with Given Sum 
+
+iii. Caterpillar Method
+	• Shortest Size Subarray with Sum K 
+	• Longest Subarray with Sum K 
+	• Longest Subarray At Most K 
+	• Number of Subarrays with Sum Equals K 
+	• Longest Subarray with Sum Less Than or Equal to K 
+	• Subarray Product Less Than K 
+	• Smallest Distinct Window 
+	• Largest Subarray of Equal Number of 0s and 1s 
+	• Longest Subarray with Sum Divisible by K 
+	• Maximum Number of Toys that can be Purchased with Amount K 
+
+iv. Valid Window / Exact Constraint Window
+	• Count Subarrays Sum Equals K 
+	• Count Nice Subarrays 
+	• Subarrays with K Different Integers 
+	• Number of Substrings Containing All Characters 
+	• Subarrays with Exactly K Distinct Integers 
+	• Subarrays with Exactly K Odd Numbers 
+	• Subarrays with Exactly K Even Numbers 
+	• Subarrays with Exactly K Elements Greater Than Threshold 
+	• Subarrays with Exactly K Distinct Characters 
+	• Subarrays with Exactly K Maximum Values 
+	• Subarrays with Exactly K Minimum Values 
+	• Subarrays with Exactly K Prime Numbers 
+	• Subarrays with Exactly K Divisible by a Number 
+	• Subarrays with Exactly K Increasing or Decreasing Elements 
+
+B. FIXED SIZE
+	• Sliding Window Maximum 
+	• Maximum Sum Subarray Size K 
+	• First Negative Element in Every Window 
+	• Count Distinct Elements in Windows 
+	• Maximum Points Obtain From N Cards 
+	• Maximum Average Subarray I (Leetcode 643) 
+	• Maximum Sum of K Consecutive Elements 
+	• Maximum of all Subarrays of Size K 
+	• Sum of Minimum and Maximum Elements of all Subarrays of Size K 
+	• First Negative Integer in Every Window of Size K 
+	• Average of Subarrays of Size K 
+	• Count Distinct Element in each Window of Size K 
+	• Shortest Subarray with Sum at Least K 
+
+C. CONSTRAINT BASED
+	• Longest Substring Without Repeating Characters 
+	• Longest Substring At Most K Distinct 
+	• Minimum Window Substring 
+	• Longest Repeating Character Replacement 
+	• Find All Anagrams in a String 
+	• Permutation in String 
+	• Smallest Distinct Window 
+	• Number of Substrings Containing All Characters 
+
+	• Maximum Consecutive Ones 
+	• Maximum Consecutive Ones II 
+	• Count Nice Subarrays 
+	• Largest Subarray with Equal 0s and 1s 
+
+	• Subarray Sum Equals K 
+	• Longest Subarray with Sum K 
+	• Shortest Subarray with Sum K 
+	• Subarray Product Less Than K 
+	• Longest Subarray Sum ≤ K 
+	• Longest Subarray Sum Divisible by K
