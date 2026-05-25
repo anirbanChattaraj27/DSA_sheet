@@ -1,6 +1,8 @@
 // i/p -> {2, 1, 5, 1, 3, 2}, k = 3
 // o/p -> 9
 // Explain -> 5+1+3 largest k size window sum is 9
+// SLIDING WINDOW
+
 
 public class O1_I_max_sum_subarray_Size_K {
 

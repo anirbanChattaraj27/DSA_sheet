@@ -8,6 +8,9 @@
  * here in this example i can pick 1st 4 elements from front or last 4 elements or 2 elements from front and 2 elemnts from last OR 3 elements from front or 1 element from the end
  */
 
+
+// SLIDING WINDOW
+
 public class O1_II_Max_points_obtain_from_N_cards {
     public static int maxScore(int[] nums, int k) {
         int lsum = 0, rsum = 0, maxSum = 0;
@@ -32,8 +35,8 @@ public class O1_II_Max_points_obtain_from_N_cards {
     }
 
     public static void main(String[] args) {
-        int[] arr = {6, 2, 3, 4, 7, 2, 1, 7, 1};
-        int k = 4;
+        int[] arr = {1,2,3,4,5,6,1};
+        int k = 3;
         System.out.println("Max score: " + maxScore(arr, k));  // Output: 16
     }
 }
