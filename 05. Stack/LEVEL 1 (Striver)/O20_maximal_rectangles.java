@@ -48,7 +48,6 @@ class Solution {
             // Push current index
             stack.push(i);
         }
-
         return maxArea;
     }
 

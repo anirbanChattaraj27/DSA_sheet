@@ -29,43 +29,57 @@ public class O19_largest_rectangle_in_histogram {
         return maxArea;
     }
 
-    // OPTIMIZED 1: TC- O(5N) SC- O(5N)
+    // OPTIMIZED 1
+    // Main method to compute the largest rectangle area
     public static int largestRectangleArea1(int[] heights) {
         int n = heights.length;
-        Stack<Integer> st = new Stack<>();
-        int[] leftsmall = new int[n];
-        int[] rightsmall = new int[n];
+        
+        // Separate logic calls
+        int[] leftSmall = PSE(heights, n);
+        int[] rightSmall = NSE(heights, n);
 
-        // Compute NSL (Nearest Smaller to Left)
-        for (int i = 0; i < n; i++) {
-            while (!st.isEmpty() && heights[st.peek()] >= heights[i]) {
-                st.pop();
-            }
-            leftsmall[i] = st.isEmpty() ? 0 : st.peek() + 1;
-            st.push(i);
-        }
-
-        // Clear the stack for reuse
-        st.clear();
-
-        // Compute NSR (Nearest Smaller to Right)
-        for (int i = n - 1; i >= 0; i--) {
-            while (!st.isEmpty() && heights[st.peek()] >= heights[i]) {
-                st.pop();
-            }
-            rightsmall[i] = st.isEmpty() ? n - 1 : st.peek() - 1;
-            st.push(i);
-        }
-
-        // Compute max area
         int maxArea = 0;
         for (int i = 0; i < n; i++) {
-            int width = rightsmall[i] - leftsmall[i] + 1;
+            int width = rightSmall[i] - leftSmall[i] + 1;
             maxArea = Math.max(maxArea, heights[i] * width);
         }
 
         return maxArea;
     }
+
+    // PSE Logic: Computes the boundaries on the left
+    private static int[] PSE(int[] heights, int n) {
+        Stack<Integer> st = new Stack<>();
+        int[] leftSmall = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            while (!st.isEmpty() && heights[st.peek()] >= heights[i]) {
+                st.pop();
+            }
+            // If empty, boundary extends to the 0th index
+            leftSmall[i] = st.isEmpty() ? 0 : st.peek() + 1;
+            st.push(i);
+        }
+        return leftSmall;
+    }
+
+    // NSE Logic: Computes the boundaries on the right
+    private static int[] NSE(int[] heights, int n) {
+        Stack<Integer> st = new Stack<>();
+        int[] rightSmall = new int[n];
+
+        for (int i = n - 1; i >= 0; i--) {
+            while (!st.isEmpty() && heights[st.peek()] >= heights[i]) {
+                st.pop();
+            }
+            // If empty, boundary extends to the last index (n - 1)
+            rightSmall[i] = st.isEmpty() ? n - 1 : st.peek() - 1;
+            st.push(i);
+        }
+        return rightSmall;
+    }
+
+
 
     // OPTIMIZED 2: TC- O(N) SC- O(N)
     public static int largestRectangleArea2(int[] heights) {
@@ -93,7 +107,7 @@ public class O19_largest_rectangle_in_histogram {
     }
 
     public static void main(String[] args) {
-        int[] arr = {2, 1, 5, 6, 2, 3, 1};
+        int[] arr = {2,1,5,6,2,3};
         int n = arr.length;
 
         System.out.println("The largest area in the histogram is " + largestRectangleArea2(arr));

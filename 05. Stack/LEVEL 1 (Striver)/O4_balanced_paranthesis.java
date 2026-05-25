@@ -4,38 +4,34 @@ import java.util.*;
 
 class O4_balanced_paranthesis {
 
-    public static boolean checkBalanced(String str) {
+    public static boolean isValid(String s) {
 
-        Stack<Character> stack = new Stack<>();
+        Stack<Character> st = new Stack();
 
-        for (char c : str.toCharArray()) {
-            if (c == '(' || c == '{' || c == '[') {
-                stack.push(c);
+        for (char ch : s.toCharArray()) {
+
+            if (ch == '(' || ch == '{' || ch == '[') {
+                st.push(ch);
             }
 
             else {
-                if (stack.isEmpty()) {
+                if (st.isEmpty())
                     return false;
-                }
 
-                else {
-                    char top = stack.peek();
+                char top = st.pop();
 
-                    if ((c == ')' && top == '(') || (c == '}' && top == '{') || (c == ']' && top == '[')) {
-                        stack.pop();
-                    }
+                if ((ch == ')' && top == '(') || (ch == ']' && top == '[') || (ch == '}' && top == '{'))
+                    continue;
 
-                    else {
-                        return false;
-                    }
-                }
+                else
+                    return false;
             }
         }
-        return stack.isEmpty();
+        return st.isEmpty();
     }
 
     public static void main(String[] args) {
         String s = "()[]{}";
-        System.out.println(checkBalanced(s));
+        System.out.println(isValid(s));
     }
 }

@@ -67,37 +67,22 @@ class Solution {
     // OPTIMIZED
     // Func to find PGE Idx
     private int[] findPGE(int[] arr) {
-        int n = arr.length; // Size of the array
-        
-        // To store the previous greater elements
+        int n = arr.length;
         int[] ans = new int[n];
-        
-        // Stack to get elements in LIFO fashion
         Stack<Integer> st = new Stack<>();
         
-        // Start traversing from the front
         for (int i = 0; i < n; i++) {
-            // Get the current element
-            int currEle = arr[i];
-            
-            // Pop elements from the stack until we find a greater element
-            while (!st.isEmpty() && arr[st.peek()] <= currEle) {
+            while (!st.isEmpty() && arr[st.peek()] <= arr[i]) {
                 st.pop();
             }
             
-            // If the stack is empty, it means there's no greater element, so assign -1
-            if (st.isEmpty()) 
-                ans[i] = -1;
-            else 
-                ans[i] = st.peek(); // Otherwise, the top element is the previous greater
-            
-            // Push the current index in the stack
+            ans[i] = st.isEmpty() ? -1 : st.peek();
             st.push(i);
         }
         
-        // Return the result (indices of previous greater elements)
         return ans;
     }
+
     
     // Function to find the span of stock prices for each day
     public int[] stockSpanOPTIMIZED(int[] arr, int n) {
