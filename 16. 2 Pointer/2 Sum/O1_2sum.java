@@ -14,16 +14,13 @@ Explanation: There is a pair (1, -3) with the sum equal to given target, 1 + (-3
 Input: arr[] = [1, -2, 1, 0, 5], target = 0
 Output: false
 Explanation: There is no pair with sum equals to given target.
-*/
-
+ */
 
 import java.util.*;
 
 public class O1_2sum {
 
-
-
-     public static boolean twoSumExists(int[] arr, int target) {
+    public static boolean twoSumExists(int[] arr, int target) {
         int n = arr.length;
         // Outer loop picks one element at a time
         for (int i = 0; i < n; i++) {
@@ -36,7 +33,7 @@ public class O1_2sum {
             }
         }
         // No pair found that sums to target
-        return false; 
+        return false;
     }
 
     // Function to return indices of two numbers that sum to target (variant 2)
@@ -56,12 +53,11 @@ public class O1_2sum {
         return new int[]{-1, -1};
     }
 
-
     // OPTIMIZED: USING 2 pointer
     // LC 1: this way will not work, bcz array is not sorted, if u sort and do index no will change
     // LC 167 will work
-    static boolean twoSum(int[] arr, int target){
-       
+    static boolean twoSum(int[] arr, int target) {
+
         Arrays.sort(arr);
 
         int left = 0, right = arr.length - 1;
@@ -71,16 +67,15 @@ public class O1_2sum {
             int sum = arr[left] + arr[right];
 
             // Check if the sum matches the target
-            if (sum == target)
-                return true;
-            else if (sum < target)
-            
-            // Move left pointer to the right
+            if (sum == target) {
+                return true; 
+            }else if (sum < target) // Move left pointer to the right
+            {
                 left++; 
-            else
-            
-            // Move right pointer to the left
+            }else // Move right pointer to the left
+            {
                 right--;
+            }
         }
         // If no pair is found
         return false;
@@ -110,40 +105,39 @@ public class O1_2sum {
             int complement = target - arr[i];
             // If complement found, return indices
             if (map.containsKey(complement)) {
-                return new int[] { map.get(complement), i };
+                return new int[]{map.get(complement), i};
             }
             // Store current element and index
             map.put(arr[i], i);
         }
         // No pair found
-        return new int[] { -1, -1 };
+        return new int[]{-1, -1};
     }
-
 
     // Better WAY
     public static boolean twoSumExists3(int[] arr, int target) {
         int n = arr.length;
-        
+
         // Create an array of pairs [value, original_index]
         int[][] numsWithIndex = new int[n][2];
-        
+
         // Store each element with its original index
         for (int i = 0; i < n; i++) {
             numsWithIndex[i][0] = arr[i]; // value
             numsWithIndex[i][1] = i;      // original index
         }
-        
+
         // Sort the array based on the value, not index
         Arrays.sort(numsWithIndex, (a, b) -> Integer.compare(a[0], b[0]));
 
         // Initialize two pointers: one at start, one at end
         int left = 0, right = n - 1;
-        
+
         // Run loop until pointers cross
         while (left < right) {
             // Calculate the sum of values at pointers
             int sum = numsWithIndex[left][0] + numsWithIndex[right][0];
-            
+
             if (sum == target) {
                 // Found the pair, return "YES"
                 return true;
@@ -155,7 +149,7 @@ public class O1_2sum {
                 right--;
             }
         }
-        
+
         // If loop ends without returning, no pair found
         return false;
     }
@@ -164,13 +158,13 @@ public class O1_2sum {
     public static int[] twoSumIndices3(int[] arr, int target) {
         int n = arr.length;
         int[][] numsWithIndex = new int[n][2];
-        
+
         // Store element with original index
         for (int i = 0; i < n; i++) {
             numsWithIndex[i][0] = arr[i];
             numsWithIndex[i][1] = i;
         }
-        
+
         // Sort by the value to apply two-pointer
         Arrays.sort(numsWithIndex, (a, b) -> Integer.compare(a[0], b[0]));
 
@@ -179,7 +173,7 @@ public class O1_2sum {
             int sum = numsWithIndex[left][0] + numsWithIndex[right][0];
             if (sum == target) {
                 // Return original indices of the two numbers found
-                return new int[] {numsWithIndex[left][1], numsWithIndex[right][1]};
+                return new int[]{numsWithIndex[left][1], numsWithIndex[right][1]};
             } else if (sum < target) {
                 // Increase sum by moving left pointer forward
                 left++;
@@ -188,22 +182,21 @@ public class O1_2sum {
                 right--;
             }
         }
-        
+
         // No pair found
-        return new int[] {-1, -1};
+        return new int[]{-1, -1};
     }
 
+    public static void main(String[] args) {
 
-
-    public static void main(String[] args){
-
-        int[] arr = { 0, -1, 2, -3, 1 };
+        int[] arr = {0, -1, 2, -3, 1};
         int target = -2;
 
-        if (twoSumExists2(arr, target))
-            System.out.println("true");
-        else
+        if (twoSumExists2(arr, target)) {
+            System.out.println("true"); 
+        }else {
             System.out.println("false");
+        }
     }
 
 }

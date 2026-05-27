@@ -53,3 +53,45 @@ public class O4_I_count_pairs_with_sum_less_than_target {
         return count;
     }
 }
+
+/*
+
+DR RUN
+
+Initial Setup
+• Sorted Array: [1, 2, 3, 4, 5] (indices 0 to 4) target 8
+• Pointers: left = 0 (value 1), right = 4 (value 5)
+• Count: 0
+
+Step-by-Step Execution
+
+Iteration 1
+• sum = nums.get(0) + nums.get(4) \(\rightarrow \) 1 + 5 = 6
+• Check: Is 6 < 8? Yes!
+• Action:
+• count += (4 - 0) \(\rightarrow \) count becomes 4.
+• (Why 4? Because if 1 + 5 < 8, then 1 paired with any number smaller than 5 is also valid: (1,5), (1,4), (1,3), and (1,2)).
+• left++ (left moves to index 1, value 2)
+
+Iteration 2
+same
+
+Iteration 3
+• sum = nums.get(2) + nums.get(4) \(\rightarrow \) 3 + 5 = 8
+• Check: Is 8 < 8? No (it must be strictly less than 8).
+• Action:
+• right-- (right moves to index 3, value 4)
+
+Iteration 4
+• sum = nums.get(2) + nums.get(3) \(\rightarrow \) 3 + 4 = 7
+• Check: Is 7 < 8? Yes!
+• Action:
+• count += (3 - 2) \(\rightarrow \) count += 1 \(\rightarrow \) count becomes 8.
+• (This 1 new pair is: (3,4)).
+• left++ (left moves to index 3, value 4)
+
+Loop Termination
+• left = 3, right = 3.
+• The condition while (left < right) (3 < 3) is now false. The loop stops.
+
+*/
