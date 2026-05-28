@@ -3,7 +3,7 @@
 
 import java.util.*;
 
-public class O10_pair_difference_equals_K {
+public class O6_pair_difference_equals_K {
 
     // MAP
     static int usingMapCorrected(int arr[], int n, int k) {

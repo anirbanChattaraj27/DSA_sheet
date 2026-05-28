@@ -20,7 +20,7 @@ Explanation: 4 boats (3), (3), (4), (5)
 */
 import java.util.*;
 
-public class O8_Boats_to_save_people {
+public class O13_Boats_to_save_people{
 
     // classic way
     public int numRescueBoats(int[] people, int target) {
