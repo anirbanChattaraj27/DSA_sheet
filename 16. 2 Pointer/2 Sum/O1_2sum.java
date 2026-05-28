@@ -16,6 +16,9 @@ Output: false
 Explanation: There is no pair with sum equals to given target.
  */
 
+
+// leetcide 1: 2 pointer is not easy to implement bcz array is not sorted, and i need to return index
+
 import java.util.*;
 
 public class O1_2sum {

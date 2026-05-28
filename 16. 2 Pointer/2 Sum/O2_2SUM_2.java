@@ -6,8 +6,14 @@ Output: [1,2]
 Explanation: The sum of 2 and 7 is 9. Therefore, index1 = 1, index2 = 2. We return [1, 2].
 */
 
+// 2 pointer and hash both 
+// 2 pointer: bcz array is already sorted, so to get the index of elements are easy
+
+import java.util.*;
+
 public class O2_2SUM_2 {
-    public int[] twoSum(int[] arr, int sum) {
+
+    public int[] twoSum2_1(int[] arr, int sum) {
         int left = 0, right = arr.length - 1;
         int[] temp = new int[2]; 
         
@@ -28,5 +34,25 @@ public class O2_2SUM_2 {
         }
             
         return temp;
+    }
+
+    // using MAP
+    public int[] twoSum2_2 (int[] numbers, int target) {
+        // Map stores: Key = Number, Value = 1-based index
+        HashMap<Integer, Integer> map = new HashMap<>();
+        
+        for (int i = 0; i < numbers.length; i++) {
+            int complement = target - numbers[i];
+            
+            // If complement exists, we found our pair
+            if (map.containsKey(complement)) {
+                return new int[] { map.get(complement), i + 1 };
+            }
+            
+            // Store current number with its 1-based index
+            map.put(numbers[i], i + 1);
+        }
+        
+        return new int[] {-1, -1}; // Fallback (problem guarantees a solution)
     }
 }
