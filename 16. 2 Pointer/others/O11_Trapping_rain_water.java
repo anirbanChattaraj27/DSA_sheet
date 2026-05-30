@@ -1,4 +1,3 @@
-public class O11_trapping_rain_water {
+public class O11_Trapping_rain_water {
     
 }
- 

@@ -1,11 +1,24 @@
 // LC 15
 // Triplets with Zero Sum
+// All Triplets with Given Sum (sum can be 0 or anything)
+// All Distinct Triplets with given Sum in an Array
+// https://www.geeksforgeeks.org/dsa/unique-triplets-sum-given-value/----> same qs
+// Java program to find all the distinct triplets having sum
+
 
 /*
 Example 1:
     Input: nums = [-1,0,1,2,-1,-4]
     Output: [[-1,-1,2],[-1,0,1]]
-    Explanation: Out of all possible unique triplets possible, [-1,-1,2] and [-1,0,1] satisfy the condition of summing up to zero with i!=j!=k
+    Explanation: Out of all possible unique triplets possible, [-1,-1,2] and [-1,0,1] satisfy 
+    the condition of summing up to zero with i!=j!=k
+
+Example 2:
+    Input: arr[] = [12, 3, 6, 1, 6, 9], target = 24 
+    Output: [[3, 9, 12], [6, 6, 12]] 
+    Explanation: There are two unique triplets that add up to 24: 
+    3 + 9 + 12 = 24
+    6 + 6 + 12 = 24
  */
 
 import java.util.ArrayList;
@@ -38,7 +51,7 @@ class sol {
                 }
             }
         }
-
+ 
         // Convert set to list
         return new ArrayList<>(st);
     }
@@ -56,7 +69,7 @@ class sol {
             // Second loop for second element
             for (int j = i + 1; j < n; j++) {
                 // Calculate third element needed
-                int third = -(arr[i] + arr[j]);
+                int third = -(arr[i] + arr[j]); // why -? explanation bellow....
 
                 // If third already in set, we found a triplet
                 if (hashset.contains(third)) {
@@ -112,7 +125,7 @@ class sol {
 
 }
 
-public class O1_3_SUM {
+public class O1_I_3SUM {
     public static void main(String[] args) {
         int[] arr = {-1, 0, 1, 2, -1, -4};
         int n = arr.length;
@@ -125,3 +138,12 @@ public class O1_3_SUM {
         }
     }
 }
+
+
+/*
+arr[i] + arr[j] + third = 0
+
+1. third = -arr[i] - arr[j]
+2. (third = -(arr[i] + arr[j]))
+
+*/
