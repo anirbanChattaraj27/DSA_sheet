@@ -8,36 +8,38 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class O7_pair_sum_closest_to_target {
+    
     static ArrayList<Integer> sumClosest(int[] arr, int target) {
-        int n = arr.length;
+        // 1. Sort the array first
         Arrays.sort(arr);
-        ArrayList<Integer> res = new ArrayList<>();
-        int minDiff = Integer.MAX_VALUE;
+        
+        // 2. Initialize with the first possible pair sum and pair elements
+        int closestSum = arr[0] + arr[1];
+        ArrayList<Integer> res = new ArrayList<>(Arrays.asList(arr[0], arr[1]));
 
-        int left = 0, right = n - 1;
+        int left = 0;
+        int right = arr.length - 1;
 
+        // 3. Loop through the array using two pointers
         while (left < right) {
-            int currSum = arr[left] + arr[right];
-            int currDiff = Math.abs(target - currSum);
+            int currentSum = arr[left] + arr[right];
 
-            // check if this pair is closer than the closest
-            // pair so far
-            if (currDiff < minDiff) {
-                minDiff = currDiff;
+            // 4. Update closestSum and res if the current deviation is smaller
+            // This is the exact same if block logic from your triplet sum code
+            if (Math.abs(currentSum - target) < Math.abs(closestSum - target)) {
+                closestSum = currentSum;
                 res = new ArrayList<>(Arrays.asList(arr[left], arr[right]));
             }
 
-            // if this pair has sum = target, return it immediately
-            if (currSum == target)
+            // 5. Move pointers based on the sum comparison
+            if (currentSum < target) {
+                left++; // Need a larger sum
+            } else if (currentSum > target) {
+                right--; // Need a smaller sum
+            } else {
+                // Found exact match, return immediately
                 return new ArrayList<>(Arrays.asList(arr[left], arr[right]));
-
-            // if this pair has less sum, move to greater values
-            else if (currSum < target)
-                left++;
-
-            // if this pair has more sum, move to smaller values
-            else
-                right--;
+            }
         }
 
         return res;

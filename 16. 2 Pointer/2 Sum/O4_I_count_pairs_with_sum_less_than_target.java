@@ -24,7 +24,7 @@ public class O4_I_count_pairs_with_sum_less_than_target {
                 // 4. If sum is too big, make it smaller by moving right pointer down
                 right--;
             }
-        }        
+        }
         return count;
     }
 

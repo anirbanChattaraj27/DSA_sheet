@@ -42,7 +42,6 @@ public class O13_Boats_to_save_people{
         return boats;
     }
 
-    // LC 2824, kind of similar code, needs to understand this in depth
     // count pairs with sum  < target
     public int numRescueBoats2(int[] nums, int target) {
         Arrays.sort(nums);

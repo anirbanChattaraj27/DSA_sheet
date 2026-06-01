@@ -1,3 +1,5 @@
+/* LEETCODE -> https://leetcode.com/problems/longest-consecutive-sequence/ */
+
 // N = 7
 // a[] = {2,6,1,9,4,5,3}
 // Output: 6

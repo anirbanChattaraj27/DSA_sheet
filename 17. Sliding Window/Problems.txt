@@ -91,3 +91,12 @@ C. CONSTRAINT BASED
 	• Subarray Product Less Than K 
 	• Longest Subarray Sum ≤ K 
 	• Longest Subarray Sum Divisible by K
+
+
+// mix sliding Window
+
+Longest Substring Without Repeating Characters
+Minimum Window Substring
+Permutation in String
+Find All Anagrams in a String
+Maximum Average Subarray

@@ -8,8 +8,9 @@ Since we require the length of the longest subarray, our answer is 5!
  */ 
 
 import java.util.HashMap;
+import java.util.Map;
 
-public class O10_longest_subarray_with_0_Sum {
+public class O10_II_longest_subarray_with_0_Sum {
 
     public static int maxLen1(int[] a) {
         int max = 0;
@@ -25,7 +26,7 @@ public class O10_longest_subarray_with_0_Sum {
         return max;
     }
 
-	// O(N)
+	// TC & SC -> O(N)
     public static int maxLen2(int A[], int n) {
 
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
@@ -51,6 +52,39 @@ public class O10_longest_subarray_with_0_Sum {
         }
         return maxi;
     }
+
+    // another approch
+    // TC & SC -> O(N)
+    public static int maxLength(int[] arr) {
+        int n = arr.length;
+
+        // prefixSum -> first index
+        Map<Integer, Integer> firstSeen = new HashMap<>();
+        int prefixSum = 0;
+        int maxLen = 0;
+
+        // insert prefix sum 0 at index -1
+        // to handle sum from start
+        firstSeen.put(0, -1);
+
+        for (int i = 0; i < n; i++) {
+            prefixSum += arr[i];
+
+            // prefix sum has been seen before
+            if (firstSeen.containsKey(prefixSum)) {
+                int prevIndex = firstSeen.get(prefixSum);
+                int length = i - prevIndex;
+                maxLen = Math.max(maxLen, length);
+            } else {
+                
+                // Store first occurrence of this prefix sum
+                firstSeen.put(prefixSum, i);
+            }
+        }
+
+        return maxLen;
+    }
+
 
     public static void main(String args[]) {
         int a[] = {9, -3, 3, -1, 6, -5};
