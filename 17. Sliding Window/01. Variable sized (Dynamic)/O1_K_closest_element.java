@@ -1,12 +1,12 @@
 // https://leetcode.com/problems/find-k-closest-elements/description/
 
-// 2 pointer ----------> (O(\log(N - K) + K) --> more efficient
+// 2 pointer ----------> (O(log(N - K) + K) --> more efficient
 // Binary search ------> (O(N)
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class O4_K_closest_element {
+public class O1_K_closest_element {
     
     // 2 pointer + Slidign Window
     public List<Integer> findClosestElements(int[] arr, int k, int x) {

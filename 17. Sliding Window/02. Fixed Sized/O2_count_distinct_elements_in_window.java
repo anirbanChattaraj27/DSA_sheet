@@ -51,4 +51,36 @@ public class O2_count_distinct_elements_in_window {
       
         return res;
     }
+
+    // Gemini --> verify
+    public static int lengthOfLongestSubstringKDistinct(String s, int k) {
+        if (s == null || s.length() == 0 || k <= 0) return 0;
+
+        int left = 0;
+        int maxLen = 0;
+        HashMap<Character, Integer> freqMap = new HashMap<>();
+
+        for (int right = 0; right < s.length(); right++) {
+            char inChar = s.charAt(right);
+            // 1. Expand the head: Add incoming character
+            freqMap.put(inChar, freqMap.getOrDefault(inChar, 0) + 1);
+
+            // 2. Contract the tail: Shrink window if unique characters exceed K
+            while (freqMap.size() > k) {
+                char outChar = s.charAt(left);
+                freqMap.put(outChar, freqMap.get(outChar) - 1);
+                
+                // If frequency drops to 0, completely remove the key to lower map size
+                if (freqMap.get(outChar) == 0) {
+                    freqMap.remove(outChar);
+                }
+                left++; // Crawl tail forward
+            }
+
+            // 3. Keep track of the longest valid length
+            maxLen = Math.max(maxLen, right - left + 1);
+        }
+
+        return maxLen;
+    }
 }
