@@ -18,7 +18,7 @@ public class O9_4_ROOT_to_NODE_path {
     private boolean getPath(TreeNode root, ArrayList<Integer> list, int x) {
         if (root == null) {
             return false;
-        }
+        } 
 
         // Add the current node to the path
         list.add(root.val);

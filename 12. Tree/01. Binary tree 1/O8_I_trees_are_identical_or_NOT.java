@@ -13,26 +13,23 @@ class Node {
     }
 }
 
-public class O4_trees_are_identical_or_NOT {
+public class O8_I_trees_are_identical_or_NOT {
 
-    // Function to check if two trees are identical
     public static boolean fun(Node p, Node q) {
 
-        // If both are null → identical
         if (p == null && q == null) {
             return true;
         }
 
-        // If one is null and other is not → not identical
         if (p == null || q == null) {
             return false;
         }
         
+        if(p.val != q.val ){
+            return false;
+        }
 
-        // Check current node value and subtrees
-        return (p.val == q.val)
-                && fun(p.left, q.left)
-                && fun(p.right, q.right);
+        return fun(p.left, q.left) && fun(p.right, q.right);
 
         /*
         boolean isValueSame = (p.val == q.val);

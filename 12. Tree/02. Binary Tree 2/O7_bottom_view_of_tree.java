@@ -4,7 +4,7 @@ import java.util.*;
 
 class TreeNode {
     int data;
-    int data; // horizontal distance
+    // int data; // horizontal distance
     TreeNode left, right;
 
     TreeNode(int val) {

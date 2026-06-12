@@ -1,4 +1,4 @@
-// I can not use 2 pointer here as it contains negetive values, if it contains only positive numbers then I can use prev approch here\\
+// I can not use sliding window here as it contains negetive values, if it contains only positive numbers then I can use prev approch here\\
 
 
 // https://www.geeksforgeeks.org/longest-sub-array-sum-k/
@@ -41,38 +41,33 @@ public class O3_II_Longest_subArray_with_sum_K {
         return res;
     }
 
-    // using hashing (Better approch)
-    public static int getLongestSubarray2(int[] a, long k) {
-        int n = a.length; // size of the array.
+    
+    public static int getLongestSubarray2(int[] arr, int k) {
+        // Map to store (prefix_sum, first_index_where_it_occurred)
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int sum = 0;
+        int maxLength = 0;
 
-        Map<Long, Integer> preSumMap = new HashMap<>();
-        long sum = 0;
-        int maxLen = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
 
-        for (int i = 0; i < n; i++) {
-            //calculate the prefix sum till index i:
-            sum += a[i];
-
-            // if the sum = k, update the maxLen:
+            // Case 1: The sum from index 0 to i equals k
             if (sum == k) {
-                maxLen = Math.max(maxLen, i + 1);
+                maxLength = i + 1;
             }
 
-            // calculate the sum of remaining part i.e. x-k:
-            long rem = sum - k;
-
-            //Calculate the length and update maxLen:
-            if (preSumMap.containsKey(rem)) {
-                int len = i - preSumMap.get(rem);
-                maxLen = Math.max(maxLen, len);
+            // Case 2: If (sum - k) exists in map, a subarray sums to k
+            if (map.containsKey(sum - k)) {
+                maxLength = Math.max(maxLength, i - map.get(sum - k));
             }
 
-            //Finally, update the map checking the conditions:
-            if (!preSumMap.containsKey(sum)) {
-                preSumMap.put(sum, i);
+            // Only add sum to map if it doesn't exist to preserve the EARLIEST index
+            // This ensures we get the LONGEST possible subarray
+            if (!map.containsKey(sum)) {
+                map.put(sum, i);
             }
         }
-        return maxLen;
+        return maxLength;
     }
     
     public static void main(String[] args) {

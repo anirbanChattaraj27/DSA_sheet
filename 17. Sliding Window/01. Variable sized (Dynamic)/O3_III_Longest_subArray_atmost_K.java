@@ -36,33 +36,27 @@ public class O3_III_Longest_subArray_atmost_K {
         return res;
     }
 
-    // sliding window STRIVER [O(N + N)  ==> O(2N)]
+    // sliding window [O(N + N)  ==> O(2N)]
     // Expand & Shrinking
-    public static int longestSubarray2 (int[] arr, int k) {
-        int n = arr.length;
-        int left = 0, right = 0;
+    public static int longestSubArrayLength_Window(int[] nums, int k) {
+        int start = 0;
         int sum = 0;
-        int maxLen = 0;
+        int maxLength = 0; // Initialize to 0, as a valid length cannot be negative
 
-        while (right < n) {
-            sum += arr[right];
+        for (int end = 0; end < nums.length; end++) {
+            sum += nums[end];
 
-            // Shrink the window while sum > k
-            while (sum > k) {
-                sum -= arr[left];
-                left++;
+            // Shrink the window ONLY when the sum exceeds k
+            while (sum > k && start <= end) {
+                sum -= nums[start++];
             }
 
-            // Check and update max length if current sum is within the limit
-            if (sum <= k) {
-                maxLen = Math.max(maxLen, right - left + 1);
-            }
-
-            right++;
+            // Now the window is valid (sum <= k), update maxLength
+            maxLength = Math.max(maxLength, end - start + 1);
         }
-
-        return maxLen;
+        return maxLength;
     }
+
 
     // STRIVER O(N)
     public static int longestSubarray3 (int[] arr, int k) {

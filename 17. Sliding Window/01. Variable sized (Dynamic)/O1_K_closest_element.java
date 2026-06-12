@@ -3,6 +3,13 @@
 // 2 pointer ----------> (O(log(N - K) + K) --> more efficient
 // Binary search ------> (O(N)
 
+/*
+LC: 658
+Input: arr = [1,2,3,4,5], k = 4, x = 3
+Output: [1,2,3,4]
+Given a sorted integer array arr, two integers k and x, return the k closest integers to x 
+in the array. The result should also be sorted in ascending order.
+*/
 import java.util.ArrayList;
 import java.util.List;
 

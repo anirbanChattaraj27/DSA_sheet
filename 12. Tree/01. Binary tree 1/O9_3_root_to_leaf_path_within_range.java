@@ -1,6 +1,19 @@
 // Copy 9
 // NOTE: without creating object of a class; check main function
-// leetcode: 938
+
+/*
+       5  <-- Root
+      / \
+     4   8
+    /   / \
+   11  13  5
+low = 10 | high = 20
+There are three possible root-to-leaf paths in this tree:
+Path 1: 5 -> 4 -> 11 (Leaf node 11) Sum: (5 + 4 + 11 = 20)Result: print (20 is higher than 20)
+Path 2: 5 -> 8 -> 13 (Leaf node 13) Sum: (5 + 8 + 13 = 26)Result: Ignored (26 is higher than 20)
+Path 3: 5 -> 8 -> 4 (Leaf node 4)   Sum: (5 + 8 + 4 = 17)Result: print (17 is higher than 20)
+'
+*/
 class Node {
 
     int data; // int val
@@ -18,22 +31,29 @@ public class O9_3_root_to_leaf_path_within_range {
     Node root;
 
     public static void pathToLeafFromRoot(Node node, String path, int sum, int low, int high) {
-        if (node == null) {
-            return;
-        }
- 
-        sum += node.data;
-        path += node.data + " ";
-
-        if (node.left == null && node.right == null) { // Leaf node
-            if (sum >= low && sum <= high) {
-                System.out.println(path);
-            }
-        } else {
-            pathToLeafFromRoot(node.left, path, sum, low, high);
-            pathToLeafFromRoot(node.right, path, sum, low, high);
-        }
+    // case 1: base case
+    if (node == null) {
+        return;
     }
+
+    // case 2: self work (Update sum and path string)
+    sum += node.data;
+    path += node.data + " ";  
+
+    // case 3: leaf node validation (Print if valid)
+    if (node.left == null && node.right == null) {
+        if (sum >= low && sum <= high) {
+            System.out.println(path);
+        }
+        return; // Done with this leaf, go back up
+    }
+
+    // case 4: explore left child
+    pathToLeafFromRoot(node.left, path, sum, low, high);
+
+    // case 5: explore right child
+    pathToLeafFromRoot(node.right, path, sum, low, high);
+}
 
     public static void main(String args[]) {
 /*

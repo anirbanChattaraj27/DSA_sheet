@@ -20,7 +20,8 @@ public class O6_2_print_diameter {
     // so if i have LH and RH (in heightFun) do we need to find height again? ans: NO
     // we will use same code LH and RH and use max variable and take maximum of them 
     /*
-     *  Global static maxi allows the value of the maximum diameter to persist across all recursive calls, ensuring that the largest diameter is tracked throughout the traversal of the tree.
+     *  Global static maxi allows the value of the maximum diameter to persist across all recursive 
+     *  calls, ensuring that the largest diameter is tracked throughout the traversal of the tree.
      *  Without it, the function would not retain the maximum diameter and would fail to give the correct result.
      */
     
@@ -63,6 +64,7 @@ public class O6_2_print_diameter {
         return newMax[0];
     }
 
+    // same code as of height of tree, 1 xtra line
     private static int heightFun2(Node node, int max[]){
         if(node == null){
             return 0;
@@ -71,9 +73,10 @@ public class O6_2_print_diameter {
         int LH = heightFun2(node.left, max);
         int RH = heightFun2(node.right, max);
 
+        // only xtra line
         max[0] = Math.max(max[0], LH + RH);
 
-        return 1 + Math.max(LH, RH);
+        return 1 + Math.max(LH, RH); // only ends the CURRENT function call, not all the function calls.
     }
 
     public static void main(String args[]) {

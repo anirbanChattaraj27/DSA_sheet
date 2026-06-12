@@ -23,7 +23,7 @@ public class O9_2_find_path_NODE_to_ROOT {
     public static boolean supportFun(Node node, int key, ArrayList<Integer> list) {
         if (node == null) {
             return false;
-        } 
+        }  
 
         // If the current node matches the key, add it to the list and return true
         if (node.data == key) {

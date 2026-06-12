@@ -3,6 +3,8 @@
 // Explain -> 5+1+3 largest k size window sum is 9
 // SLIDING WINDOW
 
+import java.util.HashSet;
+
 public class O1_I_max_sum_subarray_size_K {
     
     public static int getSumSizeK_bruteForce(int arr[], int k) {
@@ -43,7 +45,6 @@ public class O1_I_max_sum_subarray_size_K {
         return maxSum;
     }
 
-
     static int getSumSizeK_Window2(int[] arr, int k) {
         int n = arr.length;
         if (n < k) return -1;
@@ -62,6 +63,38 @@ public class O1_I_max_sum_subarray_size_K {
             maxSum = Math.max(maxSum, windowSum);
         }
 
+        return maxSum;
+    }
+
+    // LEEETCODE: 2461---> remove duplicate then calculate sum
+    public long maximumSubarraySum(int[] nums, int k) {
+        long maxSum = 0;
+        long currentSum = 0;
+        int start = 0;
+        HashSet<Integer> set = new HashSet<>();
+
+        for (int end = 0; end < nums.length; end++) {
+            // If a duplicate is found, shrink the window from the left until duplicate is removed
+            while (set.contains(nums[end])) {
+                set.remove(nums[start]);
+                currentSum -= nums[start];
+                start++;
+            }
+
+            // Add the current element to the window
+            set.add(nums[end]);
+            currentSum += nums[end];
+
+            // If the window hits size k, it is a valid distinct subarray
+            if (end - start + 1 == k) {
+                maxSum = Math.max(maxSum, currentSum);
+                
+                // Slide the window forward by removing the leftmost element
+                set.remove(nums[start]);
+                currentSum -= nums[start];
+                start++;
+            }
+        }
         return maxSum;
     }
     

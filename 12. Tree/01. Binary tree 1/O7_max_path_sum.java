@@ -34,7 +34,7 @@ public class O7_max_path_sum {
         }
 
         /* extra line */
-        int left = Math.max(0, maxPathDown(node.left, maxValArr));
+        int left = Math.max(0, maxPathDown (node.left, maxValArr)); // if negetive val comes, it will reduce the total sum.
         int right = Math.max(0, maxPathDown(node.right, maxValArr));
 
         maxValArr[0] = Math.max(maxValArr[0], (left + right + node.data));
@@ -43,6 +43,7 @@ public class O7_max_path_sum {
         // This is why we return Math.max(left, right) + node.data;, because at each node, we can either take the left path or the right path, but not both in the returned value.
         return Math.max(left, right) + node.data; 
     }
+
     /*
      * Why don’t we return maxValArr[0] instead?
            * If we return maxValArr[0], it would not correctly propagate the downward path sum for recursive calls.

@@ -64,6 +64,13 @@ public class O5_Balanced_BTree_or_NOT {
         return 1 + Math.max(lh, rh);
     }
 
+    /*
+        why 2 func is important?    
+        If your function only returns a boolean, you lose the height information. For example, 
+        if lh and rh both return true (meaning both subtrees are balanced), you cannot calculate 
+        Math.abs(lh - rh) because you cannot subtract true from true.
+    */
+
     
     public static void main(String args[]) {
 
@@ -80,8 +87,7 @@ public class O5_Balanced_BTree_or_NOT {
         root.left.left = new Node(30);
         root.left.right = new Node(20);
         
-
-        System.out.println("Tree is BTree or NOT: ");
+        System.out.println("Tree is balanced BTree or NOT: ");
         System.out.println(bruteForceApproch(root));
         System.out.println(printOptimizedApproch(root));
     }

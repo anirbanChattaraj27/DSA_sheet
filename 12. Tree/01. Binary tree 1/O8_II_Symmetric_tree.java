@@ -1,4 +1,4 @@
-// copy 27
+// copy 27 || O4_trees are identical or not same question
 class Node {
     int val;
     Node left;
@@ -15,14 +15,6 @@ class Solution {
     }
 
     private boolean isSymmetricHelp(Node left, Node right) {
-        // I can do any 1 forom bellow
-
-        // if (left == null || right == null) {
-        //     return left == right;
-        // }
-        // if (left.val != right.val) {
-        //     return false;
-        // }
 
         if (left == null && right == null) return true;  // Both subtrees are null
         if (left == null || right == null) return false; // One subtree is null
@@ -33,8 +25,8 @@ class Solution {
                isSymmetricHelp(left.right, right.left);
     }
 }
-
-public class O8_Symmetric_tree {
+ 
+public class O8_II_Symmetric_tree {
     public static void main(String[] args) {
         // Create a sample symmetric tree
 /*

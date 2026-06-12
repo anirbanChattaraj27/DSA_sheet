@@ -1,10 +1,8 @@
 // https://youtu.be/1Kyc-zQS7eQ?si=Ihm1UZrgsMM7pHgo
 // copy explanation NO. 7
 
-import java.util.*;
-import java.io.*;
 import java.lang.*;
-import java.math.*;
+import java.util.*;
 
 class Node {
 
@@ -34,27 +32,27 @@ public class O9_1_search_given_node {
             return true;
         }
 
-        // case 3: left child
-        boolean findLeftChild = searchGivenData(node.left, data);
-        if (findLeftChild) {
+        // case 3: left child (Cleaned up)
+        if (searchGivenData(node.left, data)) {
+            return true;
+
+        }
+
+        // case 4: right child (Cleaned up)
+        if (searchGivenData(node.right, data)) {
             return true;
         }
 
-        // case 4: right child;
-        boolean findRightChild = searchGivenData(node.right, data);
-        if(findRightChild){
-            return true;
-        }
-
-        // case 5: if above case doesn't matches return false
+        // case 5: if above cases don't match return false
         return false;
     }
- 
+
+    
+    // Code for Node to root path
     // declare ArrayList globally
     static ArrayList<Integer> path; // ⭐ArrayList should be declared as static then only i can use its reference
 
-    public static boolean NodeToPath(Node node, int data){
-        // same code as per above just need to add 1 extra line
+    public static boolean NodeToPath(Node node, int data) {
 
         // case 1: base case
         if (node == null) {
@@ -67,21 +65,20 @@ public class O9_1_search_given_node {
             return true;
         }
 
-        // case 3: left child
-        boolean findLeftChild = NodeToPath(node.left, data);
-        if (findLeftChild) {
+        // case 3: left child (Cleaned up)
+        if (NodeToPath(node.left, data)) {
+            path.add(node.data);
+            return true;
+
+        }
+
+        // case 4: right child (Cleaned up)
+        if (NodeToPath(node.right, data)) {
             path.add(node.data);
             return true;
         }
 
-        // case 4: right child;
-        boolean findRightChild = NodeToPath(node.right, data);
-        if(findRightChild){
-            path.add(node.data);
-            return true;
-        }
-
-        // case 5: if above case doesn't matches return false
+        // case 5: if above cases don't match return false
         return false;
     }
 

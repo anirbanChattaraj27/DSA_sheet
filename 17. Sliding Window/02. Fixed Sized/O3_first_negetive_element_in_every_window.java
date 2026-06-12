@@ -31,7 +31,7 @@ import java.util.List;
 
 public class O3_first_negetive_element_in_every_window {
 
-    private static void firstNegInt2(int[] arr, int k) {
+    private static void firstNegInt1(int[] arr, int k) {
         int n = arr.length;
         // Run a loop corresponding to every window in the array
         for (int i = 0; i <= n - k; i++) {
@@ -53,40 +53,60 @@ public class O3_first_negetive_element_in_every_window {
     }
 
     public static int[] firstNegInt2(int[] arr, int k) {
-        Deque<Integer> dq = new LinkedList<>();
-        List<Integer> res = new ArrayList<>();
         int n = arr.length;
-
-        // Process the first window of size k 
-        for (int i = 0; i < k; i++)
-            if (arr[i] < 0)
-                dq.addLast(i);
-
-        // Process rest of the elements, i.e., 
-        // from arr[k] to arr[n-1]
-        for (int i = k; i < n; i++) {
-            if (!dq.isEmpty())
-                res.add(arr[dq.peekFirst()]);
-            else
-                res.add(0);
-            
-            // Remove the elements which are out of 
-            // this window
-            while (!dq.isEmpty() && dq.peekFirst() < (i - k + 1))
-                dq.pollFirst();
-            
-            // Add the current element if it is negative
-            if (arr[i] < 0)
-                dq.addLast(i);
+        
+        // Handle edge case where window size is larger than array size
+        if (n < k || k <= 0) {
+            return new int[0]; 
         }
-        
-        // For the last window, process it separately
-        if (!dq.isEmpty())
-            res.add(arr[dq.peekFirst()]);
-        else
-            res.add(0);
-        
-        return res.stream().mapToInt(i -> i).toArray();
+
+        // There will be exactly (n - k + 1) windows
+        int[] result = new int[n - k + 1];
+        int resultIdx = 0;
+
+        // 1. Process the first window (Find the first negative element's index)
+        int firstNegativeIdx = -1;
+        for (int i = 0; i < k; i++) {
+            if (arr[i] < 0) {
+                firstNegativeIdx = i;
+                break; // Found the first one, stop looking
+            }
+        }
+
+        // Store result for the first window
+        if (firstNegativeIdx != -1) {
+            result[resultIdx++] = arr[firstNegativeIdx];
+        } else {
+            result[resultIdx++] = 0;
+        }
+
+        // 2. Slide the window (using your loop structure)
+        for (int i = k; i < n; i++) {
+            
+            // If the tracked negative element just fell out of the window on the left
+            if (firstNegativeIdx != -1 && firstNegativeIdx <= i - k) {
+                firstNegativeIdx = -1; // Reset it
+            }
+
+            // If we don't have a valid negative index, search within the current window scope
+            if (firstNegativeIdx == -1) {
+                for (int j = i - k + 1; j <= i; j++) {
+                    if (arr[j] < 0) {
+                        firstNegativeIdx = j;
+                        break;
+                    }
+                }
+            }
+
+            // Store result for the current window
+            if (firstNegativeIdx != -1) {
+                result[resultIdx++] = arr[firstNegativeIdx];
+            } else {
+                result[resultIdx++] = 0;
+            }
+        }
+
+        return result;
     }
 
     public static List<Integer> firstNegInt3(int[] arr, int k) {

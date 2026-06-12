@@ -34,22 +34,6 @@ public class O31_remove_leaves {
         return list;
     }
 
-    public static Node fun(Node node){
-        
-        if(node == null){
-            return null;
-        }
-
-        if(node.left == null && node.right == null){
-            return null;
-        }
-
-        node.left = fun(node.left);
-        node.right = fun(node.right);
-
-        return node;
-    }
-
     public static void printTreePreOrder(Node node) {
         if (node == null) return;
         System.out.print(node.data + " "); // Visit root first
@@ -74,10 +58,10 @@ public class O31_remove_leaves {
         root.left.right = new Node(5);
         root.right.left = new Node(2);
         
-        fun(root);
+        // fun(root);
         // System.out.println(); // when print this comment bellow print
 
-        // System.out.println(fun2(root, list));
+        System.out.println(fun2(root, list));
 
     }
 }

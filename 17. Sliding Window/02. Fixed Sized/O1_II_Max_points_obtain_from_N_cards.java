@@ -1,4 +1,6 @@
-/*
+/* https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/
+    LC 1423
+
  * arr = [6 2 3 4 7 2 1 7 1], K = 4
  * o/p: 16
  * explain: I have to pick K cards which give max sum  
@@ -31,6 +33,25 @@ public class O1_II_Max_points_obtain_from_N_cards {
             maxSum = Math.max(maxSum, lsum + rsum);
         }
 
+        return maxSum;
+    }
+
+    // APPROCH from max_sum_subarray_size_K 
+    public int maxScore2(int[] arr, int k) {
+        int sum = 0;
+        int maxSum = 0;
+
+        for(int i=0; i<k; i++){
+            sum = sum + arr[i];
+        }
+
+        maxSum = sum;
+        int start = k-1;
+
+        for(int i=arr.length-1; i>=arr.length-k; i--){
+            sum = sum+arr[i]-arr[start--];
+            maxSum = Math.max(sum,maxSum);
+        }
         return maxSum;
     }
 
