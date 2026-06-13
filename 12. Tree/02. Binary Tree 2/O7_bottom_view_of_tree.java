@@ -1,58 +1,68 @@
 // copy 30
-
 import java.util.*;
 
-class TreeNode {
-    int data;
-    // int data; // horizontal distance
-    TreeNode left, right;
+// Removed the wrong org.w3c.dom.Node import completely
 
-    TreeNode(int val) {
+class Node {
+    int data;
+    Node left, right;
+
+    Node(int val) {
         data = val;
-        data = 0;
         left = right = null;
+    }
+}
+
+class Pair {
+    Node node;
+    int vertical;
+
+    Pair(Node node, int vertical) {
+        this.node = node;
+        this.vertical = vertical;
     }
 }
 
 public class O7_bottom_view_of_tree {
 
-    public ArrayList<Integer> bottomView(TreeNode root) {
-        ArrayList<Integer> ans = new ArrayList<>();
-        if (root == null)
+    public List<Integer> bottomView(Node root) {
+        List<Integer> ans = new ArrayList<>();
+        if (root == null) {
             return ans;
-
-        Map<Integer, Integer> map = new TreeMap<>();
-        Queue<TreeNode> q = new LinkedList<>();
-
-        root.data = 0;
-        q.add(root);
-
+        }
+        
+        // Map to store the bottom view nodes automatically sorted by vertical column keys
+        Map<Integer, Integer> mpp = new TreeMap<>();
+        Queue<Pair> q = new LinkedList<>();
+        
+        q.add(new Pair(root, 0));
+        
         while (!q.isEmpty()) {
-            TreeNode node = q.poll();
-            int data = node.data;
-
-            map.put(data, node.data);
-
+            Pair pair = q.poll();
+            Node node = pair.node;
+            int line = pair.vertical;
+            
+            // Always overwrite the map with the node's data for Bottom View
+            mpp.put(line, node.data);
+            
             if (node.left != null) {
-                node.left.data = data - 1;
-                q.add(node.left);
+                q.add(new Pair(node.left, line - 1));
             }
-
+            
             if (node.right != null) {
-                node.right.data = data + 1;
-                q.add(node.right);
+                q.add(new Pair(node.right, line + 1));
             }
         }
-
-        for (int val : map.values()) {
-            ans.add(val);
+        
+        for (Map.Entry<Integer, Integer> entry : mpp.entrySet()) {
+            ans.add(entry.getValue());
         }
-
+        
         return ans;
     }
 
     public static void main(String[] args) {
-        // Creating a sample binary tree
+        // Creating a sample binary tree using the unified 'Node' class
         //        20
         //       /  \
         //     8     22
@@ -61,16 +71,18 @@ public class O7_bottom_view_of_tree {
         //  /   / \    /
         // 4   10 14  28
         
-        TreeNode root = new TreeNode(20);
-        root.left = new TreeNode(8);
-        root.right = new TreeNode(22);
-        root.left.left = new TreeNode(5);
-        root.left.right = new TreeNode(3);
-        root.right.left = new TreeNode(4);
-        root.left.right.left = new TreeNode(10);
-        root.left.right.right = new TreeNode(14);
-        root.right.right = new TreeNode(25);
-        root.right.right.left = new TreeNode(28);
+        Node root = new Node(20);
+        root.left = new Node(8); 
+        root.right = new Node(22);
+        
+        root.left.left = new Node(5);
+        root.left.right = new Node(3);
+        root.right.right = new Node(25);
+        
+        root.left.left.left = new Node(4);        
+        root.left.right.left = new Node(10);      
+        root.left.right.right = new Node(14);     
+        root.right.right.left = new Node(28);     
 
         O7_bottom_view_of_tree solution = new O7_bottom_view_of_tree();
 
@@ -79,8 +91,21 @@ public class O7_bottom_view_of_tree {
 
         // Print the result
         System.out.println("Bottom View Traversal: ");
-        for (int node : bottomView) {
-            System.out.print(node + " ");
+        for (int val : bottomView) {
+            System.out.print(val + " ");
         }
     }
 }
+
+
+/*
+When two or more nodes share the exact same vertical column, a Bottom View algorithm only cares about the lowest, last-seen node. 
+Any node above it in the same column gets completely hidden from view.
+*/
+
+
+/*
+Your Code: 
+Time Complexity: 𝑂(𝑁log𝑁) | 
+Space Complexity: 𝑂(𝑁)
+*/

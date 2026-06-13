@@ -14,7 +14,7 @@ class TreeNode {
     }
 }
 
-public class O6_top_view_of_tree2 {
+public class O6_II_top_view_of_tree {
 
     class Pair {
 
@@ -47,8 +47,7 @@ public class O6_top_view_of_tree2 {
                 TreeNode node = pair.node; // getting node from pair
                 int v = pair.vertical; // getting vertical line from pair
 
-                if (!map.containsKey(v)) { // if we're visiting the vertical line for the first time then update in the
-                                           // map
+                if (!map.containsKey(v)) { // if we're visiting the vertical line for the first time then update in the map
                     map.put(v, node.data);
                 }
                 // here not updating the map everytime as we are concerned only about the top
@@ -60,6 +59,10 @@ public class O6_top_view_of_tree2 {
                 if (node.right != null) {
                     q.add(new Pair(node.right, v + 1));
                 }
+                /*
+                * Moving Left (v - 1): Going to a left child moves you one step to the left on the grid.
+                * Moving Right (v + 1): Going to a right child moves you one step to the right on the grid.
+                 */
             }
         }
 
@@ -73,23 +76,29 @@ public class O6_top_view_of_tree2 {
     }
 
     public static void main(String[] args) {
-        TreeNode root = new TreeNode(1);
+        TreeNode root = new TreeNode(4);
         root.left = new TreeNode(2);
-        root.right = new TreeNode(3);
-        root.left.left = new TreeNode(4);
-        root.left.right = new TreeNode(5);
-        // root.right.left = new TreeNode(6);
-        root.left.right.left = new TreeNode(6);
+        root.right = new TreeNode(6);
+        
+        root.left.left = new TreeNode(1);
+        root.left.right = new TreeNode(3);
+        
+        root.right.left = new TreeNode(5);
         root.right.right = new TreeNode(7);
+
         /*
-         * 1
-         * / \
-         * 2 3
-         * / \ / \
-         * 4 5 6 7
+         *                         4 
+                                 (v=0)
+                                /     \
+                               2       6
+                            (v=-1)   (v=1)
+                           /    \    /    \
+                         1      3   5     7
+                      (v=-2)  (v=0) (v=0) (v=2)
+
          * 
          */
-        O6_top_view_of_tree2 solution = new O6_top_view_of_tree2();
+        O6_II_top_view_of_tree solution = new O6_II_top_view_of_tree();
         List result = solution.topView(root);
 
         System.out.println("Top View: " + result);

@@ -15,7 +15,7 @@ class TreeNode {
     }
 }
 
-public class O6_top_view_of_tree {
+public class O6_I_top_view_of_tree {
 
     // Nested generic Pair class
     static class Pair<K, V> {
@@ -95,7 +95,6 @@ public class O6_top_view_of_tree {
         root.right = new TreeNode(3);
         root.left.left = new TreeNode(4);
         root.left.right = new TreeNode(5);
-        // root.right.left = new TreeNode(6);
         root.left.right.left = new TreeNode(6);
         root.right.right = new TreeNode(7);
         /*
