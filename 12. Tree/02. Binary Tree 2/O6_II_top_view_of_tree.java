@@ -1,4 +1,9 @@
 // copy 29
+
+// revision DONE
+
+
+
 import java.util.*;
 
 class TreeNode {
@@ -42,28 +47,26 @@ public class O6_II_top_view_of_tree {
         
         while (!q.isEmpty()) {
             int size = q.size();
-            for (int i = 0; i < size; i++) {
-                Pair pair = q.poll(); // getting the element out of queue of Pair type
-                TreeNode node = pair.node; // getting node from pair
-                int v = pair.vertical; // getting vertical line from pair
+            Pair pair = q.poll(); // getting the element out of queue of Pair type
+            TreeNode node = pair.node; // getting node from pair
+            int v = pair.vertical; // getting vertical line from pair
 
-                if (!map.containsKey(v)) { // if we're visiting the vertical line for the first time then update in the map
-                    map.put(v, node.data);
-                }
-                // here not updating the map everytime as we are concerned only about the top
-                // element in the vertical (to avoid confusion with vertical traversal)
-
-                if (node.left != null) {
-                    q.add(new Pair(node.left, v - 1));
-                }
-                if (node.right != null) {
-                    q.add(new Pair(node.right, v + 1));
-                }
-                /*
-                * Moving Left (v - 1): Going to a left child moves you one step to the left on the grid.
-                * Moving Right (v + 1): Going to a right child moves you one step to the right on the grid.
-                 */
+            if (!map.containsKey(v)) { // if we're visiting the vertical line for the first time then update in the map
+                map.put(v, node.data);
             }
+            // here not updating the map everytime as we are concerned only about the top
+            // element in the vertical (to avoid confusion with vertical traversal)
+
+            if (node.left != null) {
+                q.add(new Pair(node.left, v - 1));
+            }
+            if (node.right != null) {
+                q.add(new Pair(node.right, v + 1));
+            }
+            /*
+            * Moving Left (v - 1): Going to a left child moves you one step to the left on the grid.
+            * Moving Right (v + 1): Going to a right child moves you one step to the right on the grid.
+            */
         }
 
         for (int topElement : map.values()) { // traversing through map values, and since it was treemap so the keys are

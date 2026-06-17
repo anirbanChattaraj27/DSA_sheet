@@ -1,6 +1,7 @@
 // copy 33
 // here i am just creating a treeNode which is not generic type
 // remember: in interview they can give like a generic tree or like a normal node so u have structire fuinction based on that
+// remaining for 2nd revision  // revise needs to be done next phase
 
 class TreeNode {
     int val;

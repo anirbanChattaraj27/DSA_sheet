@@ -99,13 +99,13 @@ public class O6_I_top_view_of_tree {
         root.right.right = new TreeNode(7);
         /*
                 1
-              /    \
-             2      3
-           /   \   / \
-          4     5 6   7
+              /   \
+             2     3
+            / \   / \
+           4   5 6   7
 
          */
-        O6_top_view_of_tree solution = new O6_top_view_of_tree();
+        O6_I_top_view_of_tree solution = new O6_I_top_view_of_tree();
         List result = solution.topView(root);
 
         System.out.println("Top View: " + result);

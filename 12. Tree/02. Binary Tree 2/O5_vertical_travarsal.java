@@ -1,3 +1,7 @@
+// copy: 25
+// revision DONE
+
+
 import java.util.*;
 
 class TreeNode {
@@ -34,15 +38,15 @@ public class O5_vertical_travarsal {
             return ans;
         }
 
+        // inside TreeMap ---> Verticles ----> for every verticles there are levels ----> for each level it has list of elements that stores in Queue
         TreeMap<Integer, TreeMap<Integer, PriorityQueue<Integer>>> map = new TreeMap<>(); //this treemap is to store the vertical order and corresponding to that there will be multiple level so to store level and elements at that particular vertical and level, we are taking a new treemap, & since at one vertical and one level multiple nodes can be present to keep them in sorted order we're taking them in priorityqueue to keep them in the natural order (i.e. sorted)
-
+        //      verticles,       levels,    listOfLevels
         Queue<Pair> q = new LinkedList<>(); //queue to perform level order traversal, the queue will store the node with the vertical pos and level pos, initially it starts at (0,0);
 
         q.add(new Pair(root, 0, 0)); //pushing the root at 0th vertical and 0th level
 
         // Now traverse using the level order traversal
         while (!q.isEmpty()) {
-            int size = q.size();
             // remove
             Pair pair = q.poll(); //q will give an object of Pair type containing node, vertical and level and storing it in pair
             TreeNode node = pair.node; // taking the node only from pair and store it in TreeNode type
