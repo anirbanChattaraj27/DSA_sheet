@@ -15,7 +15,7 @@ class Solution {
     private TreeNode solve(TreeNode node, int val) {
         // If the current node is NULL, create a new TreeNode with the given value
         if (node == null) {
-            return new TreeNode(val);
+            return new TreeNode(val); // 1. Creates the new node and returns its address
         }
         
         // Traverse the tree to find the correct insertion point
