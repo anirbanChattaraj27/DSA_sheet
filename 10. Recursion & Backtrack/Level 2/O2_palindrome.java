@@ -34,7 +34,7 @@ public class O2_palindrome {
     }
     
     public static void main(String[] args) {
-        String s = "abccba";
+        String s = "abcba";
         System.out.println(palindromFun(s, s.length()-1, 0));
     }
 }
