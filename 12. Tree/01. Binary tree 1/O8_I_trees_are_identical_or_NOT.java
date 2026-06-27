@@ -1,6 +1,8 @@
 // copy 22 || striver Lec: 18
 // 2 strees are same or not
 // run loop over 2 trees and compare them if they are not similar return false;
+// LC: 100: https://leetcode.com/problems/same-tree/description/
+
 
 class Node {
     int val;

@@ -17,9 +17,9 @@ public class O3_subSets_I {
         // take the current element
         list.add(arr[idx]);
         printSubSequences(idx + 1, list, arr, n);
-        list.remove(list.size() - 1);
-
+        
         // Not take the current element
+        list.remove(list.size() - 1);
         printSubSequences(idx + 1, list, arr, n);
     }
 
@@ -32,9 +32,10 @@ public class O3_subSets_I {
         // Not take the current element
         printReverse(idx + 1, list, arr, n); 
 
-        // take the curr e nt element
+        // take the current element
         list.add(arr[idx]);  
         printReverse(idx+1, list, arr, n);   
+        
         list.remove(list.size()-1);  
     }
     

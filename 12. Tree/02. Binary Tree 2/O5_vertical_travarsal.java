@@ -33,6 +33,7 @@ public class O5_vertical_travarsal {
     }
 
     public List<List<Integer>> verticalTraversal(TreeNode root) {
+        
         List<List<Integer>> ans = new ArrayList<>();
         if (root == null) {
             return ans;
