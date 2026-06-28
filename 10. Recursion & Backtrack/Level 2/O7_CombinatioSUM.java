@@ -29,36 +29,33 @@ import java.util.*;
 
 public class O7_CombinatioSUM {
     
-    // this way of solving is similar to O4_1_subsequences_with_K
-    public static void findCombinations1(int idx, int[] arr, int K, int sum, int n, List<List<Integer>> listOfList, List<Integer> list) {
-        
-        // base case
-        if(sum > K) return;
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>> ans = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
+        fun(0,ans, list, 0, candidates, candidates.length, target);
+
+        return ans;
+    }
+
+    public void fun(int idx, List<List<Integer>> ans, List<Integer> list, int sum, int arr[], int n, int target){
+
+        if(sum > target) return;
 
         if (idx == n) {
-            if(sum == K){
-                listOfList.add(new ArrayList<>(list));
+            if(sum == target){
+                ans.add(new ArrayList<>(list));
             }
             return;
-        }
+        }           
 
         list.add(arr[idx]);
-        sum += arr[idx]; // Increases sum by arr[idx].  
-        findCombinations1(idx, arr, K, sum, n, listOfList, list); // Recursively calls printSubSequences() with idx + 1 to move to the next element. // as i am not taking 1 index multiple times so increase ind by idx+1 and moving to next idx 
+        sum = sum+arr[idx];
+        fun(idx, ans, list, sum, arr, n, target);
 
-        sum -= arr[idx]; // Backtracks by removing the last added element from list. // Restores sum by subtracting arr[idx] (to explore other subsequences).
-        list.remove(list.size() - 1); 
-
-        findCombinations1(idx + 1, arr, K, sum, n, listOfList, list);  // Calls the function again without adding arr[idx] to list, allowing us to explore subsequences where arr[idx] is not included.
+        sum = sum - arr[idx];
+        list.remove(list.size()-1);
+        fun(idx+1, ans, list, sum, arr, n, target);
     }
-
-    public List<List<Integer>> combinationSum1(int[] candidates, int target) {
-        List<List<Integer>> listOfList = new ArrayList<>();
-        findCombinations1(0, candidates, target, 0, candidates.length, listOfList, new ArrayList<>());
-        return listOfList;
-    }
-
-
 
     // 2nd way of solving
     private void findCombinations2(int idx, int[] arr, int target, List<List<Integer>> listOfList, List<Integer> list) {

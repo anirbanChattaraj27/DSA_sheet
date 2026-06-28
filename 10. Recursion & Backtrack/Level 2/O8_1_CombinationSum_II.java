@@ -1,4 +1,4 @@
-// leetcode 40
+// leetcode 40: https://leetcode.com/problems/combination-sum-ii/
 // copy 5
 
 /*
@@ -11,27 +11,31 @@ import java.util.*;
 
 public class O8_1_CombinationSum_II {
 
-    private void findCombinations(int idx, int[] arr, int target, List<List<Integer>> LitOfList, List<Integer> list) {
-        if (target == 0) {
-            LitOfList.add(new ArrayList<>(list));
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+        List<List<Integer>> ans = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
+        Arrays.sort(candidates);
+        fun(0, ans, list, candidates, target, 0, candidates.length);
+        return ans;
+    }
+
+    public void fun(int idx, List<List<Integer>> ans, List<Integer> list, int arr[], int target, int sum, int n){
+
+        if(target == sum){
+            ans.add(new ArrayList<>(list));
             return;
         }
 
-        for (int i = idx; i < arr.length; i++) {
-            if (i > idx && arr[i] == arr[i - 1]) continue; // i > idx = ?? // arr[i] == arr[i - 1] = Skip duplicates | if it is repated element i am not gonna pick i will skip this
-            if (arr[i] > target) break; // No need to continue if current number exceeds target
+        for(int i=idx; i<n; i++){
+            if(i > idx && arr[i-1] == arr[i]) continue;
+            if(arr[i] > target) break;
+            if(sum + arr[i] > target) break; 
 
-            list.add(arr[i]); // here i am adding arr[i] not arr[idx] that is why in next line i will increase i with i+1 not idx+1
-            findCombinations(i + 1, arr, target - arr[i], LitOfList, list); // here increase i with i+1 not idx+1
-            list.remove(list.size() - 1); // Backtracking step
+            list.add(arr[i]);
+            fun(i+1, ans, list, arr, target, sum+arr[i], n);
+
+            list.remove(list.size()-1);
         }
-    }
-
-    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-        List<List<Integer>> LitOfList = new ArrayList<>();
-        Arrays.sort(candidates); // Sorting to handle duplicates
-        findCombinations(0, candidates, target, LitOfList, new ArrayList<>());
-        return LitOfList;
     }
 
     public static void main(String[] args) {

@@ -40,7 +40,7 @@ public class O3_subSets_I {
     }
     
     public static void main(String[] args) {
-        int arr[] = {3, 1, 2};
+        int arr[] = {1, 2, 2};
         int n = 3;
         ArrayList<Integer> list = new ArrayList<>();
 

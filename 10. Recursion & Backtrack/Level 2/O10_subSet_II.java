@@ -1,6 +1,7 @@
 
 // leetcode 90: https://leetcode.com/problems/subsets-ii/
 // copy: 7
+// exactly same as combination sum II, but here we are not given any target value, so we can take all the elements in the list and add them to the answer list.
 /*
 Example 1:
 Input: nums = [1,2,2]
@@ -9,7 +10,7 @@ Output: [[],[1],[1,2],[1,2,2],[2],[2,2]]
 Example 2:
 Input: nums = [0]
 Output: [[],[0]]
-*/
+*/ 
   
 import java.util.*;
 
