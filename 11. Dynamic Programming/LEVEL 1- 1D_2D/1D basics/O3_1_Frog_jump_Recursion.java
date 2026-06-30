@@ -1,5 +1,5 @@
 // copy: 3
-// leetcode : 2498 (maybe)
+// NO leetcode, frog jump 2 is Greedy  2498
 
 public class O3_1_Frog_jump_Recursion {
 
