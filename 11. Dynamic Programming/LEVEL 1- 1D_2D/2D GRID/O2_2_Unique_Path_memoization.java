@@ -15,7 +15,7 @@ public class O2_2_Unique_Path_memoization {
 
         // 🔵 Memoization check (NEW)
         if (dp[i][j] != -1)
-            return dp[i][j];
+            return dp[i][j]; 
 
         // Recursive calls
         int up = f(i - 1, j, dp);
