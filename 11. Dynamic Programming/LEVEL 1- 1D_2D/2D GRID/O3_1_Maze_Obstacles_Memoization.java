@@ -1,61 +1,41 @@
 // this code is exactly same as per bellow code just need to write 1 base case
+// leetcode: 63. Unique Paths II
+
 
 import java.util.Arrays;
 
 public class O3_1_Maze_Obstacles_Memoization {
 
-    // Mod value to prevent overflow
-    static int mod = (int) (1e9 + 7);
+public int uniquePathsWithObstacles(int[][] arr) {
+        int n = arr.length;
+        int m = arr[0].length;
+        int dp[][] = new int [n][m];
+        for(int[] row : dp){
+            Arrays.fill(row, -1);
+        }
 
-    /*
-     * Recursive function with Memoization
-     *
-     * i, j  -> current cell
-     * mat   -> obstacle grid
-     * dp    -> memoization table
-     */
-    public static int f(int i, int j, int[][] mat, int[][] dp) {
-
-        // 🔴 If cell is obstacle, no path possible
-        if (i >= 0 && j >= 0 && mat[i][j] == -1)
-            return 0;
-
-        // 🔵 Base case: reached starting cell
-        if (i == 0 && j == 0)
-            return 1;
-
-        // 🔴 Out of bounds
-        if (i < 0 || j < 0)
-            return 0;
-
-        // 🔵 DP CHECK (Memoization used here)
-        // If already computed, return stored value
-        if (dp[i][j] != -1)
-            return dp[i][j];
-
-        // Recursive calls (Top-Down approach)
-        int up = f(i - 1, j, mat, dp);
-        int left = f(i, j - 1, mat, dp);
-
-        // 🔵 Store result in DP before returning
-        // This prevents recomputation
-        return dp[i][j] = (up + left) % mod;
+        return f(arr, n-1, m-1, dp);
     }
 
-    public static int mazeObstacles(int n, int m, int[][] mat) {
+    public int f(int[][] arr, int i, int j, int dp[][]){
+        
+        if(i < 0 || j < 0) return 0;
 
-        // 🔵 DP array creation
-        int[][] dp = new int[n][m];
+        if(arr[i][j] == 1) return 0;
 
-        // Initialize with -1 (important for memoization check)
-        for (int[] row : dp)
-            Arrays.fill(row, -1);
+        if(i == 0 && j == 0) return 1;
 
-        // Start from bottom-right cell
-        return f(n - 1, m - 1, mat, dp);
+        if(dp[i][j] != -1) return dp[i][j];
+
+        int up = f(arr, i-1, j, dp);
+        int left = f(arr, i, j-1, dp);
+
+        return dp[i][j] = (up+left);
+
     }
 
     public static void main(String[] args) {
+        O3_1_Maze_Obstacles_Memoization solution = new O3_1_Maze_Obstacles_Memoization();
 
         // 0 -> free cell
         // -1 -> obstacle
@@ -65,10 +45,6 @@ public class O3_1_Maze_Obstacles_Memoization {
                 {0, 0, 0}
         };
 
-        int n = mat.length;
-        int m = mat[0].length;
-
-        System.out.println("Number of Paths (with obstacles): "
-                + mazeObstacles(n, m, mat));
+        System.out.println("Number of Paths (with obstacles): " + solution.uniquePathsWithObstacles(mat));
     }
 }
