@@ -17,7 +17,7 @@ public class O2_2_partition_equalTO_subset_sum_Memoization {
             return true;
 
         // ✅ Base Case 2: If we are at first element
-        if (ind == 0)
+        if (ind == 0)       
             return arr[0] == target;
 
         // ✅ Check DP table

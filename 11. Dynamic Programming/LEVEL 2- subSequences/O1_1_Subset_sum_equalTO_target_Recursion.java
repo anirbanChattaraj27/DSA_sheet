@@ -1,4 +1,6 @@
 // copy 14
+// 2SUM: it can take only 2 numbers from array to form target.
+// subsetSum: it can take any number from array to form target.
 
 public class O1_1_Subset_sum_equalTO_target_Recursion {
 
@@ -50,8 +52,8 @@ public class O1_1_Subset_sum_equalTO_target_Recursion {
     // Driver code
     public static void main(String[] args) {
 
-        int[] arr = {1, 2, 3, 4};
-        int k = 9;
+        int[] arr = {22, 1, 5, 1, 1, 5, 5, 1};
+        int k = 4;
 
         boolean result = subsetSumToK(arr.length, k, arr);
 
