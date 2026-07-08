@@ -11,7 +11,7 @@ public class O1_1_Subset_sum_equalTO_target_Recursion {
      *
      * At every index we have 2 choices:
      * 1️⃣ Take the element
-     * 2️⃣ Do not take the element
+     * 2️⃣ Do not take the element 
      */
 
     // Recursive function

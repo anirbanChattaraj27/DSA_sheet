@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class O2_2_partition_equalTO_subset_sum_Memoization {
 
     /*
@@ -59,12 +61,18 @@ public class O2_2_partition_equalTO_subset_sum_Memoization {
         // 🔹 Create DP table
         int[][] dp = new int[n][target + 1];
 
-        // Initialize with -1 (means not computed)
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j <= target; j++) {
-                dp[i][j] = -1;
-            }
-        }
+        // 2 ways to initialize dp table with -1
+
+        /* 1. Using nested loops */
+        // for (int i = 0; i < n; i++) {
+        //     for (int j = 0; j <= target; j++) {
+        //         dp[i][j] = -1;
+        //     }
+        // }
+        
+        /* 2. Using Arrays.fill */
+        for (int[] row : dp)
+            Arrays.fill(row, -1);
 
         return f(n - 1, target, arr, dp);
     }
