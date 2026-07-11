@@ -29,7 +29,7 @@ public class O3_i_Longest_common_Substring_memoization {
         }
 
         // If characters match
-        if (s.charAt(i - 1) == t.charAt(j - 1)) {
+        if (s.charAt(i) == t.charAt(j)) {
 
             dp[i][j] = 1 + lcs(i - 1, j - 1, s, t, dp);
 
@@ -61,7 +61,7 @@ public class O3_i_Longest_common_Substring_memoization {
         }
 
         // Start recursion
-        lcs(n, m, s, t, dp);
+        lcs(n-1, m-1, s, t, dp);
 
         return ans;
     }

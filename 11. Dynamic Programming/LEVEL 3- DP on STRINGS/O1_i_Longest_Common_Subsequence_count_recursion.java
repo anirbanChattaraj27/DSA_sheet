@@ -6,10 +6,7 @@ public class O1_i_Longest_Common_Subsequence_count_recursion {
         if (s.charAt(i) == t.charAt(j))
             return 1 + f(i - 1, j - 1, s, t);
 
-        return Math.max(
-                f(i - 1, j, s, t),
-                f(i, j - 1, s, t)
-        );
+        return Math.max( f(i - 1, j, s, t), f(i, j - 1, s, t) );
     }
 
     static int lcs(String s, String t) {
