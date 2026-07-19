@@ -5,7 +5,7 @@
 
 import java.util.*;
 
-class Solution{
+public class O5_Buy_sell_stock_with_cooldown_spaceOptimization{
     // Function to calculate the maximum profit from stock trading
     static int stockProfit(int[] Arr) {
         int n = Arr.length;

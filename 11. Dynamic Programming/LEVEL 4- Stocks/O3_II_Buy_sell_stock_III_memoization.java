@@ -19,15 +19,13 @@ public class O3_II_Buy_sell_stock_III_memoization {
 
             profit = Math.max(
                     -prices[ind] + f(ind + 1, 0, cap, prices, n, dp),
-                    0 + f(ind + 1, 1, cap, prices, n, dp)
-            );
+                    0 + f(ind + 1, 1, cap, prices, n, dp));
 
         } else {
 
             profit = Math.max(
                     prices[ind] + f(ind + 1, 1, cap - 1, prices, n, dp),
-                    0 + f(ind + 1, 0, cap, prices, n, dp)
-            );
+                    0 + f(ind + 1, 0, cap, prices, n, dp));
         }
 
         // DP ARRAY USED: Store the computed result before returning

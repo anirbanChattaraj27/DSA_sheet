@@ -1,5 +1,7 @@
 // https://www.geeksforgeeks.org/longest-subarray-sum-elements-atmost-k/
 /*
+only POSITIVE numbers
+
 Given an array arr[] of size N and an integer K, the task is to find the length 
 of the largest subarray having the sum of its elements at most K, where K > 0.
 Input: arr[] = {1, 2, 1, 0, 1, 1, 0}, k = 4
@@ -65,7 +67,7 @@ public class O3_III_Longest_subArray_atmost_K {
         int sum = 0;
         int maxLen = 0;
 
-        if (right < n) { // just by writing if i can reduce T.C.
+        while (right < n) { // or for(end = 0; end < n; end++)
             sum += arr[right];
 
             // Shrink the window while sum > k

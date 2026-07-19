@@ -1,5 +1,5 @@
 // I can not use sliding window here as it contains negetive values, if it contains only positive numbers then I can use prev approch here\\
-
+// negetive numbers
 
 // https://www.geeksforgeeks.org/longest-sub-array-sum-k/
 // https://takeuforward.org/data-structure/longest-subarray-with-given-sum-k/
@@ -17,7 +17,7 @@
 
 import java.util.*;
 
-public class O3_II_Longest_subArray_with_sum_K {
+public class O3_III_Longest_subArray_with_sum_K {
 
     // brute force
     public static int getLongestSubarray1(int[] arr, long k) {
