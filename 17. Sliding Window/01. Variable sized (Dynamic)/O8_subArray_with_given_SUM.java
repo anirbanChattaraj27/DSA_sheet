@@ -13,8 +13,8 @@ https://www.geeksforgeeks.org/dsa/find-subarray-with-given-sum-in-array-of-integ
     O/P: [-1]
     Explanation: There is no subarray with 0 sum.
 
-    // NON-NEGETIVE numbers ----> Sliding window
-    // Negetive numbers----> prefix sum approch
+    // NON-NEGATIVE numbers ----> Sliding window
+    // Negative numbers ----> prefix-sum + hashmap approach
  */
 
 import java.util.*;
@@ -46,74 +46,69 @@ public class O8_subArray_with_given_SUM {
     }
 
     // O(n) Time and O(1) Space
-    //  SLiding window / caterpillar
+    // Sliding window / caterpillar
     static ArrayList<Integer> subarraySum2(int[] arr, int target) {
 
-        // Initialize window
-        int s = 0, e = 0;
+        int s = 0;
+        int curr = 0;
         ArrayList<Integer> res = new ArrayList<>();
 
-        int curr = 0;
-        for (int i = 0; i < arr.length; i++) {
-            curr += arr[i];
+        for (int e = 0; e < arr.length; e++) {
+            curr += arr[e];
 
-            // If current sum becomes more or equal,
-            // set end and try adjusting start
-            if (curr >= target) {
-                e = i;
+            // If current sum becomes more than target, move start forward
+            while (curr > target && s <= e) {
+                curr -= arr[s];
+                s++;
+            }
 
-                // While current sum is greater, 
-                // remove starting elements of current window
-                while (curr > target && s < e) {
-                    curr -= arr[s];
-                    ++s;
-                }
-
-                // If we found a subarray
-                if (curr == target) {
-                    res.add(s + 1);
-                    res.add(e + 1);
-                    return res;
-                }
+            // If we found a subarray
+            if (curr == target) {
+                res.add(s + 1);
+                res.add(e + 1);
+                return res;
             }
         }
+
         // If no subarray is found
         res.add(-1);
         return res;
     }
 
-    // Prefix sum
-    public static void subArraySum(int[] arr, int n, int sum) {
-        // cur_sum to keep track of cumulative sum till that point
-        int cur_sum = 0;
-        int start = 0;
-        int end = -1;
-        HashMap<Integer, Integer> hashMap = new HashMap<>();
+    // Prefix-sum + hashmap approach works for negative numbers too
+    static ArrayList<Integer> subarraySumWithNegatives(int[] arr, int target) {
+        ArrayList<Integer> res = new ArrayList<>();
+        HashMap<Integer, Integer> map = new HashMap<>();
+        map.put(0, -1); // prefix sum 0 before the array starts
 
-        for (int i = 0; i < n; i++) {
-            cur_sum = cur_sum + arr[i];
-            // check whether cur_sum - sum = 0, if 0 it means the sub array is starting from index 0- so stop
-            if (cur_sum - sum == 0) {
-                start = 0;
-                end = i;
-                break;
+        int prefixSum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            prefixSum += arr[i];
+
+            if (map.containsKey(prefixSum - target)) {
+                res.add(map.get(prefixSum - target) + 1);
+                res.add(i + 1);
+                return res;
             }
-            // if hashMap already has the value, means we already have subarray with the sum - so stop
-            if (hashMap.containsKey(cur_sum - sum)) {
-                start = hashMap.get(cur_sum - sum) + 1;
-                end = i;
-                break;
-            }
-            // if value is not present then add to hashmap
-            hashMap.put(cur_sum, i);
+
+            map.putIfAbsent(prefixSum, i);
         }
-        // if end is -1 : means we have reached end withou the sum
-        if (end == -1) {
-            System.out.println("No subarray with given sum exists");
-        } else {
-            System.out.println("Sum found between indexes " + start + " to " + end);
-        }
+
+        res.add(-1);
+        return res;
     }
+    
 
+    public static void main(String[] args) {
+        int[] arr = {2, 12, -2, -20, 10};
+        int target = -10;
+
+        System.out.println("With negative numbers:");
+        System.out.println(subarraySumWithNegatives(arr, target));
+
+        int[] arr2 = {1, 2, 3, 7, 5};
+        int target2 = 12;
+        System.out.println("Without negatives:");
+        System.out.println(subarraySum2(arr2, target2));
+    }
 }
-

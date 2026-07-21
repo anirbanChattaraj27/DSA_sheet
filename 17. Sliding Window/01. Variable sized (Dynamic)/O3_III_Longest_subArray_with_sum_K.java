@@ -14,7 +14,6 @@
             [10, 5, 2, 7, 1, -10]. 
             The length of the longest subarray with a sum of 15 is 6.
  */
-
 import java.util.*;
 
 public class O3_III_Longest_subArray_with_sum_K {
@@ -41,35 +40,25 @@ public class O3_III_Longest_subArray_with_sum_K {
         return res;
     }
 
-    
     public static int getLongestSubarray2(int[] arr, int k) {
-        // Map to store (prefix_sum, first_index_where_it_occurred)
-        HashMap<Integer, Integer> map = new HashMap<>();
-        int sum = 0;
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(0, -1);
+
+        int prefixSum = 0;
         int maxLength = 0;
 
         for (int i = 0; i < arr.length; i++) {
-            sum += arr[i];
+            prefixSum += arr[i];
 
-            // Case 1: The sum from index 0 to i equals k
-            if (sum == k) {
-                maxLength = i + 1;
+            if (map.containsKey(prefixSum - k)) {
+                maxLength = Math.max(maxLength, i - map.get(prefixSum - k));
             }
 
-            // Case 2: If (sum - k) exists in map, a subarray sums to k
-            if (map.containsKey(sum - k)) {
-                maxLength = Math.max(maxLength, i - map.get(sum - k));
-            }
-
-            // Only add sum to map if it doesn't exist to preserve the EARLIEST index
-            // This ensures we get the LONGEST possible subarray
-            if (!map.containsKey(sum)) {
-                map.put(sum, i);
-            }
+            map.putIfAbsent(prefixSum, i);
         }
         return maxLength;
     }
-    
+
     public static void main(String[] args) {
         int[] a = {10, 5, 2, 7, 1, -10};
         int k = 15;

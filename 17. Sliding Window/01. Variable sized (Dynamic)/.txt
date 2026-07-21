@@ -1,0 +1,23 @@
+O3_I_Shortest_size_subArray (positive numbers) ---> <=K ✅  ||  == K ✅ ||  >=K ✅
+O3_I_Shortest_size_subArray (positive or Negetive numbers) ---> <=K  ❌  ||  == K ✅  ||  >=K ✅ (Prefix Sum + Monotonic Deque) (leetcode 862)
+
+O3_II_Longest_subArray (positive numbers) ---> <=K ✅  ||  == K ✅ ||  >=K ❌
+O3_II_Longest_subArray (positive or Negetive numbers) ---> <=K ❌   ||  == K ✅ ||  >=K  ❌
+
+SLIDING WINDOW:
+    Expand → Sum increases
+    Shrink → Sum decreases
+
+PREFIX SUM:
+    Sum = K     
+    prefix(i) - prefix(j) = K
+    
+
+Prefix Sum + Monotonic Deque
+    Sum >= K
+
+
+Phrase	        Mathematical Condition
+Exactly  K	    sum == K
+At most  K	    sum <= K
+At least K	    sum >= K

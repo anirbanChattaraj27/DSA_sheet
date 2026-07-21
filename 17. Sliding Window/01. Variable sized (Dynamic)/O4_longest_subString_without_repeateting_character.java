@@ -15,7 +15,6 @@
 // Explanation: The answer is "wke", with the length of 3.
 // Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
 
-// LEETCODE medium but for me its hard
 import java.util.*;
 
 public class O4_longest_subString_without_repeateting_character {
@@ -44,6 +43,16 @@ public class O4_longest_subString_without_repeateting_character {
         }
         return maxans;
     }
+
+    /*
+    DRY for above:
+    ABCAA
+    loop will run normally and find the len as 3 ABC
+    then when it will find another A it will remove A from front and add the new A now still max len remians the same 3
+    now when when another A will come it will keep removeing al the B, C, A and add A in the set
+    so max Lean will not change, it remains 3 only.
+    */
+
 
     // Striver Optimized Approch O(N)
     public static int lengthOfLongestSubstring1(String s) {

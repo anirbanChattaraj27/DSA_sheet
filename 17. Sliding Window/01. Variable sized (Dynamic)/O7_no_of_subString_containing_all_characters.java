@@ -3,11 +3,6 @@ str = bbacba
 o/p: 9
 explain: bbac, bbacb, bbacba | bac, bacb, bacba | acb, acba | cba  
 */
-
-
-import java.util.*;
-
-// Brute Force
 public class O7_no_of_subString_containing_all_characters {
     // Function to count substrings containing at least one 'a', one 'b', and one 'c'
     public int countSubstringsBruteForce(String s) {
@@ -33,7 +28,6 @@ public class O7_no_of_subString_containing_all_characters {
                 }
             }
         }
-
         return count;
     }
 
@@ -63,7 +57,6 @@ public class O7_no_of_subString_containing_all_characters {
                 left++;
             }
         }
-
         return count;
     }
 

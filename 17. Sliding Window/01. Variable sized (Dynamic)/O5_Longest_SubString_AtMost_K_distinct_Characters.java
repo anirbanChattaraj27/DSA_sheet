@@ -92,68 +92,69 @@ public class O5_Longest_SubString_AtMost_K_distinct_Characters {
 
     /******************OPTIMIZED********************* */
     // AT MOST K distinct characters (Optimal)
+    // fruit into basket is a similar problem. it is string based that is Integer based
     public static int longestSubstringAtMostK2(String s, int k) {
-        int n = s.length();
-        int left = 0, maxLen = -1;
-
+        int maxLen = 0;
         HashMap<Character, Integer> map = new HashMap<>();
+        
+        int left = 0;
+        int right = 0; // Initialize right pointer outside
 
-        for (int right = 0; right < n; right++) {
-
+        // Outer while loop replaces the for loop
+        for (right = 0; right<s.length(); right++) {
             char ch = s.charAt(right);
             map.put(ch, map.getOrDefault(ch, 0) + 1);
 
-            // shrink window if invalid
+            // Inner while loop to shrink the window
             while (map.size() > k) {
                 char leftChar = s.charAt(left);
                 map.put(leftChar, map.get(leftChar) - 1);
-
                 if (map.get(leftChar) == 0) {
                     map.remove(leftChar);
                 }
                 left++;
             }
 
-            // valid window
-            if (map.size() <= k) {
-                maxLen = Math.max(maxLen, right - left + 1);
-            }
+            maxLen = Math.max(maxLen, right - left + 1);
+             
         }
 
         return maxLen;
     }
 
     // EXACTLY K
-    public static int longestSubstringExactlyK2(String s, int k) {
-        int n = s.length();
-        int left = 0, maxLen = -1;
-
+   public static int longestSubstringExactlyK2(String s, int k) {
+        int maxLen = -1; // Start at -1 to return -1 if no substring has EXACTLY k unique characters
         HashMap<Character, Integer> map = new HashMap<>();
+        
+        int left = 0;
+        int right = 0;
 
-        for (int right = 0; right < n; right++) {
-
+        for (right = 0; right<s.length(); right ++) {
             char ch = s.charAt(right);
             map.put(ch, map.getOrDefault(ch, 0) + 1);
 
-            // shrink if > k
+            // Keep the window from exceeding k unique characters
             while (map.size() > k) {
                 char leftChar = s.charAt(left);
                 map.put(leftChar, map.get(leftChar) - 1);
-
                 if (map.get(leftChar) == 0) {
                     map.remove(leftChar);
                 }
                 left++;
             }
 
-            // update ONLY when exactly k
+            // CHANGE HERE: Only track the length if the window has EXACTLY k unique characters
             if (map.size() == k) {
                 maxLen = Math.max(maxLen, right - left + 1);
             }
+            
+            right++;
         }
 
         return maxLen;
     }
+
 
     public static void main(String[] args) {
 
@@ -167,7 +168,7 @@ public class O5_Longest_SubString_AtMost_K_distinct_Characters {
         System.out.println("Output 2: " + longestSubstringExactlyK(s2, k2));
         // Expected: -1
 
-        String s3 = "aaabbccd";
+        String s3 = "aaabbcccd";
         int k3 = 2;
         System.out.println("Output 3: " + longestSubstringAtMostK(s3, k3));
         // Expected: 5

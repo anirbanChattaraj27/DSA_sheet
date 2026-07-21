@@ -16,11 +16,13 @@ import java.util.Set;
 
 public class O6_fruits_into_basket {
 
+    // Lonhest Substring AT Most K distinct characters is similar to this prblm, but that is string based and this is Integer based
     public int totalFruit(int[] arr) {
         int ans = 0;
+        int l = 0;
         Map<Integer, Integer> map = new HashMap<>();
-
-        for (int l = 0, r = 0; r < arr.length; ++r) {
+        
+        for (int r = 0; r<arr.length; r ++) {
             map.put(arr[r], map.getOrDefault(arr[r], 0) + 1);
 
             while (map.size() > 2) {
@@ -34,33 +36,6 @@ public class O6_fruits_into_basket {
             ans = Math.max(ans, r - l + 1);
         }
 
-        return ans;
-    }
-
-    // leetcode sol. || 2 pointer || sliding window
-    public int totalFruit2 (int[] fruits) {
-        Set<Integer> types = new HashSet<>();
-        int ans = 0;
-        int start = 0;
-        for (int end = 0; end < fruits.length; end++) {
-            int fruitType = fruits[end];
-            types.add(fruitType);
-            if (types.size() > 2) {
-                int prevFruitType = fruits[end - 1];
-                int i = end - 1;
-                while (true) {
-                    if (fruits[i] != prevFruitType) {
-                        types.remove(fruits[i]);
-                        i++;
-                        break;
-                    } else {
-                        i--;
-                    }
-                }
-                start = i;
-            }
-            ans = Math.max(end - start + 1, ans);
-        }
         return ans;
     }
 

@@ -18,7 +18,7 @@ to target. If there is no such subarray, return 0 instead.
 
     LC: 209 -> https://leetcode.com/problems/minimum-size-subarray-sum/
 */
-
+import java.util.*;
 
 public class O3_I_Shortest_size_subArray_with_sum_K {
 
@@ -76,11 +76,32 @@ public class O3_I_Shortest_size_subArray_with_sum_K {
         return (minLength == Integer.MAX_VALUE) ? 0 : minLength;
     }
 
+    // find out prefix sum way, if array contains negetive integers, then we can use this approach
+    public static int minSubArrayLength_PrefixSum(int[] nums, int k) {
+        int prefixSum = 0;
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(0, -1);   // prefix sum 0 before the array starts
+
+        int minLength = Integer.MAX_VALUE;
+
+        for (int i = 0; i < nums.length; i++) {
+            prefixSum += nums[i];
+
+            if (map.containsKey(prefixSum - k)) {
+                int prevIndex = map.get(prefixSum - k);
+                minLength = Math.min(minLength, i - prevIndex);
+            }
+
+            map.put(prefixSum, i);
+        }
+        return (minLength == Integer.MAX_VALUE) ? 0 : minLength;
+    }
+
     
     public static void main(String[] args) {
 
-        int[] arr = { 1, 4, 45, 6, 0, 19};
-        int k = 51;
+        int[] arr = { 7, 2, 1, 1, 6, 5};
+        int k = 11;
 
         // int[] arr = { 1, 4, 3 };
         // int k = 12;
@@ -89,3 +110,25 @@ public class O3_I_Shortest_size_subArray_with_sum_K {
         System.out.println(length);
     }
 }
+
+/*
+COMMON TEMPLATE:
+prefixSum += arr[i];
+
+if (map.containsKey(prefixSum - k)) {
+
+    int len = i - map.get(prefixSum - k);
+
+    // Longest
+    answer = Math.max(answer, len);
+
+    // Shortest
+    answer = Math.min(answer, len);
+}
+
+// Longest
+map.putIfAbsent(prefixSum, i);
+
+// Shortest
+map.put(prefixSum, i);
+*/
