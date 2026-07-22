@@ -51,48 +51,61 @@ public class O3_I_Shortest_size_subArray_with_sum_K {
         return (minLength == Integer.MAX_VALUE) ? 0 : minLength;
     }
 
-    public static int minSubArrayLength_Window(int[] nums, int k) {
+    public static int minSubArrayLength_Window(int[] arr, int k) {
 
-        int start = 0;
+        int n = arr.length;
+        int left = 0;
         int sum = 0;
-        int minLength = Integer.MAX_VALUE;
+        int minLen = Integer.MAX_VALUE;
 
-        // Move end pointer
-        for (int end = 0; end < nums.length; end++) {
+        for (int right = 0; right < n; right++) {
 
-            // Add value to the sum variable
-            sum = sum + nums[end];
+            sum += arr[right];
 
-            // while sum is greater than the value of k
-            while (sum >= k && start <= end) {
-
-                // Keep track of minLength
-                minLength = Math.min(minLength, (end - start) + 1);
-
-                /* Subtract the value from sum variable and Move start pointer */
-                sum = sum - nums[start++];
+            while (sum > k) {
+                minLen = Math.min(minLen, right - left + 1);
+                sum -= arr[left++];
             }
-        }
-        return (minLength == Integer.MAX_VALUE) ? 0 : minLength;
-    }
 
+            // SUM greater than equal to K || SUM >= K
+            if (sum >= k) {
+                minLen = Math.min(minLen, right - left + 1);
+            }
+
+            /*
+                when, SUM == K
+                if (sum == k) {
+                    // Update answer
+
+                }
+                when, SUM <= K
+                if (sum <= k) {
+                    // Update answer
+
+                }
+            */
+        }
+
+        return minLen == Integer.MAX_VALUE ? 0 : minLen;
+    }
+ 
+    // Shortest ---> SUM == K
     // find out prefix sum way, if array contains negetive integers, then we can use this approach
     public static int minSubArrayLength_PrefixSum(int[] nums, int k) {
         int prefixSum = 0;
-        Map<Integer, Integer> map = new HashMap<>();
-        map.put(0, -1);   // prefix sum 0 before the array starts
-
         int minLength = Integer.MAX_VALUE;
 
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(0, -1);   // prefix sum 0 before the array starts
+ 
         for (int i = 0; i < nums.length; i++) {
             prefixSum += nums[i];
 
             if (map.containsKey(prefixSum - k)) {
-                int prevIndex = map.get(prefixSum - k);
-                minLength = Math.min(minLength, i - prevIndex);
+                minLength = Math.min(minLength, i - map.get(prefixSum - k));
             }
 
-            map.put(prefixSum, i);
+            map.put(prefixSum, i); // Overwrites the existing value if the key is already present.
         }
         return (minLength == Integer.MAX_VALUE) ? 0 : minLength;
     }
@@ -111,24 +124,3 @@ public class O3_I_Shortest_size_subArray_with_sum_K {
     }
 }
 
-/*
-COMMON TEMPLATE:
-prefixSum += arr[i];
-
-if (map.containsKey(prefixSum - k)) {
-
-    int len = i - map.get(prefixSum - k);
-
-    // Longest
-    answer = Math.max(answer, len);
-
-    // Shortest
-    answer = Math.min(answer, len);
-}
-
-// Longest
-map.putIfAbsent(prefixSum, i);
-
-// Shortest
-map.put(prefixSum, i);
-*/

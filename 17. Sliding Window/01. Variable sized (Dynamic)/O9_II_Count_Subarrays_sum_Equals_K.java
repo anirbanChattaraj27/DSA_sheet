@@ -63,13 +63,7 @@ public class O9_II_Count_Subarrays_sum_Equals_K {
 
     static int numberOfSubarrays2(int[] arr, int k) {
 
-        // Call atmost(arr, k) and atmost
-        // (arr, k-1) to get the count of
-        // subarrays with sum at most k
-        // and sum at most k-1 respectively,
-        // then subtract them to get the count
-        // of subarrays with sum exactly
-        // equal to k
+        // Call atmost(arr, k) and atmost (arr, k-1) to get the count of subarrays with sum at most k and sum at most k-1 respectively, then subtract them to get the count of subarrays with sum exactly equal to k
         return atmost(arr, k) - atmost(arr, k - 1);
     }
 

@@ -4,6 +4,8 @@ O3_I_Shortest_size_subArray (positive or Negetive numbers) ---> <=K  ❌  ||  ==
 O3_II_Longest_subArray (positive numbers) ---> <=K ✅  ||  == K ✅ ||  >=K ❌
 O3_II_Longest_subArray (positive or Negetive numbers) ---> <=K ❌   ||  == K ✅ ||  >=K  ❌
 
+QS----> 3, 8, 9 ---> kind of same
+
 SLIDING WINDOW:
     Expand → Sum increases
     Shrink → Sum decreases
@@ -21,3 +23,37 @@ Phrase	        Mathematical Condition
 Exactly  K	    sum == K
 At most  K	    sum <= K
 At least K	    sum >= K
+
+
+COMMON TEMPLATE:
+prefixSum += arr[i];
+
+if (map.containsKey(prefixSum - k)) {
+
+    int len = i - map.get(prefixSum - k);
+
+    // Longest
+    answer = Math.max(answer, len);
+
+    // Shortest
+    answer = Math.min(answer, len);
+}
+
+****Longest****
+map.putIfAbsent(prefixSum, i);
+
+****Shortest****
+map.put(prefixSum, i);
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~ total 4 types of pattern ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| Category          | Examples                    |
+| ----------------- | --------------------------- |
+| Longest Window    | LC 3, 1004, 424, 1493       | ---> problem 3
+| Shortest Window   | LC 209, 862                 | ---> problem 3
+| Find First Window | GFG Sum = K                 | ---> problem 8
+| Count Windows     | LC 930, 992, 1248, 1358     | ---> problem 13
+
+

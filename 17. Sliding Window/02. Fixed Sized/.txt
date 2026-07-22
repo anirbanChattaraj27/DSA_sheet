@@ -1,0 +1,16 @@
+
+pattern for FIXED SIZED SLIDING WINDOW
+
+for (...) {
+
+    add arr[right];
+
+    if (window size == k) {
+
+        update answer;
+
+        remove arr[left];
+
+        left++;
+    }
+}

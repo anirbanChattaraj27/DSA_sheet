@@ -14,86 +14,48 @@
 // Output: 3
 // Explanation: The answer is "wke", with the length of 3.
 // Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
-
 import java.util.*;
 
-public class O4_longest_subString_without_repeateting_character {
 
-    // STRIVER O(2N)
-    public static int lengthOfLongestSubstring(String str) {
 
-        if (str.length() == 0) {
-            return 0;
-        }
+      public class O4_longest_subString_without_repeateting_character {
 
-        int maxans = Integer.MIN_VALUE;
-        Set< Character> set = new HashSet<>();
-        int l = 0;
+        // STRIVER O(2N)
+        public static int lengthOfLongestSubstring(String str) {
 
-        for (int r = 0; r < str.length(); r++){ // outer loop for traversing the string
-            if (set.contains(str.charAt(r))){ //if duplicate element is found
-            
-                while (l < r && set.contains(str.charAt(r))) {
-                    set.remove(str.charAt(l));
-                    l++;
-                }
+            if (str.length() == 0) {
+                return 0;
             }
-            set.add(str.charAt(r));
-            maxans = Math.max(maxans, r - l + 1);
+
+            int maxans = Integer.MIN_VALUE;
+            Set< Character> set = new HashSet<>();
+            int l = 0;
+
+            for (int r = 0; r < str.length(); r++) { // outer loop for traversing the string
+                if (set.contains(str.charAt(r))) { //if duplicate element is found
+
+                    while (l < r && set.contains(str.charAt(r))) {
+                        set.remove(str.charAt(l));
+                        l++;
+                    }
+                }
+                set.add(str.charAt(r));
+                maxans = Math.max(maxans, r - l + 1);
+            }
+            return maxans;
         }
-        return maxans;
-    }
 
-    /*
-    DRY for above:
-    ABCAA
-    loop will run normally and find the len as 3 ABC
-    then when it will find another A it will remove A from front and add the new A now still max len remians the same 3
-    now when when another A will come it will keep removeing al the B, C, A and add A in the set
-    so max Lean will not change, it remains 3 only.
-    */
-
+        /*
+        DRY for above:
+        ABCAA
+        loop will run normally and find the len as 3 ABC
+        then when it will find another A it will remove A from front and add the new A now still max len remians the same 3
+        now when when another A will come it will keep removeing al the B, C, A and add A in the set
+        so max Length will not change, it remains 3 only.
+        */
 
     // Striver Optimized Approch O(N)
-    public static int lengthOfLongestSubstring1(String s) {
-        HashMap<Character, Integer> map = new HashMap<Character, Integer>();
-
-        int left = 0, right = 0;
-        int n = s.length();
-        int len = 0;
-
-        while (right < n) {
-            if (map.containsKey(s.charAt(right))) {
-                left = Math.max(map.get(s.charAt(right)) + 1, left);
-            }
-
-            map.put(s.charAt(right), right);
-
-            len = Math.max(len, right - left + 1);
-            right++;
-        }
-        return len;
-    }
-
-    // Sliding window [leetcode official solution]
-    public static int lengthOfLongestSubstring2(String s) {
-
-        int n = s.length();
-        int ans = 0;
-        Map<Character, Integer> map = new HashMap<>(); // current index of character
-
-        for (int j = 0, i = 0; j < n; j++) {
-            if (map.containsKey(s.charAt(j))) {
-                i = Math.max(map.get(s.charAt(j)), i);
-            }
-            ans = Math.max(ans, j - i + 1);
-            map.put(s.charAt(j), j + 1);
-        }
-        return ans;
-    }
-
-    // gemini ---> verify
-     public int lengthOfLongestSubstring3(String s) {
+    public int lengthOfLongestSubstring3(String s) {
         int n = s.length();
         int maxLen = 0;
         int left = 0;
@@ -116,7 +78,6 @@ public class O4_longest_subString_without_repeateting_character {
             // Calculate the valid window size
             maxLen = Math.max(maxLen, right - left + 1);
         }
-
         return maxLen;
     }
 
