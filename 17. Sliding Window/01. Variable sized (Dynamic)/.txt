@@ -4,7 +4,7 @@ O3_I_Shortest_size_subArray (positive or Negetive numbers) ---> <=K  ❌  ||  ==
 O3_II_Longest_subArray (positive numbers) ---> <=K ✅  ||  == K ✅ ||  >=K ❌
 O3_II_Longest_subArray (positive or Negetive numbers) ---> <=K ❌   ||  == K ✅ ||  >=K  ❌
 
-QS----> 3, 8, 9 ---> kind of same
+QS----> 3, 8, 9_I ---> kind of same
 
 SLIDING WINDOW:
     Expand → Sum increases
@@ -25,35 +25,55 @@ At most  K	    sum <= K
 At least K	    sum >= K
 
 
-COMMON TEMPLATE:
-prefixSum += arr[i];
-
-if (map.containsKey(prefixSum - k)) {
-
-    int len = i - map.get(prefixSum - k);
-
-    // Longest
-    answer = Math.max(answer, len);
-
-    // Shortest
-    answer = Math.min(answer, len);
-}
-
-****Longest****
-map.putIfAbsent(prefixSum, i);
-
-****Shortest****
-map.put(prefixSum, i);
-
-
-
 ~~~~~~~~~~~~~~~~~~~~~~~ total 4 types of pattern ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-| Category          | Examples                    |
-| ----------------- | --------------------------- |
-| Longest Window    | LC 3, 1004, 424, 1493       | ---> problem 3
-| Shortest Window   | LC 209, 862                 | ---> problem 3
-| Find First Window | GFG Sum = K                 | ---> problem 8
-| Count Windows     | LC 930, 992, 1248, 1358     | ---> problem 13
+| Category          | Examples                  |
+| ----------------- | -----------------------   |
+| Longest Window    | LC 3, 1004, 424, 1493     | ---> problem 3
+| Shortest Window   | LC 209, 862               | ---> problem 3
+| Find First Window | GFG Sum = K               | ---> problem 8
+| Count Windows     | LC 930, 992, 1248 | 1358, 76 | 904, 1004, 3, 340, 424| ---> problem 9_II, 13, 10 | 7, 12 | 6, 2, 4, 5, 11
 
 
+
+QUESTIONS Grouping:
+    1, 3, 8, 9_I
+    9_II, 13, 10 | 7, 12 | 6, 2, 4, 5, 11
+
+
+Sliding Window
+│
+├── Count Problems
+│   ├── AtMost(K) → right-left+1
+│   │      ├── LC 930
+│   │      ├── LC 1248
+│   │      └── LC 992
+│   │
+│   └── Contains All → n-right
+│          └── LC 1358
+|          └── LC 76
+│
+└── Longest/Shortest Problems
+    ├── Longest Valid Window → max(right-left+1)
+    │      ├── LC 3
+    │      ├── LC 904
+    │      └── LC 1004
+    |      └── LC 340
+    |      └── LC 424
+
+
+
+| LC       | Problem                                              | Template                   | Window State              | Window Invalid / Valid         | Answer Update                                  |
+| -------- | ---------------------------------------------------- | -------------------------- | ------------------------- | ------------------------------ | ---------------------------------------------- |
+| **930**  | Binary Subarrays With Sum                            | **AtMost Count**           | `sum`                     | `sum > k`                      | `count += right - left + 1`                    |
+| **1248** | Count Number of Nice Subarrays                       | **AtMost Count**           | `oddCount`                | `oddCount > k`                 | `count += right - left + 1`                    |
+| **992**  | Subarrays with K Distinct Integers                   | **AtMost Count**           | `distinctCount + HashMap` | `distinctCount > k`            | `count += right - left + 1`                    |
+
+| **904**  | Fruit Into Baskets                                   | **AtMost Longest**         | `distinctCount + HashMap` | `distinctCount > 2`            | `maxLength = max(maxLength, right - left + 1)` |
+| **1004** | Max Consecutive Ones III                             | **AtMost Longest**         | `zeroCount`               | `zeroCount > k`                | `maxLength = max(maxLength, right - left + 1)` |
+| **3**    | Longest Substring Without Repeating Characters       | **AtMost Longest**         | `charFreq`                | `freq[currentChar] > 1`        | `maxLength = max(maxLength, right - left + 1)` |
+| **424**  | Longest Repeating Character Replacement              | **AtMost Longest**         | `charFreq + maxFreq`      | `(windowLength - maxFreq) > k` | `maxLength = max(maxLength, right - left + 1)` |
+| **340**  |
+
+| **1358** | Number of Substrings Containing All Three Characters | **Contains All (Count)**   | `freq[a,b,c]`             | **Shrink while VALID**         | `count += n - right`                           |
+| **76**   | Minimum Window Substring                             | **Contains All (Minimum)** | `freq + requiredCount`    | **Shrink while VALID**         | `minLength = min(minLength, right - left + 1)` |

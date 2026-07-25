@@ -1,7 +1,6 @@
 /* try to UNDERSTAND this prblm later, STRIVER 2 pointer video lecture 5 */
 
-// code with explanation: https://leetcode.com/problems/fruit-into-baskets/solutions/3153809/clean-codes-full-explanation-hashtable-c-java-python3/
-// prblm: https://leetcode.com/problems/fruit-into-baskets/description/
+// LC 904 https://leetcode.com/problems/fruit-into-baskets/solutions/3153809/clean-codes-full-explanation-hashtable-c-java-python3/
 // * I have to pick 1 type of fruit from basket
 // * I can not put more than 1 type of fruit in 1 basket
 // * I have 2 basket and inside that i have to put maximum fruit of any 2 type BUT,
@@ -37,6 +36,43 @@ public class O6_fruits_into_basket {
         }
 
         return ans;
+    }
+
+    // usign the pattern that used in other qs
+    public int totalFruit2(int[] fruits) {
+
+        int left = 0;
+        int maxLength = 0;
+        int distinctCount = 0;
+
+        HashMap<Integer, Integer> freq = new HashMap<>();
+
+        for (int right = 0; right < fruits.length; right++) {
+
+            // 1. Add right fruit
+            freq.put(fruits[right], freq.getOrDefault(fruits[right], 0) + 1);
+
+            // New fruit type
+            if (freq.get(fruits[right]) == 1)
+                distinctCount++;
+
+            // 2. Shrink until window becomes valid
+            while (distinctCount > 2) {
+
+                freq.put(fruits[left], freq.get(fruits[left]) - 1);
+
+                // Fruit type completely removed
+                if (freq.get(fruits[left]) == 0)
+                    distinctCount--;
+
+                left++;
+            }
+
+            // 3. Update maximum length
+            maxLength = Math.max(maxLength, right - left + 1);
+        }
+
+        return maxLength;
     }
 
     public static void main(String[] args) {

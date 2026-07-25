@@ -72,79 +72,35 @@ public class O11_Longest_repeateting_character_replacement {
     // Better O(N)
     public int characterReplacement2(String s, int k) {
         
-        // Array to count frequency of characters in window
-        int[] freq = new int[26];
-
-        // Left pointer of sliding window
         int left = 0;
-
-        // Tracks the highest frequency in the window
+        int maxLength = 0;
         int maxFreq = 0;
 
-        // Stores result
-        int maxLen = 0;
-
-        // Traverse the string with right pointer
-        for (int right = 0; right < s.length(); right++) {
-
-            // Increment count of current character
-            freq[s.charAt(right) - 'A']++;
-
-            // Update max frequency in current window
-            maxFreq = Math.max(maxFreq, freq[s.charAt(right) - 'A']);
-
-            // If number of changes exceeds k, shrink window
-            while ((right - left + 1) - maxFreq > k) {
-                freq[s.charAt(left) - 'A']--;
-                left++;
-            }
-
-            // Update result with valid window length
-            maxLen = Math.max(maxLen, right - left + 1);
-        }
-
-        return maxLen;
-    }
-
-
-    // OPTIMAL O(N)
-    public int characterReplacement3(String s, int k) {
-        // Frequency array for A-Z
         int[] freq = new int[26];
 
-        // Left and right pointers of sliding window
-        int left = 0, right = 0;
+        for (int right = 0; right < s.length(); right++) {
 
-        // Tracks the count of the most frequent character in current window
-        int maxCount = 0;
+            // 1. Add right character
+            char ch = s.charAt(right);
+            freq[ch - 'A']++;
 
-        // Stores the maximum length of valid window
-        int maxLength = 0;
+            // Maximum frequency inside current window
+            maxFreq = Math.max(maxFreq, freq[ch - 'A']);
 
-        // Iterate through the string with right pointer
-        while (right < s.length()) {
+            // 2. Shrink until window becomes valid
+            while ((right - left + 1) - maxFreq > k) {
 
-            // Increment the frequency of current character
-            freq[s.charAt(right) - 'A']++;
-
-            // Update maxCount with the max frequency seen so far
-            maxCount = Math.max(maxCount, freq[s.charAt(right) - 'A']);
-
-            // If the current window needs more than k replacements, move left
-            while ((right - left + 1) - maxCount > k) {
+                // Remove left character
                 freq[s.charAt(left) - 'A']--;
+
                 left++;
             }
 
-            // Update the maximum window length
+            // 3. Update maximum length
             maxLength = Math.max(maxLength, right - left + 1);
-
-            // Move right pointer forward
-            right++;
         }
 
-        // Return the maximum valid window length
-        return maxLength;
+        return maxLength; 
     }
 
     public static void main(String[] args) {

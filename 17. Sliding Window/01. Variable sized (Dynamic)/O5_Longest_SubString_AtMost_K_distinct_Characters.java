@@ -1,5 +1,8 @@
 
 /*
+
+LC 340 https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/description/
+
 APPROCH:
 I/P: S = "aaabbccd" K = 2
 O/P: 5
@@ -34,127 +37,104 @@ key,val
 SO, I have to print a substring where i will have at most K unique character, and 
 if substring have more than k distinct character it will erase the map and look for 
 another substring from next index
-*/
+ */
 import java.util.HashMap;
 
 public class O5_Longest_SubString_AtMost_K_distinct_Characters {
 
-    public static int longestSubstringAtMostK(String s, int k) {
-        int n = s.length();
-        int maxLen = -1;
-
-        for (int i = 0; i < n; i++) {
-
-            HashMap<Character, Integer> map = new HashMap<>();
-
-            for (int j = i; j < n; j++) {
-
-                char ch = s.charAt(j);
-                map.put(ch, map.getOrDefault(ch, 0) + 1);
-
-                if (map.size() <= k) {
-                    maxLen = Math.max(maxLen, j - i + 1);
-                } else {
-                    break; // exactly like pseudocode
-                }
-            }
-        }
-
-        return maxLen;
-    }
-
-    // For EXACTLY K distinct characters // this is differernt problem with slight change---> https://www.geeksforgeeks.org/dsa/find-the-longest-substring-with-k-unique-characters-in-a-given-string/
-    public static int longestSubstringExactlyK(String s, int k) {
-        int n = s.length();
-        int maxLen = -1;
-
-        for (int i = 0; i < n; i++) {
-
-            HashMap<Character, Integer> map = new HashMap<>();
-
-            for (int j = i; j < n; j++) {
-
-                char ch = s.charAt(j);
-                map.put(ch, map.getOrDefault(ch, 0) + 1);
-
-                if (map.size() == k) {
-                    maxLen = Math.max(maxLen, j - i + 1);
-                } else if (map.size() > k) {
-                    break;
-                }
-            }
-        }
-
-        return maxLen;
-    }
-
-
-
-    /******************OPTIMIZED********************* */
+    /**
+     * ****************OPTIMIZED*********************
+     */
     // AT MOST K distinct characters (Optimal)
     // fruit into basket is a similar problem. it is string based that is Integer based
-    public static int longestSubstringAtMostK2(String s, int k) {
-        int maxLen = 0;
-        HashMap<Character, Integer> map = new HashMap<>();
-        
+    public static int longestSubstringAtMostK(String s, int k) {
+
+        if (k == 0) {
+            return 0;
+        } 
+
         int left = 0;
-        int right = 0; // Initialize right pointer outside
+        int maxLength = 0;
+        int distinctCount = 0;
 
-        // Outer while loop replaces the for loop
-        for (right = 0; right<s.length(); right++) {
+        HashMap<Character, Integer> freq = new HashMap<>();
+
+        for (int right = 0; right < s.length(); right++) {
+
+            // 1. Add right character
             char ch = s.charAt(right);
-            map.put(ch, map.getOrDefault(ch, 0) + 1);
+            freq.put(ch, freq.getOrDefault(ch, 0) + 1);
 
-            // Inner while loop to shrink the window
-            while (map.size() > k) {
+            if (freq.get(ch) == 1) {
+                distinctCount++;
+            }
+
+            // 2. Shrink until window becomes valid
+            while (distinctCount > k) {
+
                 char leftChar = s.charAt(left);
-                map.put(leftChar, map.get(leftChar) - 1);
-                if (map.get(leftChar) == 0) {
-                    map.remove(leftChar);
+
+                freq.put(leftChar, freq.get(leftChar) - 1);
+
+                if (freq.get(leftChar) == 0) {
+                    distinctCount--;
                 }
+
                 left++;
             }
 
-            maxLen = Math.max(maxLen, right - left + 1);
-             
+            // 3. Update maximum length
+            maxLength = Math.max(maxLength, right - left + 1);
         }
 
-        return maxLen;
+        return maxLength;
     }
 
     // EXACTLY K
-   public static int longestSubstringExactlyK2(String s, int k) {
-        int maxLen = -1; // Start at -1 to return -1 if no substring has EXACTLY k unique characters
-        HashMap<Character, Integer> map = new HashMap<>();
-        
+    public static int longestSubstringExactlyK(String s, int k) {
+
+        if (k == 0) {
+            return 0;
+        }
+
         int left = 0;
-        int right = 0;
+        int maxLength = -1;   // return -1 if no such substring exists
+        int distinctCount = 0;
 
-        for (right = 0; right<s.length(); right ++) {
+        HashMap<Character, Integer> freq = new HashMap<>();
+
+        for (int right = 0; right < s.length(); right++) {
+
+            // 1. Add right character
             char ch = s.charAt(right);
-            map.put(ch, map.getOrDefault(ch, 0) + 1);
+            freq.put(ch, freq.getOrDefault(ch, 0) + 1);
 
-            // Keep the window from exceeding k unique characters
-            while (map.size() > k) {
+            if (freq.get(ch) == 1) {
+                distinctCount++;
+            }
+
+            // 2. Shrink until valid
+            while (distinctCount > k) {
+
                 char leftChar = s.charAt(left);
-                map.put(leftChar, map.get(leftChar) - 1);
-                if (map.get(leftChar) == 0) {
-                    map.remove(leftChar);
+
+                freq.put(leftChar, freq.get(leftChar) - 1);
+
+                if (freq.get(leftChar) == 0) {
+                    distinctCount--;
                 }
+
                 left++;
             }
 
-            // CHANGE HERE: Only track the length if the window has EXACTLY k unique characters
-            if (map.size() == k) {
-                maxLen = Math.max(maxLen, right - left + 1);
+            // 3. Update answer ONLY when exactly K distinct
+            // only change from AT MOST K to EXACTLY K is this condition
+            if (distinctCount == k) {
+                maxLength = Math.max(maxLength, right - left + 1);
             }
-            
-            right++;
         }
-
-        return maxLen;
+        return maxLength;
     }
-
 
     public static void main(String[] args) {
 

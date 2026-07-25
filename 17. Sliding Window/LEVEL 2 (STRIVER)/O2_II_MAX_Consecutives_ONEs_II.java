@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/max-consecutive-ones-iii/description/
+// LC 1004 https://leetcode.com/problems/max-consecutive-ones-iii/description/
 /*
  * arr[] = [1 1 1 0 0 0 1 1 1 1 0], K = 2
  * o/p: 6

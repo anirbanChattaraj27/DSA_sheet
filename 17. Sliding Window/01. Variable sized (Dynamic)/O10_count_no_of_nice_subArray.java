@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/count-number-of-nice-subarrays/description/
+// LC 1248 ---> https://leetcode.com/problems/count-number-of-nice-subarrays/description/
 /*
 Given an array of integers nums and an integer k. A continuous subarray is called nice 
 if there are k odd numbers on it. Return the number of nice sub-arrays.
@@ -19,9 +19,6 @@ Example 3:
 Input: nums = [2,2,2,1,2,2,1,2,2,2], k = 2
 Output: 16
  */
-
-
-import java.util.*;
 
 public class O10_count_no_of_nice_subArray {
 
@@ -55,68 +52,42 @@ public class O10_count_no_of_nice_subArray {
         return count;
     }
 
-    // Better O(N)
-    public static int numberOfSubarrays2(int[] nums, int k) {
-
-        // Frequency map to track count of odd-number sums
-        Map<Integer, Integer> freq = new HashMap<>();
-
-        // Initial state: zero odd numbers has occurred once
-        freq.put(0, 1);
-
-        // Running count of odd numbers in current prefix
-        int oddCount = 0;
-
-        // Total number of nice subarrays
-        int result = 0;
-
-        // Traverse the entire array
-        for (int num : nums) {
-
-            // Check if number is odd
-            if (num % 2 == 1) oddCount++;
-
-            // Check if there's a prefix with (oddCount - k)
-            if (freq.containsKey(oddCount - k)) {
-                result += freq.get(oddCount - k);
-            }
-
-            // Update frequency map with current oddCount
-            freq.put(oddCount, freq.getOrDefault(oddCount, 0) + 1);
-        }
-
-        // Return total result
-        return result;
-    }
-
-
     // OPTIMAL O(N)
     public static int countAtMost(int[] nums, int k) {
-        int left = 0, res = 0;
 
-        // Traverse through the array
+        int left = 0;
+        int count = 0;
+
+        // Traverse the array with the right pointer
         for (int right = 0; right < nums.length; right++) {
-            // If current number is odd, reduce k
-            if (nums[right] % 2 != 0)
+
+            // 1. Add the current element to the window
+            // If it is odd, consume one allowed odd number
+            if (nums[right] % 2 == 1)
                 k--;
 
-            // Shrink the window until k is valid
+            // 2. Shrink the window until it becomes valid
             while (k < 0) {
-                if (nums[left] % 2 != 0)
+
+                // If the left element is odd,
+                // restore one allowed odd number
+                if (nums[left] % 2 == 1)
                     k++;
+
+                // Remove the left element from the window
                 left++;
             }
 
-            // Add valid subarrays ending at right
-            res += (right - left + 1);
+            // 3. Count all valid subarrays ending at 'right'
+            count += (right - left + 1);
         }
 
-        // Return result
-        return res;
+        return count;
     }
 
     // Function to return number of subarrays with exactly k odd numbers
-    public static int numberOfSubarrays3(int[] nums, int k) {
+    public static int numberOfSubarrays2(int[] nums, int k) {
+        // Exactly(K) = AtMost(K) - AtMost(K-1)
         return countAtMost(nums, k) - countAtMost(nums, k - 1);
     }
 

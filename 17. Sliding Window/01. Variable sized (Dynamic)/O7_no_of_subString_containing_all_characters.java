@@ -1,7 +1,10 @@
 /*
 str = bbacba
 o/p: 9
-explain: bbac, bbacb, bbacba | bac, bacb, bacba | acb, acba | cba  
+explain: bbac, bbacb, bbacba | bac, bacb, bacba | acb, acba | cba 
+
+
+LC 1358 -> https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/description/ 
 */
 public class O7_no_of_subString_containing_all_characters {
     // Function to count substrings containing at least one 'a', one 'b', and one 'c'

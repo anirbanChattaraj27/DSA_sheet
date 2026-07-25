@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/max-consecutive-ones-iii/description/
+// LC 1004 https://leetcode.com/problems/max-consecutive-ones-iii/description/
 /*
  * arr[] = [1 1 1 0 0 0 1 1 1 1 0], K = 2
  * o/p: 6
@@ -6,7 +6,7 @@
  * from index 5 to 10 length is 6 and I am flipping 2 zeros
  */
 
-public class O1_II_MAX_Consecutives_ONEs_II {
+public class O2_II_MAX_Consecutives_ONEs_III {
     static int maxOnes1(int[] arr, int k) {
         int res = 0;
 
@@ -55,6 +55,35 @@ public class O1_II_MAX_Consecutives_ONEs_II {
         }
 
         return res;
+    }
+
+    // following the pattern of other qs 
+     public int longestOnes(int[] nums, int k) {
+
+        int left = 0;
+        int maxLength = 0;
+        int zeroCount = 0;
+
+        for (int right = 0; right < nums.length; right++) {
+
+            // 1. Add right element
+            if (nums[right] == 0)
+                zeroCount++;
+
+            // 2. Shrink until window becomes valid
+            while (zeroCount > k) {
+
+                if (nums[left] == 0)
+                    zeroCount--;
+
+                left++;
+            }
+
+            // 3. Update maximum length
+            maxLength = Math.max(maxLength, right - left + 1);
+        }
+
+        return maxLength;
     }
 
     public static void main(String[] args) {

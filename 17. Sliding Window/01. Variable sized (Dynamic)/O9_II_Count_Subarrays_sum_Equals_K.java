@@ -3,7 +3,7 @@
  Count of Subarrays with sum equals k in given Binary Array
 
  * https://www.geeksforgeeks.org/count-of-subarrays-with-sum-equals-k-in-given-binary-array/
- * https://leetcode.com/problems/binary-subarrays-with-sum/description/
+ * LC 930 --> https://leetcode.com/problems/binary-subarrays-with-sum/description/
  * 
  * Input: arr[] = {1, 0, 1, 1, 0, 1}, k = 2
 Output: 6
@@ -37,34 +37,37 @@ public class O9_II_Count_Subarrays_sum_Equals_K {
     }
 
     // O(n)
-    static int atmost(int[] arr, int k) {
+    public static int atMost(int[] nums, int k) {
+
+        // Edge case
         if (k < 0)
             return 0;
 
-        int n = arr.length;
-        int res = 0, sum = 0, j = 0;
+        int left = 0;
+        int sum = 0;
+        int count = 0;
 
-        for (int i = 0; i < n; i++) {
+        for (int right = 0; right < nums.length; right++) {
 
-            while (j < n && sum + arr[j] <= k) {
-                sum += arr[j];
-                j++;
+            // 1. Add right element
+            sum += nums[right];
+
+            // 2. Shrink until window becomes valid
+            while (sum > k) {
+                sum -= nums[left];
+                left++;
             }
 
-            // Number of sub-arrays starting from index i that have sum atmost k will  be (j-i).
-            res += (j - i);
-
-            // Remove the i'th index from window.
-            sum -= arr[i];
+            // 3. Count all valid subarrays ending at 'right'
+            count += (right - left + 1);
         }
 
-        return res;
+        return count;
     }
 
-    static int numberOfSubarrays2(int[] arr, int k) {
-
-        // Call atmost(arr, k) and atmost (arr, k-1) to get the count of subarrays with sum at most k and sum at most k-1 respectively, then subtract them to get the count of subarrays with sum exactly equal to k
-        return atmost(arr, k) - atmost(arr, k - 1);
+    public static int numSubarraysWithSum(int[] nums, int goal) {
+        
+        return atMost(nums, goal) - atMost(nums, goal - 1);
     }
 
     public static void main(String[] args) {
@@ -72,6 +75,6 @@ public class O9_II_Count_Subarrays_sum_Equals_K {
         int k = 2;
 
         System.out.println(numberOfSubarrays1(arr, k));
-        System.out.println(numberOfSubarrays2(arr, k));
+        System.out.println(numSubarraysWithSum(arr, k));
     }
 }

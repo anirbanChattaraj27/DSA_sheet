@@ -1,4 +1,4 @@
-public class O1_III_ConsecutiveSameElements {
+public class O2_III_ConsecutiveSameElements {
 
     public static int consecutiveSameElements(int[] arr) {
 

@@ -7,6 +7,7 @@
 // LEETCODE: 560
 // https://leetcode.com/problems/subarray-sum-equals-k/
 // if contains negetive use prefix sum
+// similar to shortest / longest size subarray PREFIX SUM 
 
  import java.util.*;
       
@@ -77,6 +78,7 @@ public class O9_I_Count_Subarrays_sum_Equals_K {
         }
         return cnt;
     }
+    
     public static void main(String[] args) {
         int[] arr = {3, 1, 2, 4};
         int k = 6;

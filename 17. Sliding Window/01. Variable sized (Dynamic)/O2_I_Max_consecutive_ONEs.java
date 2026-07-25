@@ -1,4 +1,4 @@
-public class O1_I_Max_consecutive_ONEs {
+public class O2_I_Max_consecutive_ONEs {
 
     public static int countConsecutiveOnes(int[] arr) {
 
