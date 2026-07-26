@@ -57,15 +57,15 @@ public class O5_Longest_SubString_AtMost_K_distinct_Characters {
         int maxLength = 0;
         int distinctCount = 0;
 
-        HashMap<Character, Integer> freq = new HashMap<>();
+        HashMap<Character, Integer> map = new HashMap<>();
 
         for (int right = 0; right < s.length(); right++) {
 
             // 1. Add right character
             char ch = s.charAt(right);
-            freq.put(ch, freq.getOrDefault(ch, 0) + 1);
-
-            if (freq.get(ch) == 1) {
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
+ 
+            if (map.get(ch) == 1) {
                 distinctCount++;
             }
 
@@ -74,9 +74,9 @@ public class O5_Longest_SubString_AtMost_K_distinct_Characters {
 
                 char leftChar = s.charAt(left);
 
-                freq.put(leftChar, freq.get(leftChar) - 1);
+                map.put(leftChar, map.get(leftChar) - 1);
 
-                if (freq.get(leftChar) == 0) {
+                if (map.get(leftChar) == 0) {
                     distinctCount--;
                 }
 
@@ -101,15 +101,15 @@ public class O5_Longest_SubString_AtMost_K_distinct_Characters {
         int maxLength = -1;   // return -1 if no such substring exists
         int distinctCount = 0;
 
-        HashMap<Character, Integer> freq = new HashMap<>();
+        HashMap<Character, Integer> map = new HashMap<>();
 
         for (int right = 0; right < s.length(); right++) {
 
             // 1. Add right character
             char ch = s.charAt(right);
-            freq.put(ch, freq.getOrDefault(ch, 0) + 1);
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
 
-            if (freq.get(ch) == 1) {
+            if (map.get(ch) == 1) {
                 distinctCount++;
             }
 
@@ -118,9 +118,9 @@ public class O5_Longest_SubString_AtMost_K_distinct_Characters {
 
                 char leftChar = s.charAt(left);
 
-                freq.put(leftChar, freq.get(leftChar) - 1);
+                map.put(leftChar, map.get(leftChar) - 1);
 
-                if (freq.get(leftChar) == 0) {
+                if (map.get(leftChar) == 0) {
                     distinctCount--;
                 }
 

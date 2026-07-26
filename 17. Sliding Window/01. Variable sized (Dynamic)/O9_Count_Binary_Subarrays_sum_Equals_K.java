@@ -15,7 +15,7 @@ Output: 15
 Explanation: All subarrays have a sum equal to 0, and there are a total of 15 subarrays.
  */
 
-public class O9_II_Count_Subarrays_sum_Equals_K {
+public class O9_Count_Binary_Subarrays_sum_Equals_K {
 
     // O(N^2)
      static int numberOfSubarrays1(int[] arr, int k) {

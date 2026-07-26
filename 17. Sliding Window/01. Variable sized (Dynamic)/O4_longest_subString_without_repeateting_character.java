@@ -63,7 +63,7 @@ public class O4_longest_subString_without_repeateting_character {
 
             // 1. Add right character
             char ch = s.charAt(right);
-            map.put(ch, map.getOrDefault(ch, 0) + 1);
+            map.put(ch, map.getOrDefault(ch, 0) + 1); 
 
             // 2. Shrink until window becomes valid
             while (map.get(ch) > 1) {
@@ -83,7 +83,31 @@ public class O4_longest_subString_without_repeateting_character {
     }
 
     public static void main(String[] args) {
-        String s = "pwwkew";
+        String s = "abcabcbb";
         System.out.print(" " + lengthOfLongestSubstring(s));
     }
 }
+
+
+/*
+map.getOrDefault('a',0) +1
+right will move 1 by 1 idx, and put a, b, c
+| Character | Count |
+| --------- | ----- |
+| a         |     1 |
+| b         |     1 |
+| c         |     1 |
+
+abca
+| Character | Count |
+| --------- | ----- |
+| a         |     2 |
+| b         |     1 |
+| c         |     1 |
+
+now,
+ while (map.get(ch) > 1) 
+ if any of the char's value is more than 1, we will shrink the window from left side, and reduce the count of that char in map
+
+ map.get(leftChar) - 1) =====> reduce the count of that char in map, if it was 2 it will become 1
+*/

@@ -8,6 +8,7 @@
 //   i.e. 1 2 2 2 3 3 4 5 5 5 6 7
 //   222 33 count is 5 this is a window THIS IS ALLOWED
 //   222 555 count is 6 but, different window so NOT ALLOWED
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -74,6 +75,17 @@ public class O6_fruits_into_basket {
 
         return maxLength;
     }
+
+    /*
+    The Rule to Remember
+    freq answers "How many of this fruit do I have?"
+    distinctCount answers "How many different fruit types do I have?"
+
+    They work together:
+
+    When a fruit's frequency changes from 0 → 1, a new type enters the window, so increment distinctCount.
+    When a fruit's frequency changes from 1 → 0, that type disappears from the window, so decrement distinctCount.
+    */
 
     public static void main(String[] args) {
         O6_fruits_into_basket solution = new O6_fruits_into_basket();

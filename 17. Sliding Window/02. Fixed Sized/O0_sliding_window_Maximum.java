@@ -2,8 +2,6 @@
 // max from all subArr
 // sliding window maximum
 
-// convert bellow code in python?
-
 // Input: arr[] = {1, 2, 3, 1, 4, 5, 2, 3, 6}, K = 3 
 // Output: 3 3 4 5 5 5 6
 // Explanation: Maximum of 1, 2, 3 is 3

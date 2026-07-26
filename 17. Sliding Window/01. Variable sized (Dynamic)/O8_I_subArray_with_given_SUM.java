@@ -7,7 +7,7 @@ https://www.geeksforgeeks.org/dsa/find-subarray-with-given-sum-in-array-of-integ
     N = 5, S = 12
     A[] = {1,2,3,7,5}
     Output: 2 4
-    Explanation: The sum of elements from 2nd position to 4th position is 12.
+    Explanation: print the first WINDOW, The sum of elements from 2nd position to 4th position is 12.
 
     I/P: arr[] = [1, 4], target = 0
     O/P: [-1]
@@ -19,7 +19,7 @@ https://www.geeksforgeeks.org/dsa/find-subarray-with-given-sum-in-array-of-integ
 
 import java.util.*;
 
-public class O8_subArray_with_given_SUM {
+public class O8_I_subArray_with_given_SUM {
 
     static ArrayList<Integer> subarraySum(int[] arr, int target) {
         ArrayList<Integer> res = new ArrayList<>();

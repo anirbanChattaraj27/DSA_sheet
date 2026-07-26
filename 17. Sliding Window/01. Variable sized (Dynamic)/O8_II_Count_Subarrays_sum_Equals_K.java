@@ -12,7 +12,7 @@
  import java.util.*;
       
 
-public class O9_I_Count_Subarrays_sum_Equals_K {
+public class O8_II_Count_Subarrays_sum_Equals_K {
 
     // O(n^3)
     public static int findAllSubarraysWithGivenSum1(int arr[], int k) {
@@ -54,7 +54,7 @@ public class O9_I_Count_Subarrays_sum_Equals_K {
         }
         return cnt;
     }
-
+ 
     // O(n)
     public static int findAllSubarraysWithGivenSum(int arr[], int k) {
         int n = arr.length; // size of the given array.

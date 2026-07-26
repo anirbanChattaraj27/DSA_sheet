@@ -32,13 +32,13 @@ At least K	    sum >= K
 | Longest Window    | LC 3, 1004, 424, 1493     | ---> problem 3
 | Shortest Window   | LC 209, 862               | ---> problem 3
 | Find First Window | GFG Sum = K               | ---> problem 8
-| Count Windows     | LC 930, 992, 1248 | 1358, 76 | 904, 1004, 3, 340, 424| ---> problem 9_II, 13, 10 | 7, 12 | 6, 2, 4, 5, 11
+| Count Windows     | LC 930, 992, 1248 | 1358, 76 | 904, 1004, 3, 340, 424| ---> problem 9, 13, 10 | 7, 12 | 6, 2, 4, 5, 11
 
 
 
 QUESTIONS Grouping:
-    1, 3, 8, 9_I
-    9_II, 13, 10 | 7, 12 | 6, 2, 4, 5, 11
+    1, 3, 8
+    9, 13, 10 | 7, 12 | 4, 5, 6, 2, 11
 
 
 Sliding Window

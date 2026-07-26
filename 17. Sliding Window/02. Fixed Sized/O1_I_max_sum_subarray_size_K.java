@@ -45,6 +45,7 @@ public class O1_I_max_sum_subarray_size_K {
         return maxSum;
     }
 
+    // preffered
     static int getSumSizeK_Window2(int[] arr, int k) {
         int n = arr.length;
         if (n < k) return -1;
