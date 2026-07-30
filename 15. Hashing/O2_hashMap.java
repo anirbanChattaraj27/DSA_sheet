@@ -6,6 +6,8 @@ public class O2_hashMap{
         HashMap < Integer, String > myhashmap = new HashMap <>();
 
         // Add elements to the map
+        // map.put ---> Store or update the value of this key.
+        // map.put(arr[left], map.get(arr[left]) - 1); // map.put(key, value) here i am updating the value of the KEY, and removing the value from the map by 1
         myhashmap.put(1, "Chennai");
         myhashmap.put(2, "Trichy");
         myhashmap.put(3, "Kanpur");

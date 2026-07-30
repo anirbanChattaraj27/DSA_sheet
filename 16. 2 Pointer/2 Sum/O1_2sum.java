@@ -57,7 +57,7 @@ public class O1_2sum {
     }
 
     // OPTIMIZED: USING 2 pointer
-    // LC 1: this way will not work, bcz array is not sorted, if u sort and do index no will change
+    // LC 1: this way will not work, bcz array is not sorted, if u sort and do index num will change
     // LC 167 will work
     static boolean twoSum(int[] arr, int target) {
 

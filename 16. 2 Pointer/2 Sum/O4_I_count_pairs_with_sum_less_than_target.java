@@ -1,4 +1,13 @@
 // Leetcode 2824
+
+/* when COUNT is there, there are 2 types of question
+    1. count pair with given sum || with 0 sum
+    2. count pair with <= target AND < target || > target AND >= target
+        a) count pairs < target
+        b) count pairs <= target
+        c) count pairs > target
+        d) count pairs >= target
+*/
 import java.util.*;
 
 public class O4_I_count_pairs_with_sum_less_than_target {
@@ -56,42 +65,52 @@ public class O4_I_count_pairs_with_sum_less_than_target {
 
 /*
 
-DR RUN
+1. Count pairs with sum < target 
+    if (sum < target) {
+        count += (right - left);
+        left++;
+    } 
+    else {
+        right--;
+    }
+    
+    REASON:
+        if:
+            arr[left] + arr[right] < target
+        then:
+            arr[left] + arr[left+1]
+            arr[left] + arr[left+2]
+            ...
+            arr[left] + arr[right]
 
-Initial Setup
-• Sorted Array: [1, 2, 3, 4, 5] (indices 0 to 4) target 8
-• Pointers: left = 0 (value 1), right = 4 (value 5)
-• Count: 0
 
-Step-by-Step Execution
+2. Count pairs with sum <= target
+    SAME as per 1
 
-Iteration 1
-• sum = nums.get(0) + nums.get(4) \(\rightarrow \) 1 + 5 = 6
-• Check: Is 6 < 8? Yes!
-• Action:
-• count += (4 - 0) \(\rightarrow \) count becomes 4.
-• (Why 4? Because if 1 + 5 < 8, then 1 paired with any number smaller than 5 is also valid: (1,5), (1,4), (1,3), and (1,2)).
-• left++ (left moves to index 1, value 2)
+    
+3. Count pairs with sum > target
 
-Iteration 2
-same
+    if (sum > target) {
+        count += (right - left);
+        right--;
+    } 
+    else {
+        left++;
+    }
 
-Iteration 3
-• sum = nums.get(2) + nums.get(4) \(\rightarrow \) 3 + 5 = 8
-• Check: Is 8 < 8? No (it must be strictly less than 8).
-• Action:
-• right-- (right moves to index 3, value 4)
+    we count, We move right, not left.
 
-Iteration 4
-• sum = nums.get(2) + nums.get(3) \(\rightarrow \) 3 + 4 = 7
-• Check: Is 7 < 8? Yes!
-• Action:
-• count += (3 - 2) \(\rightarrow \) count += 1 \(\rightarrow \) count becomes 8.
-• (This 1 new pair is: (3,4)).
-• left++ (left moves to index 3, value 4)
 
-Loop Termination
-• left = 3, right = 3.
-• The condition while (left < right) (3 < 3) is now false. The loop stops.
+4. Count pairs with sum >= target
+   SAME as 3
+
+
+SUMMARY
+Problem	    Condition	    Count	    Move after counting
+Sum < K	    sum < K	    right - left	left++
+Sum <= K	sum <= K	right - left	left++
+Sum > K	    sum > K	    right - left	right--
+Sum >= K	sum >= K	right - left	right--
+
 
 */

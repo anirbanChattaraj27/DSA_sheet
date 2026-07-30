@@ -34,7 +34,8 @@ public class O7_pair_sum_closest_to_target {
             // 5. Move pointers based on the sum comparison
             if (currentSum < target) {
                 left++; // Need a larger sum
-            } else if (currentSum > target) {
+            } 
+            else if (currentSum > target) {
                 right--; // Need a smaller sum
             } else {
                 // Found exact match, return immediately

@@ -46,13 +46,22 @@ public class O1_II_Max_points_obtain_from_N_cards {
         }
 
         maxSum = sum;
-        int start = k-1;
+        maxSum = sum;
+        int n = arr.length-1;
 
-        for(int i=arr.length-1; i>=arr.length-k; i--){
-            sum = sum+arr[i]-arr[start--];
+        for(int i=k-1; i>=0; i--){
+            sum = sum+arr[n--]-arr[i];
             maxSum = Math.max(sum,maxSum);
         }
         return maxSum;
+         
+        // int start = k-1;
+
+        // for(int i=arr.length-1; i>=arr.length-k; i--){
+        //     sum = sum+arr[i]-arr[start--];
+        //     maxSum = Math.max(sum,maxSum);
+        // }
+        // return maxSum;
     }
 
     public static void main(String[] args) {
