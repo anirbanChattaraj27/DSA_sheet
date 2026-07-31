@@ -30,7 +30,7 @@ import java.util.Set;
 
 class sol {
     
-    // BRUTE
+    // BRUTE ---> O(n³)
     public List<List<Integer>> threeSum(int[] arr, int n) {
         // Store unique triplets
         Set<List<Integer>> st = new HashSet<>();
@@ -56,7 +56,7 @@ class sol {
         return new ArrayList<>(st);
     }
 
-    // Better
+    // Better ---> O(n²)
     public List<List<Integer>> threeSum2(int[] arr, int n) {
         // Store unique triplets
         Set<List<Integer>> ans = new HashSet<>();
@@ -87,13 +87,13 @@ class sol {
         return new ArrayList<>(ans);
     }
 
-    // optimal
+    // optimal ---> O(n²)
     public List<List<Integer>> threeSum3(int[] arr, int n) {
         // Sort the array
         Arrays.sort(arr);
         // Store final result
         List<List<Integer>> ans = new ArrayList<>();
-
+        
         // First loop for first element
         for (int i = 0; i < n; i++) {
             // Skip duplicates for first element
@@ -101,13 +101,19 @@ class sol {
 
             // Two pointers
             int left = i + 1, right = n - 1;
-
+            
             // Find pairs for current arr[i]
             while (left < right) {
-                int sum = arr[i] + arr[left] + arr[right];
 
+                int sum = arr[i] + arr[left] + arr[right];
+                List<Integer> list = new ArrayList<>(); // for every sub list, new List should be created, to add in ans  
+                
                 if (sum == 0) {
-                    ans.add(Arrays.asList(arr[i], arr[left], arr[right]));
+                    list.add(arr[i]);
+                    list.add(arr[left]);
+                    list.add(arr[right]);
+
+                    ans.add(list);
                     left++;
                     right--;
 
