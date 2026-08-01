@@ -1,0 +1,10 @@
+Jump Game
+Jump Game II
+Gas Station
+Candy
+Task Scheduler
+Non-overlapping Intervals
+Minimum Platforms
+Meeting Rooms
+Huffman
+Fractional Knapsack

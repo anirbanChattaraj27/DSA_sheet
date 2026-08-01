@@ -68,17 +68,15 @@ class O4_frequncy {
         for (Map.Entry<Integer, Integer> X : map.entrySet())
             System.out.println(X.getKey() + ": " + X.getValue());
     } 
-    // 1 prblm is there with this, --> it cant print in same order like it would not
-      // print like 5 then 8 then then 7 then 10... it would print any order... this
-      // is what map does...
+    // 1 prblm is there with this, --> it cant print in same order like it would not print like 
+    // 5 then 8 then then 7 then 10... it would print any order... this is what map does...
 
     // ✨✨✨✨✨✨✨✨hashMap✨✨✨✨✨✨✨✨
     static void countFrequency4(int arr[], int n) {
         Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 
         for (int i = 0; i < n; i++) {
-            // int key = arr[i]; // no need to use this, without using this ans comes
-            // perfectly
+            // int key = arr[i]; // no need to use this, without using this ans comes perfectly
 
             if (map.containsKey(arr[i]))
                 map.put(arr[i], map.get(arr[i]) + 1);

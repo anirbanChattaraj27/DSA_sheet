@@ -22,7 +22,7 @@ Organized by topic and difficulty level for a smooth learning flow. Each section
 ### 💻 Java Based
 All solutions are implemented in clean, readable, and efficient Java code. Production-quality implementations you can learn from.
 
-### 📊 350+ Problems
+### 📊 650+ Problems
 A growing collection of handpicked problems for strong DSA foundation. Carefully selected to cover all important patterns and techniques.
 
 ### ✅ Interview Ready
@@ -36,7 +36,7 @@ Perfect for coding interviews, placements, and competitive programming. Curated 
 
 - 💼 **Java Backend Developer**
 - 🧠 **DSA Enthusiast**
-- 💪 Solved **350+ DSA Problems** across multiple platforms
+- 💪 Solved **650+ DSA Problems** across multiple platforms
 - 🔥 Strong in **Data Structures, Algorithms & Problem Solving**
 - 📍 **India**
 - 📧 **anirbanchattaraj9@gmail.com**
@@ -144,8 +144,8 @@ DSA_Sheet/
 
 | Metric | Details |
 |--------|---------|
-| **350+ Problems** | Handpicked for comprehensive coverage |
-| **18+ Core DSA Pattern** | From basics to advanced concepts |
+| **650+ Problems** | Handpicked for comprehensive coverage |
+| **17 Core DSA Pattern** | From basics to advanced concepts |
 | **Multiple Difficulty Levels** | Easy → Medium → Hard progression |
 | **Java Solutions** | Clean, optimized, production-ready code |
 | **Interview Focused** | Curated for product-based company prep |
