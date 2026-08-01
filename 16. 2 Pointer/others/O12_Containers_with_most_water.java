@@ -21,8 +21,7 @@ public class O12_Containers_with_most_water {
             for (int j = i + 1; j < n; j++) {
               
                 // calculate the amount of water
-                int amount = 
-                    Math.min(arr[i], arr[j]) * (j - i);
+                int amount = Math.min(arr[i], arr[j]) * (j - i);
               
                 // keep track of maximum amount of water
                 res = Math.max(amount, res);
@@ -57,5 +56,6 @@ public class O12_Containers_with_most_water {
     public static void main(String[] args) {
         int[] arr = {2, 1, 8, 6, 4, 6, 5, 5};
         System.out.println(maxWater(arr));
+        System.out.println(maxWater2(arr));
     }
 }

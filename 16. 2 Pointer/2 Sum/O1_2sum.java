@@ -23,6 +23,7 @@ import java.util.*;
 
 public class O1_2sum {
 
+    // BRUTE FORCE
     public static boolean twoSumExists(int[] arr, int target) {
         int n = arr.length;
         // Outer loop picks one element at a time
@@ -84,41 +85,6 @@ public class O1_2sum {
         return false;
     }
 
-    // Variant 2: Return indices of two numbers that sum to target
-    // we need to keep indices so we can not sort, that is why used 2D array to keep track of indices
-    public static int[] twoSumIndices3(int[] arr, int target) {
-        int n = arr.length;
-        int[][] numsWithIndex = new int[n][2];
-
-        // Store element with original index
-        for (int i = 0; i < n; i++) {
-            numsWithIndex[i][0] = arr[i];
-            numsWithIndex[i][1] = i;
-        }
-
-        // Sort by the value to apply two-pointer
-        Arrays.sort(numsWithIndex, (a, b) -> Integer.compare(a[0], b[0]));
-
-        int left = 0, right = n - 1;
-        while (left < right) {
-            int sum = numsWithIndex[left][0] + numsWithIndex[right][0];
-            if (sum == target) {
-                // Return original indices of the two numbers found
-                return new int[]{numsWithIndex[left][1], numsWithIndex[right][1]};
-            } else if (sum < target) {
-                // Increase sum by moving left pointer forward
-                left++;
-            } else {
-                // Decrease sum by moving right pointer backward
-                right--;
-            }
-        }
-
-        // No pair found
-        return new int[]{-1, -1};
-    }
-
-
     // Optimized Approch MAP
     public static boolean twoSumExists2(int[] arr, int target) {
         HashMap<Integer, Integer> map = new HashMap<>();
@@ -137,6 +103,7 @@ public class O1_2sum {
     }
 
     // Variant 2: Return indices of two numbers that sum to target using hashing
+    // LC 1:
     public static int[] twoSumIndices2(int[] arr, int target) {
         HashMap<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < arr.length; i++) {

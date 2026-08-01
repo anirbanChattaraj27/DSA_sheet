@@ -4,7 +4,7 @@
 import java.util.HashSet;
 import java.util.Set;
 
-public class O4_array_is_subset_of_another_subset {
+public class O17_array_is_subset_of_another_subset {
 
     public static boolean subset1(int arr1[], int arr2[]){
         int n = arr1.length;
