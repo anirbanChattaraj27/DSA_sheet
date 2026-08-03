@@ -1,3 +1,10 @@
+ root is guaranteed to be the absolute smallest element. The remaining elements are only 
+ partially ordered based on a parent-to-child relationship, meaning a parent node is always
+ smaller than its children
+
+
+
+
 LeetCode	Problem	Pattern
 215	        Kth Largest Element in an Array	Min Heap  💹
 347	        Top K Frequent Elements	Min Heap + Map 💹
