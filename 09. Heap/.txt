@@ -1,8 +1,11 @@
-Top K
-K Closest
-Merge K Lists
-Median Finder
-Meeting Rooms II
-IPO
-Kth Largest
-Smallest Range
+LeetCode	Problem	Pattern
+215	        Kth Largest Element in an Array	Min Heap  💹
+347	        Top K Frequent Elements	Min Heap + Map 💹
+703	        Kth Largest Element in a Stream	Heap Design 💹
+1046	    Last Stone Weight	Max Heap
+973	        K Closest Points to Origin	Top K 💹
+692	        Top K Frequent Words	Map + Heap 💹
+378	        Kth Smallest Element in a Sorted Matrix	Heap
+23	        Merge K Sorted Lists	Heap + Linked List 💹
+295	        Find Median from Data Stream	Two Heaps 💹
+621	        Task Scheduler	Heap + Greedy 💹
