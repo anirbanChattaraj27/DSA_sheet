@@ -57,10 +57,9 @@ public class O5_Top_K_Frequent {
         }
 
         // Step 2: Min Heap based on frequency
-        PriorityQueue<Map.Entry<Integer, Integer>> pq
-                = new PriorityQueue<>((a, b) -> a.getValue() - b.getValue());
+        PriorityQueue<Map.Entry<Integer, Integer>> pq = new PriorityQueue<>((a, b) -> a.getValue() - b.getValue());
 
-        // Step 3: Keep only k most frequent elements
+        // Step 3: Keep only k most frequent elements 
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
 
             pq.offer(entry);

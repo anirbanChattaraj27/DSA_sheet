@@ -11,25 +11,24 @@ public class O2_kTh_LargestSmallest_element {
 
     public static int kthLargestElement(int k, int[] arr) {
 
-        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
 
-        for(int num : arr){
-            pq.offer(num);
+        for(int x : arr){
+            minHeap.add(x); 
 
-            if(pq.size() > k)
-                pq.poll();
+            if(minHeap.size() > k)
+                minHeap.poll();
         }
-
-        return pq.peek();
+        return minHeap.peek();
     }
 
-    public static int kthSmallesttElement(int k, int[] arr) {
+    public static int kthSmallestElement(int k, int[] arr) {
 
         PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
 
-        for (int num : arr) {
+        for (int x : arr) {
 
-            maxHeap.offer(num);
+            maxHeap.add(x);
 
             if (maxHeap.size() > k) {
                 maxHeap.poll();
