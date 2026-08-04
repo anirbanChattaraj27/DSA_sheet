@@ -13,10 +13,10 @@ public class O3_Kth_largest_element_in_a_Stream {
         minHeap = new PriorityQueue<>();
 
         for (int num : nums) {
-            minHeap.offer(num);
+            minHeap.add(num);
 
             if (minHeap.size() > k) {
-                minHeap.poll(); 
+                minHeap.poll();  
             }
         }
     }
