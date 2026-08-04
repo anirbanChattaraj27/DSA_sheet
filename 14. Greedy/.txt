@@ -1,10 +1,43 @@
-Jump Game
-Jump Game II
-Gas Station
-Candy
-Task Scheduler
-Non-overlapping Intervals
-Minimum Platforms
-Meeting Rooms
-Huffman
-Fractional Knapsack
+Pattern 1: Basic Greedy (4–5)
+    Assign Cookies (LC 455)
+    Fractional Knapsack
+    Lemonade Change (LC 860)
+    Minimum Number of Arrows to Burst Balloons (LC 452)
+    Boats to Save People (LC 881)
+
+
+Pattern 2: Interval Problems (5–6)
+    Merge Intervals (LC 56)
+    Insert Interval (LC 57)
+    Non-overlapping Intervals (LC 435)
+    Meeting Rooms
+    Meeting Rooms II
+    Erase Overlapping Intervals
+
+    Learn:
+        Sort by start time
+        Sort by end time
+        Decide which interval to keep
+
+
+Pattern 3: Scheduling (5–6)
+    Task Scheduler (LC 621)
+    Maximum Meetings in One Room
+    Job Sequencing Problem
+    Minimum Platforms
+    Course Schedule III (optional, harder)
+
+
+Pattern 4: Jump Games (3–4)
+    Jump Game (LC 55)
+    Jump Game II (LC 45)
+    Gas Station (LC 134)
+
+
+Pattern 5: Miscellaneous (5–8)
+    Partition Labels (LC 763)
+    Candy (LC 135)
+    Queue Reconstruction by Height (LC 406)
+    Wiggle Subsequence (LC 376)
+    Bag of Tokens (LC 948)
+    Hand of Straights (LC 846)

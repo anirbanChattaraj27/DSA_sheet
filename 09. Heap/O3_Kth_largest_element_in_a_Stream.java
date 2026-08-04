@@ -7,7 +7,7 @@ public class O3_Kth_largest_element_in_a_Stream {
     private PriorityQueue<Integer> minHeap;
     private int k;
 
-    public KthLargest(int k, int[] nums) {
+    public O3_Kth_largest_element_in_a_Stream(int k, int[] nums) {
 
         this.k = k;
         minHeap = new PriorityQueue<>();
