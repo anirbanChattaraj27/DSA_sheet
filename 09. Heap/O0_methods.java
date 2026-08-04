@@ -24,6 +24,9 @@ public class O0_methods {
         pQueue.add(20);
         pQueue.add(15);
 
+        // poll
+        pQueue.poll(); // removes from root, which is the startong of arr
+
         // Printing the top element of PriorityQueue
         System.out.println("using peek method -> " + pQueue.peek());
 
