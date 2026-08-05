@@ -29,8 +29,7 @@ class ListNode {
 public class O6_Merge_K_sorted_List {
     public ListNode mergeKLists(ListNode[] lists) {
 
-        PriorityQueue<ListNode> pq =
-                new PriorityQueue<>((a, b) -> a.val - b.val);
+        PriorityQueue<ListNode> pq = new PriorityQueue<>((a, b) -> a.val - b.val);
 
         // Add first node of every list
         for (ListNode node : lists) {

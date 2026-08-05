@@ -1,5 +1,6 @@
 /*
-https://leetcode.com/problems/merge-intervals/
+// **************** greedy ****************
+LC 56: https://leetcode.com/problems/merge-intervals/
 https://www.geeksforgeeks.org/dsa/merging-intervals/
 https://takeuforward.org/data-structure/merge-overlapping-sub-intervals
 
