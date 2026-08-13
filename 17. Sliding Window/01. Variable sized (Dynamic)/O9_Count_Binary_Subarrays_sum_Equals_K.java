@@ -54,8 +54,7 @@ public class O9_Count_Binary_Subarrays_sum_Equals_K {
 
             // 2. Shrink until window becomes valid
             while (sum > k) {
-                sum -= nums[left];
-                left++;
+                sum -= nums[left++];
             }
 
             // 3. Count all valid subarrays ending at 'right'

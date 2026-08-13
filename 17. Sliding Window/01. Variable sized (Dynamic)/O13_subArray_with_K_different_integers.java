@@ -60,28 +60,28 @@ public class O13_subArray_with_K_different_integers {
     // Optimal
     public int atMostK(int[] nums, int K) {
         Map<Integer, Integer> freq = new HashMap<>();
-        int left = 0, count = 0;
+        int left = 0, count = 0, ans = 0;
 
         // Traverse the array with right pointer
         for (int right = 0; right < nums.length; right++) {
             freq.put(nums[right], freq.getOrDefault(nums[right], 0) + 1);
             if (freq.get(nums[right]) == 1) {
-                K--;
+                count++;
             }
 
             // Shrink the window if K becomes negative
-            while (K < 0) {
+            while (count > K) {
                 freq.put(nums[left], freq.get(nums[left]) - 1);
                 if (freq.get(nums[left]) == 0) {
-                    K++;
+                    count--; 
                 }
                 left++;
             }
 
-            count += (right - left + 1);
+            ans += (right - left + 1);
         }
 
-        return count;
+        return ans;
     }
 
     // Main function to return number of subarrays with exactly K distinct integers

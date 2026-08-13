@@ -27,8 +27,7 @@ public class O15_trapping_water {
                 }
             }
 
-            // Water trapped on current bar is min of maxLeft and maxRight minus current
-            // height
+            // Water trapped on current bar is min of maxLeft and maxRight minus current height
             totalWater += Math.min(maxLeft, maxRight) - height[i];
         }
 
@@ -58,7 +57,7 @@ public class O15_trapping_water {
             else {
 
                 if (height[right] >= maxright)
-                    maxright = height[right];
+                    maxright = height[right]; 
 
                 else
                     res += maxright - height[right];

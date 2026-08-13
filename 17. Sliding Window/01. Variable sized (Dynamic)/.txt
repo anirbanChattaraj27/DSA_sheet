@@ -4,7 +4,7 @@ O3_I_Shortest_size_subArray (positive or Negetive numbers) ---> <=K  ❌  ||  ==
 O3_II_Longest_subArray (positive numbers) ---> <=K ✅  ||  == K ✅ ||  >=K ❌
 O3_II_Longest_subArray (positive or Negetive numbers) ---> <=K ❌   ||  == K ✅ ||  >=K  ❌
 
-QS----> 3, 8, 9_I ---> kind of same
+QS----> 3, 8 ---> kind of same
 
 SLIDING WINDOW:
     Expand → Sum increases

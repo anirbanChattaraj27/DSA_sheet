@@ -4,7 +4,7 @@ LC 692: https://leetcode.com/problems/top-k-frequent-words/description/
 */
 import java.util.*;
 
-public class O10_Top_K_Frequent_words {
+public class O6_Top_K_Frequent_words {
     
     public List<String> topKFrequent(String[] words, int k) {
 

@@ -22,7 +22,7 @@ public class O6_fruits_into_basket {
         int l = 0;
         Map<Integer, Integer> map = new HashMap<>();
         
-        for (int r = 0; r<arr.length; r ++) {
+        for (int r = 0; r<arr.length; r++) {
             map.put(arr[r], map.getOrDefault(arr[r], 0) + 1);
 
             while (map.size() > 2) {

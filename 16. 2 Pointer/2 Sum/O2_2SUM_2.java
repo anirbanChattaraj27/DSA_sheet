@@ -16,7 +16,7 @@ public class O2_2SUM_2 {
     public int[] twoSum2_1(int[] arr, int sum) {
         int left = 0, right = arr.length - 1;
         int[] temp = new int[2]; 
-        
+    
         while (left < right) {
             int currentSum = arr[left] + arr[right]; // Calculate the combined sum
 

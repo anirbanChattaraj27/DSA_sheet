@@ -27,13 +27,13 @@ public class O8_I_subArray_with_given_SUM {
 
         // Pick a starting point for a subarray
         for (int s = 0; s < n; s++) {
-            int curr = 0;
+            int sum = 0;
 
             // Consider all ending points
             // for the picked starting point
             for (int e = s; e < n; e++) {
-                curr += arr[e];
-                if (curr == target) {
+                sum += arr[e];
+                if (sum == target) {
                     res.add(s + 1);
                     res.add(e + 1);
                     return res;
@@ -46,26 +46,26 @@ public class O8_I_subArray_with_given_SUM {
     }
 
     // O(n) Time and O(1) Space
-    // Sliding window / caterpillar
+    // same problem like shortest / longest size subarray, here i have return list of starting and ending index of subarray
     static ArrayList<Integer> subarraySum2(int[] arr, int target) {
 
         int s = 0;
-        int curr = 0;
+        int sum = 0;
         ArrayList<Integer> res = new ArrayList<>();
 
         for (int e = 0; e < arr.length; e++) {
-            curr += arr[e];
+            sum += arr[e];
 
-            // If current sum becomes more than target, move start forward
-            while (curr > target && s <= e) {
-                curr -= arr[s];
+            // If sument sum becomes more than target, move start forward
+            while (sum > target && s <= e) {
+                sum -= arr[s];
                 s++;
             }
 
             // If we found a subarray
-            if (curr == target) {
-                res.add(s + 1);
-                res.add(e + 1);
+            if (sum == target) {
+                res.add(s + 1); // add 1st starting index
+                res.add(e + 1); // add end index
                 return res;
             }
         }

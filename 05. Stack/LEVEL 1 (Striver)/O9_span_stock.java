@@ -8,8 +8,9 @@ public class O9_span_stock{
 
     public static void stockSpan(int[] arr, int size) {
     
+        // The stack stores indexes, not stock prices.
         Stack<Integer> s = new Stack<>() ;
-        s.add(0); // here m pushing index of stack // 0th index of the stack
+        s.add(0); 
     
         System.out.print(1 + " "); // print 1 bcz for 0th index it should be one bcz prev. element of 0th index is nothing so span will be one
         for (int i = 1 ; i < size; i++) {
@@ -17,13 +18,13 @@ public class O9_span_stock{
             {
                 s.pop();
             }
-            int span = s.isEmpty() ? i + 1 : i - s.peek();
+            int span = s.isEmpty() ? i + 1 : i - s.peek(); // dry run with [1 2 3] and [3 2 1]
 
             System.out.print(span + " ");
             s.push(i);
         }
     }
-    
+
     // Driver code
     public static void main(String[] args)
     {

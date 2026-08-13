@@ -6,7 +6,7 @@
 
 // LEETCODE: 560
 // https://leetcode.com/problems/subarray-sum-equals-k/
-// if contains negetive use prefix sum
+// thos leetcode problem contains negetive numbers so, use prefix sum
 // similar to shortest / longest size subarray PREFIX SUM 
 
  import java.util.*;
@@ -35,26 +35,30 @@ public class O8_II_Count_Subarrays_sum_Equals_K {
         return cnt;
     }
 
-    // O(n^2)
-    public static int findAllSubarraysWithGivenSum2(int arr[], int k) {
-        int n = arr.length; // size of the given array.
-        int cnt = 0; // Number of subarrays:
+    // same approch like slogest shortest size subarray, here i have to return count of subarrays
+    // if contains negetive numbers then use prefix sum + hashmap not sliding window
+    public int subarraySum(int[] arr, int target) {
+        int s = 0;
+        int sum = 0;
+        int count = 0;
+        
+        for (int e = 0; e < arr.length; e++) {
+            sum += arr[e];
 
-        for (int i = 0 ; i < n; i++) { // starting index i
-            int sum = 0;
-            for (int j = i; j < n; j++) { // ending index j
-                // calculate the sum of subarray [i...j]
-                // sum of [i..j-1] + arr[j]
-                sum += arr[j];
+            while (sum > target && s <= e) {
+                sum -= arr[s];
+                s++;
+            }
 
-                // Increase the count if sum == k:
-                if (sum == k)
-                    cnt++;
+            // only change in this line, here i have to return count of subarrays
+            if (sum == target) {
+                count++;
             }
         }
-        return cnt;
+        return count;
     }
  
+    // preffered approch bcz i/p contains negetives
     // O(n)
     public static int findAllSubarraysWithGivenSum(int arr[], int k) {
         int n = arr.length; // size of the given array.
@@ -66,14 +70,10 @@ public class O8_II_Count_Subarrays_sum_Equals_K {
             // add current element to prefix Sum:
             preSum += arr[i];
 
-            // Calculate x-k:
-            int remove = preSum - k;
-
             // Add the number of subarrays to be removed:
-            cnt += mpp.getOrDefault(remove, 0);
+            cnt += mpp.getOrDefault(preSum - k, 0);
 
-            // Update the count of prefix sum
-            // in the map.
+            // Update the count of prefix sum in the map.
             mpp.put(preSum, mpp.getOrDefault(preSum, 0) + 1);
         }
         return cnt;

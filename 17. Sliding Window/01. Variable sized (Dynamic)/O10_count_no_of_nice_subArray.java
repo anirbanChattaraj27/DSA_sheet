@@ -3,7 +3,7 @@
 Given an array of integers nums and an integer k. A continuous subarray is called nice 
 if there are k odd numbers on it. Return the number of nice sub-arrays.
 
- 
+
 
 Example 1:
 Input: nums = [1,1,2,1,1], k = 3
@@ -57,22 +57,23 @@ public class O10_count_no_of_nice_subArray {
 
         int left = 0;
         int count = 0;
+        int odd = 0;
 
         // Traverse the array with the right pointer
         for (int right = 0; right < nums.length; right++) {
 
             // 1. Add the current element to the window
             // If it is odd, consume one allowed odd number
-            if (nums[right] % 2 == 1)
-                k--;
+            if (nums[right] % 2 != 0)
+                odd++;
 
             // 2. Shrink the window until it becomes valid
-            while (k < 0) {
+            while (odd > k) {
 
                 // If the left element is odd,
                 // restore one allowed odd number
-                if (nums[left] % 2 == 1)
-                    k++;
+                if (nums[left] % 2 != 0)
+                    odd--;
 
                 // Remove the left element from the window
                 left++;

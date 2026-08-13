@@ -37,6 +37,7 @@ public class O1_II_Max_points_obtain_from_N_cards {
     }
 
     // APPROCH from max_sum_subarray_size_K 
+    // preffered
     public int maxScore2(int[] arr, int k) {
         int sum = 0;
         int maxSum = 0;
@@ -45,7 +46,6 @@ public class O1_II_Max_points_obtain_from_N_cards {
             sum = sum + arr[i];
         }
 
-        maxSum = sum;
         maxSum = sum;
         int n = arr.length-1;
 
