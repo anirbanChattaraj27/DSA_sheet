@@ -65,3 +65,23 @@ public class O10_prev_greater {
 
     }
 }
+
+
+/*
+
+Master rule:
+    Problem	Traversal	    Pop condition	        Stack keeps
+    Next Greater	    n-1 → 0	peek() <= arr[i]	decreasing
+    Next Smaller	    n-1 → 0	peek() >= arr[i]	increasing
+    Previous Greater	0 → n-1	peek() <= arr[i]	decreasing
+    Previous Smaller	0 → n-1	peek() >= arr[i]	increasing
+ 
+    NOTE:
+        NEXT → go from RIGHT to LEFT
+        PREVIOUS → go from LEFT to RIGHT
+
+    Why?
+        For Next, the answer is somewhere on the right, so process from right.
+        For Previous, the answer is somewhere on the left, so process from left.
+
+*/

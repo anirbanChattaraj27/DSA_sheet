@@ -22,52 +22,31 @@ https://algo.monster/liteproblems/860 -> solution
  */
 
 public class O2_Lemonade {
-    /**
-     * Determines if we can provide correct change for all customers in a lemonade stand.
-     * Each lemonade costs $5. Customers can pay with $5, $10, or $20 bills.
-     * We start with no change and must give correct change to each customer in order.
-     * 
-     * @param bills Array of bills representing the payment from each customer in order
-     * @return true if we can provide change to all customers, false otherwise
-     */
     public boolean lemonadeChange(int[] bills) {
-        // Track the count of $5 and $10 bills we have as change
-        int fiveDollarBills = 0;
-        int tenDollarBills = 0;
-      
-        // Process each customer's payment
-        for (int bill : bills) {
-            switch (bill) {
-                case 5:
-                    // Customer pays exact amount, no change needed
-                    fiveDollarBills++;
-                    break;
-                  
-                case 10:
-                    // Customer pays $10, need to give $5 change
-                    tenDollarBills++;
-                    fiveDollarBills--;
-                    break;
-                  
-                case 20:
-                    // Customer pays $20, need to give $15 change
-                    // Prefer giving one $10 and one $5 if possible
-                    if (tenDollarBills > 0) {
-                        tenDollarBills--;
-                        fiveDollarBills--;
-                    } else {
-                        // Otherwise, give three $5 bills
-                        fiveDollarBills -= 3;
-                    }
-                    break;
-            }
-          
-            // Check if we have enough change after serving this customer
-            if (fiveDollarBills < 0) {
-                return false;
+        int five_dollars = 0, ten_dollars = 0;
+
+        for (int x : bills) {
+            if (x == 5) {
+                five_dollars++;
+            } else if (x == 10) {
+                if (five_dollars > 0) {
+                    five_dollars--;
+                    ten_dollars++;
+                } else {
+                    return false;
+                }
+            } else {
+                if (five_dollars > 0 && ten_dollars > 0) {
+                    five_dollars--;
+                    ten_dollars--;
+                } else if (five_dollars > 2) {
+                    five_dollars -= 3;
+                } else {
+                    return false;
+                }
             }
         }
-      
+
         return true;
     }
 }
