@@ -22,7 +22,7 @@ public class O15_occurance_of_element_in_array {
       
         return res;
     }
-    
+
     /* ALGORITHM: First, we find the index of the first occurrence (Lower Bound)  of target and then the index of the first element greater than the target (Upper Bound). The difference between these two indices will */
 
     // BS  ||  O(logn) Time and O(1) Space

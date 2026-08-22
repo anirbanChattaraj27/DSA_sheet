@@ -20,8 +20,8 @@ public class O4_ship_packages_within_D_days {
     }
 
     static int leastWeightCapacity(int[] weights, int d) {
-        int low = Arrays.stream(weights).max().getAsInt();
-        int high = Arrays.stream(weights).sum();
+        int low = Arrays.stream(weights).max().getAsInt(); // Purpose: Finds the largest single item in the weights array.
+        int high = Arrays.stream(weights).sum(); // Purpose: Calculates the total sum of all items in the weights array.
 
         while (low <= high) {
             int mid = (low + high) / 2;

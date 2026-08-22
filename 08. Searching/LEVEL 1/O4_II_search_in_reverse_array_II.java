@@ -4,7 +4,7 @@
 // array may may duplicate values
 // search in a Rotated sorted array II
 
-public class O4_II_search_in_reverse_array {
+public class O4_II_search_in_reverse_array_II {
 
     public static boolean searchInARotatedSortedArrayII(int[] arr, int x) {
         int n = arr.length; // size of the array.

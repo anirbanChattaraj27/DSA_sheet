@@ -132,7 +132,6 @@ public class O3_II_Longest_subArray_atmost_K {
         }
         return maxLength;
     }
-    
 
     public static void main(String[] args) {
         // Define the input array and the maximum sum k
