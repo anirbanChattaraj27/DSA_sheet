@@ -7,31 +7,24 @@ public class O15_trapping_water {
         // Variable to store total trapped water
         int totalWater = 0;
 
-        // Iterate over each bar in the elevation map
         for (int i = 0; i < n; i++) {
-            // Initialize max heights to the left and right of current bar
             int maxLeft = 0;
             int maxRight = 0;
 
             // Find maximum height to the left of current bar
             for (int j = 0; j <= i; j++) {
-                if (height[j] > maxLeft) {
-                    maxLeft = height[j];
-                }
+                maxLeft = Math.max(maxLeft, height[j]);
             }
 
             // Find maximum height to the right of current bar
             for (int j = i; j < n; j++) {
-                if (height[j] > maxRight) {
-                    maxRight = height[j];
-                }
+                maxRight = Math.max(maxRight, height[j]);
             }
 
             // Water trapped on current bar is min of maxLeft and maxRight minus current height
             totalWater += Math.min(maxLeft, maxRight) - height[i];
         }
 
-        // Return total trapped water
         return totalWater;
     }
 

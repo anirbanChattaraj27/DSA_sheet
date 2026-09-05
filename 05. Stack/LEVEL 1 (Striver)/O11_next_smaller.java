@@ -68,6 +68,7 @@ class Solution {
                 st.pop();
             }
 
+            // remaining elements in stack are smaller than arr[i]
             // If stack not empty, top is the next smaller element
             if (!st.isEmpty()) {
                 ans[i] = st.peek();

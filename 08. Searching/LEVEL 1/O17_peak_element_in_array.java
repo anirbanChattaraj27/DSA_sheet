@@ -62,7 +62,7 @@ public class O17_peak_element_in_array {
             }
         }
         // Dummy return statement
-        return -1;0
+        return -1;
     }
 
     // GFG || array || B.S.

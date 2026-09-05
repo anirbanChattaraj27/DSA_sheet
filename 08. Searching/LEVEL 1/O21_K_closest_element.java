@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/find-k-closest-elements/description/
 
-// 2 pointer ----------> (O(\log(N - K) + K) --> more efficient
+// 2 pointer ----------> (O(log(N - K) + K) --> more efficient
 // Binary search ------> (O(N)
 
 import java.util.ArrayList;

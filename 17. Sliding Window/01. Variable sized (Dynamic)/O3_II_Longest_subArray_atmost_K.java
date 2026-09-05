@@ -93,7 +93,7 @@ public class O3_II_Longest_subArray_atmost_K {
         for(int right = 0; right < n; right++) {
             sum += arr[right];
 
-            // Shrink the window while sum > k
+            // Shrink the window while sum > k 
             while (sum > k) {
                 sum -= arr[left++];
             }
