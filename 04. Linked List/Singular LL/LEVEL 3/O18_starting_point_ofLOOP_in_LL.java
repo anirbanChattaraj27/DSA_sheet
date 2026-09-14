@@ -32,7 +32,7 @@ public class O18_starting_point_ofLOOP_in_LL {
                 }
                 return entry;
 			}
-		}
+		} 
 		return null;
 	}
 

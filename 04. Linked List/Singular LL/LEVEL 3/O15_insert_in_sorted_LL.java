@@ -68,6 +68,7 @@ public class O15_insert_in_sorted_LL {
 	} 
 
     public static void main(String[] args) {
+        
         O15_insert_in_sorted_LL list = new O15_insert_in_sorted_LL();
 
         list.addLast(2);

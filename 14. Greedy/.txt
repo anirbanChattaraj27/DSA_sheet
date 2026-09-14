@@ -1,15 +1,17 @@
+                            6 star ⭐ problems are must do.....
+
 Pattern 1: Basic Greedy (4–5)
     Assign Cookies (LC 455)
     Fractional Knapsack
-    Lemonade Change (LC 860)
+    Lemonade Change (LC 860)  ⭐
     Minimum Number of Arrows to Burst Balloons (LC 452)
     Boats to Save People (LC 881) 2Pointer
 
 
 Pattern 2: Interval Problems (5–6)
-    Merge Intervals (LC 56)
+    Merge Intervals (LC 56) ⭐
     Insert Interval (LC 57)
-    Non-overlapping Intervals (LC 435)
+    Non-overlapping Intervals (LC 435) ⭐
     Meeting Rooms
     Meeting Rooms II
     Erase Overlapping Intervals
@@ -29,9 +31,9 @@ Pattern 3: Scheduling (5–6)
 
 
 Pattern 4: Jump Games (3–4)
-    Jump Game (LC 55)
-    Jump Game II (LC 45)
-    Gas Station (LC 134)
+    Jump Game (LC 55)  ⭐
+    Jump Game II (LC 45) ⭐
+    Gas Station (LC 134) ⭐
 
 
 Pattern 5: Miscellaneous (5–8)

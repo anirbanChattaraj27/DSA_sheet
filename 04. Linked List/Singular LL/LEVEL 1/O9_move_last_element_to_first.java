@@ -51,6 +51,7 @@ public class O9_move_last_element_to_first {
             second = second.next;
         }
 
+        // bellow 2 lines can be written in any order but the last line should be head = first; to update the head of the class
         second.next = null; // Fixed: Disconnect the last node from the list
         first.next = head; // Link the last node to the old head
         head = first; // Fixed: Update the head of the class to the last node

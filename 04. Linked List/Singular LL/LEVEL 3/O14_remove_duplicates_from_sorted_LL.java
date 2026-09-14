@@ -1,5 +1,4 @@
 
-import java.util.*;
 public class O14_remove_duplicates_from_sorted_LL {
 
     Node head;  // here we create head
@@ -18,8 +17,8 @@ public class O14_remove_duplicates_from_sorted_LL {
     }
 
     // diaply LL 
-    public void display(){
-        if (head == null){
+    public void display() {
+        if (head == null) {
             System.out.println("Empty list");
             return;
         }

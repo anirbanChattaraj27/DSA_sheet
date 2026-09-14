@@ -45,7 +45,6 @@ public class O20_sort_LL {
 
         // Merge sorted halves
         return merge(left, right);
-
     }
 
     public ListNode merge(ListNode l1, ListNode l2) {

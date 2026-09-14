@@ -5,6 +5,8 @@
 // explain -> ( Pairs with sum 6 are (1, 5) and (7, -1) )
 // HASH
 
+// solved in O3_I_count_pairs_with_0_sum
+
 import java.util.*;
 
 public class O4_II_count_pairs_with_given_sum {
@@ -23,7 +25,7 @@ public class O4_II_count_pairs_with_given_sum {
     } 
 
     // hash---> TC: n  || SC: n
-     static int countPairsMAP(int[] arr, int target) {
+    static int countPairsMAP(int[] arr, int target) {
 
         Map<Integer, Integer> map = new HashMap<>();
         int cnt = 0;

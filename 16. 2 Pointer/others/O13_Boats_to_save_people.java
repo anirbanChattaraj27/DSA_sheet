@@ -38,10 +38,11 @@ public class O13_Boats_to_save_people{
             // The heaviest person always gets a boat
             right--;
             boats++;
-        }        
+        }
         return boats;
     }
 
+    // preffered 
     // count pairs with sum  < target
     public int numRescueBoats2(int[] nums, int target) {
         Arrays.sort(nums);

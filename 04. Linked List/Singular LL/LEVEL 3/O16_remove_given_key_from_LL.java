@@ -1,14 +1,14 @@
 
-public class O16_remove_given_key_from_LL{
+public class O16_remove_given_key_from_LL {
 
-    Node head;  // here we create head
+    Node head; // here we create head
     private int size;
 
     // creating node
     public class Node {
         int data;
         Node next;
-        
+
         Node(int data) {
             this.data = data;
             this.next = null;
@@ -16,12 +16,9 @@ public class O16_remove_given_key_from_LL{
         }
     }
 
-
-
-
-    // diaply LL 
-    public void display(){
-        if (head == null){
+    // diaply LL
+    public void display() {
+        if (head == null) {
             System.out.println("Empty list");
             return;
         }
@@ -51,25 +48,28 @@ public class O16_remove_given_key_from_LL{
     }
 
     // remove given key
-    public void deleteNode(int key) {  // suppose key is 11
-        Node current = head;  // current starts from head
-        Node temp = null;  // temp starts from null
-
-        if(current != null && current.data == key){ 
-            head = current.next;
+    public void deleteNode(int key) {
+        if (head == null) {
+            return;
+        }
+ 
+        // Delete the head node
+        if (head.data == key) {
+            head = head.next;
             return;
         }
 
-        while(current != null && current.data != key){   // current should not equals to null and current data should not eqals to 11 // current data means at first 1 then after completing 1 loop it current data will be 8 after compl
-            temp = current;  // move temp to current's place
-            current = current.next;  // move current to next node
-        }
+        Node current = head;
 
-        if(current == null){
-            return;
-        }
+        // Check the next node before deleting it
+        while (current.next != null) {
+            if (current.next.data == key) {
+                current.next = current.next.next;
+                return;
+            }
 
-        temp.next = current.next;  // if key has found then temp's next points to currents next and current node will remove
+            current = current.next;
+        }
     }
 
     public static void main(String[] args) {
@@ -86,5 +86,3 @@ public class O16_remove_given_key_from_LL{
         list.display();
     }
 }
-
-

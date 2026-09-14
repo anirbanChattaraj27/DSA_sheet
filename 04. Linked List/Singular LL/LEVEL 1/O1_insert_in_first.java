@@ -6,7 +6,7 @@ public class O1_insert_in_first {
     // creating node
     public class Node {
         String data;
-        Node next;
+        Node next; 
         
         Node(String data) {
             this.data = data;
@@ -30,10 +30,10 @@ public class O1_insert_in_first {
         System.out.print("NULL");
     }
 
-    // insert at first
+    // insert at first 
     public void addFirst(String data) {
         Node newNode = new Node(data);
-        if(head == null){
+        if(head == null) {
             head = newNode;
             return;
         }

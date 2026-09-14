@@ -52,7 +52,7 @@ public class O9_reverse_middle_of_LL {
             return head;
         }
 
-        // skip nodes upto left-1
+        // skip nodes upto left-1 
         Node current = head;  // current starts from head
         Node prev = null;   // prev starts from null
         for (int i = 0; current != null && i < left - 1; i++) {  // i starts from head and goes upto left-1 means if left is 2 means loop starts from 3 so 3-1=2 upto 2nd node i will continue
@@ -82,9 +82,7 @@ public class O9_reverse_middle_of_LL {
 
         newEnd.next = current;
         return head;
-    }        
-
-
+    }
 
     public static void main(String[] args) {
         O9_reverse_middle_of_LL list = new O9_reverse_middle_of_LL();

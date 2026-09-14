@@ -9,6 +9,7 @@ Input: arr[] = [1, 2, 3, 4, 5], l = 2, r = 5
 Output: 11
 Explanation: Valid subarrays are: [2], [3], [4], [5], [1,2], [2,3], [3,4], [4,5], [1,2,3], [2,3,4], [3,4,5], [1,2,3,4], [2,3,4,5], [1,2,3,4,5].
 */
+
 public class O9_Subarrays_with_Max_in_range {
     static int countSubarrays(int[] arr, int l, int r) {
         

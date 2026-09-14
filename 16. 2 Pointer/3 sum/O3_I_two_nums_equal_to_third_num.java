@@ -25,6 +25,8 @@ so check arr[l] + arr[r] == arr[i]
 import java.util.*;
 
 public class O3_I_two_nums_equal_to_third_num {
+
+    // tc: O(n^2) sc: O(1)
     public static boolean f(int arr[]){
         Arrays.sort(arr);
         int sum =0;

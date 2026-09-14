@@ -49,7 +49,7 @@ public class O19_remove_loop {
 				while(temp.next != slowPtr.next){
 				temp = temp.next;
 				slowPtr = slowPtr.next;
-			}
+			} 
 			
 			slowPtr.next = null;
 			return;
