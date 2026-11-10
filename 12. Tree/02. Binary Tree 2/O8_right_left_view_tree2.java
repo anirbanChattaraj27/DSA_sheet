@@ -42,8 +42,7 @@ public class O8_right_left_view_tree2 {
               2   3
                \   \
                 5   4
-
-           Right Side View: [1, 3, 4]
+            Right Side View: [1, 3, 4]
         */
 
         TreeNode root = new TreeNode(1);

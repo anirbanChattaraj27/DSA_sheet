@@ -1,7 +1,6 @@
 
 // maximum from all nodes
 
-
 class Node {
 
     int val; // int data
@@ -55,10 +54,6 @@ public class O0_basic_methods_of_tree {
         }
         return false;
     }
-
-    //public static Node reverseTree(Node node){
-        
-    //}
     
     public static void main(String args[]) {
 

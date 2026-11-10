@@ -18,7 +18,7 @@ class Node {
 
 class O21_merge_2_BST {
 
-    Node root;
+    Node root; 
     Node root2;
 
     public static Node merge(Node node1, Node node2){ 

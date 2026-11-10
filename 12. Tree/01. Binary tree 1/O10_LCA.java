@@ -6,8 +6,6 @@
 // https://www.geeksforgeeks.org/lowest-common-ancestor-binary-tree-set-1/
 // copy 28
 
-import java.util.*;
-
 class TreeNode {
     int val;
     TreeNode left, right;
@@ -43,11 +41,11 @@ public class O10_LCA {
     public static void main(String[] args) {
         
         /*
-                1
-               / \
-              2   3
-             / \  / \
-            4   5 6  7
+                 1
+               /   \
+              2     3
+             / \   / \
+            4   5 6   7
          */
         // Creating a sample binary tree
         TreeNode root = new TreeNode(1);

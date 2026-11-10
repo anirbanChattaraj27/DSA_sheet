@@ -8,6 +8,7 @@ import java.util.*;
 public class O5_2_Max_sum_of_NonAdjacent_element_Memoization {
 
     private static int fun(int idx, int[] nums, int[] dp) {
+        
         if (idx == 0) return nums[idx];
         if (idx < 0) return 0;
 

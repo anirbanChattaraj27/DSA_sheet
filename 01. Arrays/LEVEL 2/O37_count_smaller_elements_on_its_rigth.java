@@ -1,3 +1,5 @@
+// LC 135: hard || naive approch is easy but merge sort approch is bit difficult
+
 // Input:   arr[] =  {12, 1, 2, 3, 0, 11, 4}
 // Output:  countArray[]  =  {6, 1, 1, 1, 0, 1, 0} 
 

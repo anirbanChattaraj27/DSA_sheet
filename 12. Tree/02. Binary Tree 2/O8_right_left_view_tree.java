@@ -30,7 +30,6 @@ public class O8_right_left_view_tree {
         for (List<Integer> level : levelTraversal) {
             res.add(level.get(level.size() - 1));
         }
-
         return res;
     }
 

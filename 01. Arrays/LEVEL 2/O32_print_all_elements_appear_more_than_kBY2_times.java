@@ -11,7 +11,6 @@ import java.util.*;
 
 public class O32_print_all_elements_appear_more_than_kBY2_times {
 
-    
     // this approch is same as O34_majority elements
     public static void usingMap(int arr[], int N, int k) {
         Map <Integer, Integer> map = new HashMap<>();

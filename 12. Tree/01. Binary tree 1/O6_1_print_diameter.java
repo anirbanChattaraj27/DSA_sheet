@@ -30,11 +30,11 @@ public class O6_1_print_diameter {
         return totalheight;
     }
 
-    public static int DiameterOfTree(Node node){
+    public static int DiameterOfTree(Node node) {
         if(node == null){
             return 0;
         }    
-            
+        
         int factor = heightFun(node.left) + heightFun(node.right) + 2;
 
         int LD = DiameterOfTree(node.left); // left Dia

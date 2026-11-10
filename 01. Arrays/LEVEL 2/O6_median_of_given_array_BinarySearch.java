@@ -16,7 +16,7 @@ public class O6_median_of_given_array_BinarySearch{
             int mid2 = left - mid1; // Calculate mid index for nums2
             
             int l1 = Integer.MIN_VALUE, l2 = Integer.MIN_VALUE, r1 = Integer.MAX_VALUE, r2 = Integer.MAX_VALUE;
-            
+
             // Determine values of l1, l2, r1, and r2
             if (mid1 < n1)
                 r1 = nums1[mid1];
