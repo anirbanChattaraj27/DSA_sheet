@@ -19,6 +19,7 @@ public class O1_Prefix_sum_arr {
         int sum = 0;
         ArrayList<Integer> list = new ArrayList<>();
         
+
         for(int i=0; i<arr.length; i++){
             sum += arr[i];
             list.add(sum);

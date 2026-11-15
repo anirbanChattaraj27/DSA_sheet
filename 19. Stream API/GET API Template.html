@@ -1,0 +1,591 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>GET API Template</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+/* Layout: one narrow reading column. Header, a 4-step jump bar, then four numbered sections (Design, Code, Test, Reuse). */
+:root {
+  --bg: #F5F8FA;
+  --surface: #FFFFFF;
+  --fg: #14212B;
+  --muted: #55667A;
+  --line: #D6DFE7;
+  --accent: #0A6F8F;
+  --accent-soft: #DDF0F6;
+  --accent-ink: #FFFFFF;
+  --chip: #E6EDF3;
+  --code-bg: #12202C;
+  --code-fg: #DCE7F0;
+  --code-bar: #1B2D3C;
+  --code-muted: #8FA4B6;
+  --ok: #0E7A45;
+  --ok-soft: #DCF2E5;
+  --warn: #9A5A00;
+  --warn-soft: #FBEBCF;
+  --bad: #B3261E;
+  --bad-soft: #FADAD7;
+  --font-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E171F;
+    --surface: #152230;
+    --fg: #E4ECF2;
+    --muted: #9AACBC;
+    --line: #26384A;
+    --accent: #55C0E0;
+    --accent-soft: #15374A;
+    --accent-ink: #08202B;
+    --chip: #1F3142;
+    --code-bg: #0A121A;
+    --code-fg: #D6E2EC;
+    --code-bar: #14212D;
+    --code-muted: #7F95A8;
+    --ok: #5FD497;
+    --ok-soft: #12382A;
+    --warn: #F0B45A;
+    --warn-soft: #402E10;
+    --bad: #FF8A80;
+    --bad-soft: #43201E;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E171F;
+  --surface: #152230;
+  --fg: #E4ECF2;
+  --muted: #9AACBC;
+  --line: #26384A;
+  --accent: #55C0E0;
+  --accent-soft: #15374A;
+  --accent-ink: #08202B;
+  --chip: #1F3142;
+  --code-bg: #0A121A;
+  --code-fg: #D6E2EC;
+  --code-bar: #14212D;
+  --code-muted: #7F95A8;
+  --ok: #5FD497;
+  --ok-soft: #12382A;
+  --warn: #F0B45A;
+  --warn-soft: #402E10;
+  --bad: #FF8A80;
+  --bad-soft: #43201E;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  padding-block: 28px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 920px; margin: 0 auto; display: flex; flex-direction: column; gap: 48px; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; line-height: 1.2; margin: 0; }
+p { margin: 0; }
+code { font-family: var(--font-mono); font-size: 0.88em; background: var(--chip); padding: 1px 6px; border-radius: 4px; overflow-wrap: anywhere; }
+a { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Header */
+.top { display: flex; flex-direction: column; gap: 14px; }
+.kicker { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+h1 { font-size: clamp(28px, 5vw, 40px); font-weight: 700; }
+.sub { color: var(--muted); max-width: 65ch; }
+.stepnav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.stepnav a {
+  display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: var(--fg);
+  background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px 6px 8px; font-weight: 500; font-size: 14px;
+}
+.stepnav a:hover { border-color: var(--accent); }
+.stepnav b { background: var(--accent); color: var(--accent-ink); width: 22px; height: 22px; border-radius: 50%; display: inline-grid; place-items: center; font-size: 12px; font-family: var(--font-display); }
+
+/* The question */
+.question { background: var(--accent-soft); border-radius: 10px; padding: 20px 22px; display: flex; flex-direction: column; gap: 10px; }
+.question h2 { font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+.question ol { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 6px; }
+
+/* Step sections */
+.step { display: flex; flex-direction: column; gap: 22px; scroll-margin-top: 16px; }
+.step-head { display: flex; gap: 16px; align-items: flex-start; border-top: 2px solid var(--fg); padding-top: 18px; }
+.num { flex: none; width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; font-size: 20px; }
+.step-head h2 { font-size: clamp(24px, 4vw, 30px); }
+.lede { color: var(--muted); margin-top: 4px; max-width: 62ch; }
+h3 { font-size: 18px; font-weight: 600; }
+.block { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+
+/* Flow diagram */
+.flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 22px; counter-reset: none; }
+.flow li { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 12px 14px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.flow li:not(:last-child)::after { content: "\2192"; position: absolute; right: -19px; top: 50%; transform: translateY(-50%); color: var(--accent); font-weight: 700; font-size: 18px; }
+.flow .role { font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); font-weight: 600; }
+.flow .cls { font-family: var(--font-mono); font-size: 12.5px; font-weight: 500; overflow-wrap: anywhere; }
+.flow .job { font-size: 13px; color: var(--muted); line-height: 1.45; }
+.flow li.edge { background: var(--chip); border-style: dashed; }
+@media (max-width: 720px) {
+  .flow { grid-template-columns: 1fr; gap: 24px; }
+  .flow li:not(:last-child)::after { content: "\2193"; right: auto; left: 50%; top: auto; bottom: -22px; transform: translateX(-50%); }
+}
+.note { font-size: 14px; color: var(--muted); }
+.note strong { color: var(--fg); }
+
+/* Tables */
+.tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); background: var(--chip); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td code { white-space: nowrap; }
+.pill { display: inline-block; font-family: var(--font-mono); font-size: 12px; font-weight: 500; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.p200 { background: var(--ok-soft); color: var(--ok); }
+.p404 { background: var(--warn-soft); color: var(--warn); }
+.p400 { background: var(--bad-soft); color: var(--bad); }
+
+/* Code */
+.code { border-radius: 8px; overflow: hidden; background: var(--code-bg); min-width: 0; }
+.codebar { display: flex; justify-content: space-between; align-items: center; gap: 12px; background: var(--code-bar); padding: 6px 8px 6px 14px; }
+.codebar span { font-family: var(--font-mono); font-size: 12px; color: var(--code-muted); overflow-wrap: anywhere; }
+.codebar button { font-family: var(--font-body); font-size: 12px; font-weight: 500; color: var(--code-fg); background: transparent; border: 1px solid var(--code-muted); border-radius: 5px; padding: 3px 10px; cursor: pointer; flex: none; }
+.codebar button:hover { border-color: var(--code-fg); }
+pre { margin: 0; padding: 14px 16px; overflow-x: auto; color: var(--code-fg); font-family: var(--font-mono); font-size: 13px; line-height: 1.6; tab-size: 4; }
+.filelabel { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.filelabel .tag { font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 2px 9px; border-radius: 999px; }
+
+/* Lists */
+.checks { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 8px 24px; }
+.checks li { padding-left: 26px; position: relative; font-size: 15px; }
+.checks li::before { content: "\2713"; position: absolute; left: 0; color: var(--ok); font-weight: 700; }
+.qa { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+.qa div { padding: 12px 16px; border-bottom: 1px solid var(--line); }
+.qa div:last-child { border-bottom: 0; }
+.qa dt { font-weight: 600; font-size: 15px; }
+.qa dd { margin: 2px 0 0; color: var(--muted); font-size: 15px; }
+dl.qa { margin: 0; }
+.recipe { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 6px; }
+.footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 16px; }
+</style>
+
+<div class="wrap">
+
+  <header class="top">
+    <div class="kicker">REST API interview prep &middot; Java / Spring Boot</div>
+    <h1>The GET API template</h1>
+    <p class="sub">One read-only question solved in four steps: design it, code it, test it, then reuse the same shape for any other GET question.</p>
+    <nav class="stepnav" aria-label="Steps">
+      <a href="#step1"><b>1</b>Design</a>
+      <a href="#step2"><b>2</b>Code</a>
+      <a href="#step3"><b>3</b>Test</a>
+      <a href="#step4"><b>4</b>Reuse</a>
+    </nav>
+  </header>
+
+  <section class="question" aria-labelledby="q-title">
+    <h2 id="q-title">The question</h2>
+    <p>Build a <strong>read-only</strong> Product Catalog REST API.</p>
+    <ol>
+      <li><code>GET /api/v1/products/{id}</code> returns one product, or 404 if it does not exist.</li>
+      <li><code>GET /api/v1/products</code> returns all products, with an optional <code>category</code> filter and pagination.</li>
+      <li>Do not expose DB fields directly. Show <code>inStock</code> (true/false) instead of the raw stock count.</li>
+      <li>Use Controller, Service, Repository and DTO layers.</li>
+    </ol>
+  </section>
+
+  <!-- ============ STEP 1 ============ -->
+  <section class="step" id="step1">
+    <div class="step-head">
+      <div class="num">1</div>
+      <div>
+        <h2>Design</h2>
+        <p class="lede">Say this out loud before you type anything. It takes one minute and shows the interviewer you plan first.</p>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3>Decisions</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Decision</th><th>Answer</th></tr></thead>
+          <tbody>
+            <tr><td>Resource (noun)</td><td><code>Product</code></td></tr>
+            <tr><td>Endpoints</td><td><code>GET /api/v1/products/{id}</code> and <code>GET /api/v1/products?category=&amp;page=&amp;size=</code></td></tr>
+            <tr><td>Success</td><td><span class="pill p200">200</span> for both</td></tr>
+            <tr><td>Failure</td><td><span class="pill p404">404</span> id not found &nbsp; <span class="pill p400">400</span> bad id or bad page/size</td></tr>
+            <tr><td>Entity</td><td><code>Product</code>, maps to the DB table</td></tr>
+            <tr><td>DTO</td><td><code>ProductResponse</code>, what the client sees</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3>Class design</h3>
+      <ol class="flow">
+        <li class="edge"><span class="role">Client</span><span class="cls">GET /products/1</span><span class="job">Sends the request</span></li>
+        <li><span class="role">Controller</span><span class="cls">ProductController</span><span class="job">HTTP only. No logic.</span></li>
+        <li><span class="role">Service</span><span class="cls">ProductService</span><span class="job">Logic, 404 decision, Entity to DTO</span></li>
+        <li><span class="role">Repository</span><span class="cls">ProductRepository</span><span class="job">Queries only</span></li>
+        <li class="edge"><span class="role">Database</span><span class="cls">products table</span><span class="job">Rows</span></li>
+      </ol>
+      <p class="note"><strong>Entity</strong> <code>Product</code> lives below the Service and never leaves it. <strong>DTO</strong> <code>ProductResponse</code> is what travels up to the Controller and out to the client. Each layer talks only to the layer directly below it.</p>
+    </div>
+  </section>
+
+  <!-- ============ STEP 2 ============ -->
+  <section class="step" id="step2">
+    <div class="step-head">
+      <div class="num">2</div>
+      <div>
+        <h2>Code</h2>
+        <p class="lede">Seven small files, written bottom-up: data, entity, DTO, repository, exception, service, controller, then the error handler.</p>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="filelabel"><h3>Database setup</h3><span class="tag">H2, for practice</span></div>
+      <div class="code">
+        <div class="codebar"><span>src/main/resources/application.properties</span><button type="button">Copy</button></div>
+        <pre>spring.datasource.url=jdbc:h2:mem:catalog
+spring.jpa.hibernate.ddl-auto=create
+spring.jpa.defer-datasource-initialization=true
+spring.sql.init.mode=always</pre>
+      </div>
+      <div class="code">
+        <div class="codebar"><span>src/main/resources/data.sql</span><button type="button">Copy</button></div>
+        <pre>INSERT INTO products (name, category, price, stock) VALUES ('iPhone 15', 'MOBILE', 79999.00, 10);
+INSERT INTO products (name, category, price, stock) VALUES ('Galaxy S24', 'MOBILE', 69999.00, 0);
+INSERT INTO products (name, category, price, stock) VALUES ('MacBook Air', 'LAPTOP', 99999.00, 5);
+INSERT INTO products (name, category, price, stock) VALUES ('Dell XPS 13', 'LAPTOP', 89999.00, 3);
+INSERT INTO products (name, category, price, stock) VALUES ('Sony WH-1000XM5', 'AUDIO', 29999.00, 20);</pre>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="filelabel"><h3>Entity</h3><span class="tag">mirrors the table</span></div>
+      <div class="code">
+        <div class="codebar"><span>Product.java</span><button type="button">Copy</button></div>
+        <pre>@Entity
+@Table(name = "products")
+public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
+    private String name;
+
+    @Column(nullable = false)
+    private String category;
+
+    @Column(nullable = false)
+    private BigDecimal price;
+
+    private int stock;
+
+    protected Product() {}      // JPA needs a no-arg constructor
+
+    // getters only: a read-only API needs no setters
+    public Long getId() { return id; }
+    public String getName() { return name; }
+    public String getCategory() { return category; }
+    public BigDecimal getPrice() { return price; }
+    public int getStock() { return stock; }
+}</pre>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="filelabel"><h3>DTO</h3><span class="tag">what the client sees</span></div>
+      <div class="code">
+        <div class="codebar"><span>ProductResponse.java</span><button type="button">Copy</button></div>
+        <pre>public record ProductResponse(Long id, String name, String category,
+                              BigDecimal price, boolean inStock) {}</pre>
+      </div>
+      <p class="note"><code>stock</code> is gone and <code>inStock</code> is new. That difference is the reason a DTO exists.</p>
+    </div>
+
+    <div class="block">
+      <div class="filelabel"><h3>Repository</h3><span class="tag">queries only</span></div>
+      <div class="code">
+        <div class="codebar"><span>ProductRepository.java</span><button type="button">Copy</button></div>
+        <pre>public interface ProductRepository extends JpaRepository&lt;Product, Long&gt; {
+
+    // Spring generates the query from the method name
+    Page&lt;Product&gt; findByCategoryIgnoreCase(String category, Pageable pageable);
+}</pre>
+      </div>
+      <p class="note"><code>findById</code> and <code>findAll(Pageable)</code> come free from <code>JpaRepository</code>.</p>
+    </div>
+
+    <div class="block">
+      <div class="filelabel"><h3>Exception</h3></div>
+      <div class="code">
+        <div class="codebar"><span>ResourceNotFoundException.java</span><button type="button">Copy</button></div>
+        <pre>public class ResourceNotFoundException extends RuntimeException {
+    public ResourceNotFoundException(String message) { super(message); }
+}</pre>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="filelabel"><h3>Service</h3><span class="tag">logic + mapping</span></div>
+      <div class="code">
+        <div class="codebar"><span>ProductService.java</span><button type="button">Copy</button></div>
+        <pre>@Service
+public class ProductService {
+
+    private final ProductRepository repo;
+
+    public ProductService(ProductRepository repo) {
+        this.repo = repo;
+    }
+
+    @Transactional(readOnly = true)
+    public ProductResponse getById(Long id) {
+        Product p = repo.findById(id)
+                .orElseThrow(() -&gt; new ResourceNotFoundException("Product not found with id: " + id));
+        return toResponse(p);
+    }
+
+    @Transactional(readOnly = true)
+    public Page&lt;ProductResponse&gt; getAll(String category, Pageable pageable) {
+        Page&lt;Product&gt; page = (category == null || category.isBlank())
+                ? repo.findAll(pageable)
+                : repo.findByCategoryIgnoreCase(category, pageable);
+        return page.map(this::toResponse);
+    }
+
+    private ProductResponse toResponse(Product p) {
+        return new ProductResponse(p.getId(), p.getName(), p.getCategory(),
+                p.getPrice(), p.getStock() &gt; 0);
+    }
+}</pre>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="filelabel"><h3>Controller</h3><span class="tag">HTTP only</span></div>
+      <div class="code">
+        <div class="codebar"><span>ProductController.java</span><button type="button">Copy</button></div>
+        <pre>@RestController
+@RequestMapping("/api/v1/products")
+public class ProductController {
+
+    private final ProductService service;
+
+    public ProductController(ProductService service) {
+        this.service = service;
+    }
+
+    @GetMapping("/{id}")
+    public ProductResponse getById(@PathVariable Long id) {
+        return service.getById(id);
+    }
+
+    @GetMapping
+    public Page&lt;ProductResponse&gt; getAll(
+            @RequestParam(required = false) String category,
+            @PageableDefault(size = 10, sort = "id") Pageable pageable) {
+        return service.getAll(category, pageable);
+    }
+}</pre>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="filelabel"><h3>Global exception handler</h3><span class="tag">turns exceptions into 404 / 400</span></div>
+      <div class="code">
+        <div class="codebar"><span>GlobalExceptionHandler.java</span><button type="button">Copy</button></div>
+        <pre>public record ApiError(int status, String message, Instant timestamp) {}
+
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity&lt;ApiError&gt; notFound(ResourceNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(new ApiError(404, ex.getMessage(), Instant.now()));
+    }
+
+    // e.g. /products/abc (id is not a number)
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity&lt;ApiError&gt; badType(MethodArgumentTypeMismatchException ex) {
+        return ResponseEntity.badRequest()
+                .body(new ApiError(400, "Invalid value for: " + ex.getName(), Instant.now()));
+    }
+}</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STEP 3 ============ -->
+  <section class="step" id="step3">
+    <div class="step-head">
+      <div class="num">3</div>
+      <div>
+        <h2>Test</h2>
+        <p class="lede">Run the app and call each URL in Postman or the browser. Check the status code first, then the body.</p>
+      </div>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Request</th><th>Status</th><th>Expected result</th></tr></thead>
+        <tbody>
+          <tr><td><code>GET /api/v1/products/1</code></td><td><span class="pill p200">200</span></td><td><code>{"id":1,"name":"iPhone 15","category":"MOBILE","price":79999.00,"inStock":true}</code></td></tr>
+          <tr><td><code>GET /api/v1/products/2</code></td><td><span class="pill p200">200</span></td><td><code>"inStock": false</code> because stock is 0</td></tr>
+          <tr><td><code>GET /api/v1/products/99</code></td><td><span class="pill p404">404</span></td><td><code>{"status":404,"message":"Product not found with id: 99",...}</code></td></tr>
+          <tr><td><code>GET /api/v1/products/abc</code></td><td><span class="pill p400">400</span></td><td><code>Invalid value for: id</code></td></tr>
+          <tr><td><code>GET /api/v1/products?category=laptop</code></td><td><span class="pill p200">200</span></td><td>A page with 2 laptops (case-insensitive match)</td></tr>
+          <tr><td><code>GET /api/v1/products?page=0&amp;size=2&amp;sort=price,desc</code></td><td><span class="pill p200">200</span></td><td>Top 2 products by price</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="block">
+      <h3>Self-check before you say "done"</h3>
+      <ul class="checks">
+        <li>URL uses a plural noun and no verbs</li>
+        <li>Controller has no logic and returns a DTO, not the entity</li>
+        <li>Missing id gives 404 through the handler, not a 500 or null</li>
+        <li>List endpoints are paginated</li>
+        <li><code>IgnoreCase</code> used where it makes sense</li>
+        <li><code>@Transactional(readOnly = true)</code> on service reads</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <h3>Follow-up questions to expect</h3>
+      <dl class="qa">
+        <div><dt>Why not return the entity?</dt><dd>It hides internals, avoids lazy-load and recursion problems, and lets you shape the API contract separately from the DB.</dd></div>
+        <div><dt>What if there are 1 million products?</dt><dd>Pagination, an index on <code>category</code>, and a maximum page size.</dd></div>
+        <div><dt>The category filter is slow. What now?</dt><dd>Add an index: <code>@Table(indexes = @Index(columnList = "category"))</code>.</dd></div>
+        <div><dt>How would you cache it?</dt><dd><code>@Cacheable("products")</code> on <code>getById</code>, Redis in production, plus an eviction strategy.</dd></div>
+        <div><dt>No matches on the list endpoint: 404 or empty list?</dt><dd>Empty list with 200. An empty collection is still a valid result. 404 is for one specific missing resource.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ STEP 4 ============ -->
+  <section class="step" id="step4">
+    <div class="step-head">
+      <div class="num">4</div>
+      <div>
+        <h2>Reuse</h2>
+        <p class="lede">Every GET question is this same skeleton. Only four things change from one question to the next.</p>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3>What changes, what stays</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Thing that changes</th><th>Product example</th><th>Where you edit it</th></tr></thead>
+          <tbody>
+            <tr><td>Noun</td><td>Product</td><td>Entity, DTO, class names, URL</td></tr>
+            <tr><td>Query</td><td><code>findByCategoryIgnoreCase</code></td><td>Repository method</td></tr>
+            <tr><td>Entity to DTO difference</td><td><code>stock</code> becomes <code>inStock</code></td><td>Service <code>toResponse</code></td></tr>
+            <tr><td>Inputs</td><td><code>{id}</code>, <code>category</code></td><td>Controller parameters</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3>The 5-minute recipe</h3>
+      <ol class="recipe">
+        <li>Write the entity from the table in the question.</li>
+        <li>Write the response DTO: only the fields the client needs, plus any computed ones.</li>
+        <li>Write the repository method for the query the question asks.</li>
+        <li>Service: call the repo, throw <code>ResourceNotFoundException</code> if empty, map to the DTO.</li>
+        <li>Controller: <code>@GetMapping</code>, pull the parameters, call the service, return the DTO.</li>
+      </ol>
+    </div>
+
+    <div class="block">
+      <h3>Pattern map: which GET variant uses what</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>If the question says</th><th>URL</th><th>Controller parameter</th><th>Repository method</th></tr></thead>
+          <tbody>
+            <tr><td>Get one by id</td><td><code>/employees/{id}</code></td><td><code>@PathVariable Long id</code></td><td><code>findById(id)</code>, 404 if empty</td></tr>
+            <tr><td>Get all</td><td><code>/employees</code></td><td>none</td><td><code>findAll()</code></td></tr>
+            <tr><td>Filter by one field</td><td><code>/employees?department=IT</code></td><td><code>@RequestParam String department</code></td><td><code>findByDepartmentIgnoreCase(d)</code></td></tr>
+            <tr><td>Filter by several optional fields</td><td><code>/products?category=&amp;minPrice=&amp;maxPrice=</code></td><td>several <code>@RequestParam(required = false)</code></td><td><code>findByPriceBetween(min, max)</code> or a Specification</td></tr>
+            <tr><td>Search by keyword</td><td><code>/products/search?keyword=pho</code></td><td><code>@RequestParam String keyword</code></td><td><code>findByNameContainingIgnoreCase(k)</code></td></tr>
+            <tr><td>Date range</td><td><code>/orders?from=2026-01-01&amp;to=2026-01-31</code></td><td><code>@RequestParam @DateTimeFormat(iso = DATE) LocalDate from, to</code></td><td><code>findByOrderDateBetween(from, to)</code></td></tr>
+            <tr><td>Children of a parent</td><td><code>/customers/{id}/orders</code></td><td><code>@PathVariable Long id</code></td><td><code>findByCustomerId(id)</code></td></tr>
+            <tr><td>Top N, sorted</td><td><code>/employees/top-paid?limit=5</code></td><td><code>@RequestParam int limit</code></td><td><code>findAll(PageRequest.of(0, limit, Sort.by("salary").descending()))</code></td></tr>
+            <tr><td>Count or stats</td><td><code>/employees/count?department=IT</code></td><td><code>@RequestParam String department</code></td><td><code>countByDepartment(d)</code></td></tr>
+            <tr><td>Exists check</td><td><code>/users/exists?email=a@x.com</code></td><td><code>@RequestParam String email</code></td><td><code>existsByEmail(e)</code></td></tr>
+            <tr><td>Latest or first</td><td><code>/orders/latest</code></td><td>none</td><td><code>findFirstByOrderByCreatedAtDesc()</code></td></tr>
+            <tr><td>Custom query</td><td>any</td><td>any</td><td><code>@Query("select ...")</code> with <code>@Param</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3>Worked example with a new question</h3>
+      <p class="note"><strong>"Get all employees of a department with salary above X, sorted by salary descending."</strong> Only these pieces change. The service keeps its shape: call the repo, then <code>page.map(this::toResponse)</code>.</p>
+      <div class="code">
+        <div class="codebar"><span>Only the parts that change</span><button type="button">Copy</button></div>
+        <pre>// Repository
+Page&lt;Employee&gt; findByDepartmentIgnoreCaseAndSalaryGreaterThan(String dept, BigDecimal min, Pageable p);
+
+// DTO
+public record EmployeeResponse(Long id, String name, String department, BigDecimal salary) {}
+
+// Controller
+@GetMapping("/search")
+public Page&lt;EmployeeResponse&gt; search(
+        @RequestParam String department,
+        @RequestParam BigDecimal minSalary,
+        @PageableDefault(size = 10, sort = "salary", direction = Sort.Direction.DESC) Pageable pageable) {
+    return service.search(department, minSalary, pageable);
+}</pre>
+      </div>
+    </div>
+  </section>
+
+  <p class="footer">Stack: Java 17, Spring Boot 3.x (<code>jakarta.*</code> imports), Spring Data JPA, H2. Part of the REST API interview prep series.</p>
+</div>
+
+<script>
+document.querySelectorAll('.code').forEach(function (box) {
+  var btn = box.querySelector('button');
+  var pre = box.querySelector('pre');
+  if (!btn || !pre) return;
+  btn.addEventListener('click', function () {
+    var done = function (label) {
+      btn.textContent = label;
+      setTimeout(function () { btn.textContent = 'Copy'; }, 1500);
+    };
+    var fallback = function () {
+      try {
+        var r = document.createRange();
+        r.selectNodeContents(pre);
+        var s = window.getSelection();
+        s.removeAllRanges();
+        s.addRange(r);
+      } catch (e) {}
+      done('Selected');
+    };
+    try {
+      navigator.clipboard.writeText(pre.innerText).then(function () { done('Copied'); }, fallback);
+    } catch (e) { fallback(); }
+  });
+});
+</script>
+
+</body></html>

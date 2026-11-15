@@ -1,0 +1,754 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Customer Orders GET API</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+/* Layout: one narrow reading column. Header, a 4-step jump bar, then four numbered sections (Design, Code, Test, Reuse). */
+:root {
+  --bg: #F5F8FA;
+  --surface: #FFFFFF;
+  --fg: #14212B;
+  --muted: #55667A;
+  --line: #D6DFE7;
+  --accent: #0A6F8F;
+  --accent-soft: #DDF0F6;
+  --accent-ink: #FFFFFF;
+  --chip: #E6EDF3;
+  --code-bg: #12202C;
+  --code-fg: #DCE7F0;
+  --code-bar: #1B2D3C;
+  --code-muted: #8FA4B6;
+  --ok: #0E7A45;
+  --ok-soft: #DCF2E5;
+  --warn: #9A5A00;
+  --warn-soft: #FBEBCF;
+  --bad: #B3261E;
+  --bad-soft: #FADAD7;
+  --font-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E171F;
+    --surface: #152230;
+    --fg: #E4ECF2;
+    --muted: #9AACBC;
+    --line: #26384A;
+    --accent: #55C0E0;
+    --accent-soft: #15374A;
+    --accent-ink: #08202B;
+    --chip: #1F3142;
+    --code-bg: #0A121A;
+    --code-fg: #D6E2EC;
+    --code-bar: #14212D;
+    --code-muted: #7F95A8;
+    --ok: #5FD497;
+    --ok-soft: #12382A;
+    --warn: #F0B45A;
+    --warn-soft: #402E10;
+    --bad: #FF8A80;
+    --bad-soft: #43201E;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E171F;
+  --surface: #152230;
+  --fg: #E4ECF2;
+  --muted: #9AACBC;
+  --line: #26384A;
+  --accent: #55C0E0;
+  --accent-soft: #15374A;
+  --accent-ink: #08202B;
+  --chip: #1F3142;
+  --code-bg: #0A121A;
+  --code-fg: #D6E2EC;
+  --code-bar: #14212D;
+  --code-muted: #7F95A8;
+  --ok: #5FD497;
+  --ok-soft: #12382A;
+  --warn: #F0B45A;
+  --warn-soft: #402E10;
+  --bad: #FF8A80;
+  --bad-soft: #43201E;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  padding-block: 28px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 920px; margin: 0 auto; display: flex; flex-direction: column; gap: 48px; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; line-height: 1.2; margin: 0; }
+p { margin: 0; }
+code { font-family: var(--font-mono); font-size: 0.88em; background: var(--chip); padding: 1px 6px; border-radius: 4px; overflow-wrap: anywhere; }
+a { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Header */
+.top { display: flex; flex-direction: column; gap: 14px; }
+.kicker { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+h1 { font-size: clamp(28px, 5vw, 40px); font-weight: 700; }
+.sub { color: var(--muted); max-width: 65ch; }
+.stepnav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.stepnav a {
+  display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: var(--fg);
+  background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px 6px 8px; font-weight: 500; font-size: 14px;
+}
+.stepnav a:hover { border-color: var(--accent); }
+.stepnav b { background: var(--accent); color: var(--accent-ink); width: 22px; height: 22px; border-radius: 50%; display: inline-grid; place-items: center; font-size: 12px; font-family: var(--font-display); }
+
+/* The question and the "what is new" box */
+.question { background: var(--accent-soft); border-radius: 10px; padding: 20px 22px; display: flex; flex-direction: column; gap: 10px; }
+.question h2 { font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+.question ol { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 6px; }
+.newbox { border: 1px solid var(--line); background: var(--surface); border-radius: 10px; padding: 18px 22px; display: flex; flex-direction: column; gap: 10px; }
+.newbox h2 { font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.newbox ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; }
+
+/* Step sections */
+.step { display: flex; flex-direction: column; gap: 22px; scroll-margin-top: 16px; }
+.step-head { display: flex; gap: 16px; align-items: flex-start; border-top: 2px solid var(--fg); padding-top: 18px; }
+.num { flex: none; width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; font-size: 20px; }
+.step-head h2 { font-size: clamp(24px, 4vw, 30px); }
+.lede { color: var(--muted); margin-top: 4px; max-width: 62ch; }
+h3 { font-size: 18px; font-weight: 600; }
+.block { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+
+/* Flow diagram */
+.flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 22px; }
+.flow li { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 12px 14px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.flow li:not(:last-child)::after { content: "\2192"; position: absolute; right: -19px; top: 50%; transform: translateY(-50%); color: var(--accent); font-weight: 700; font-size: 18px; }
+.flow .role { font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); font-weight: 600; }
+.flow .cls { font-family: var(--font-mono); font-size: 12.5px; font-weight: 500; overflow-wrap: anywhere; }
+.flow .job { font-size: 13px; color: var(--muted); line-height: 1.45; }
+.flow li.edge { background: var(--chip); border-style: dashed; }
+@media (max-width: 720px) {
+  .flow { grid-template-columns: 1fr; gap: 24px; }
+  .flow li:not(:last-child)::after { content: "\2193"; right: auto; left: 50%; top: auto; bottom: -22px; transform: translateX(-50%); }
+}
+
+/* Relationship strip */
+.rel { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.rel .ent { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; min-width: 0; }
+.rel .ent b { display: block; font-family: var(--font-mono); font-size: 13px; }
+.rel .ent span { font-size: 13px; color: var(--muted); }
+.rel .link { font-family: var(--font-mono); font-size: 12px; color: var(--accent); font-weight: 500; }
+
+.note { font-size: 14px; color: var(--muted); }
+.note strong { color: var(--fg); }
+
+/* Tables */
+.tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); background: var(--chip); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td code { white-space: nowrap; }
+.pill { display: inline-block; font-family: var(--font-mono); font-size: 12px; font-weight: 500; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.p200 { background: var(--ok-soft); color: var(--ok); }
+.p404 { background: var(--warn-soft); color: var(--warn); }
+.p400 { background: var(--bad-soft); color: var(--bad); }
+
+/* Code */
+.code { border-radius: 8px; overflow: hidden; background: var(--code-bg); min-width: 0; }
+.codebar { display: flex; justify-content: space-between; align-items: center; gap: 12px; background: var(--code-bar); padding: 6px 8px 6px 14px; }
+.codebar span { font-family: var(--font-mono); font-size: 12px; color: var(--code-muted); overflow-wrap: anywhere; }
+.codebar button { font-family: var(--font-body); font-size: 12px; font-weight: 500; color: var(--code-fg); background: transparent; border: 1px solid var(--code-muted); border-radius: 5px; padding: 3px 10px; cursor: pointer; flex: none; }
+.codebar button:hover { border-color: var(--code-fg); }
+pre { margin: 0; padding: 14px 16px; overflow-x: auto; color: var(--code-fg); font-family: var(--font-mono); font-size: 13px; line-height: 1.6; tab-size: 4; }
+.filelabel { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.filelabel .tag { font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 2px 9px; border-radius: 999px; }
+
+/* Lists */
+.checks { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 8px 24px; }
+.checks li { padding-left: 26px; position: relative; font-size: 15px; }
+.checks li::before { content: "\2713"; position: absolute; left: 0; color: var(--ok); font-weight: 700; }
+.qa { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+.qa div { padding: 12px 16px; border-bottom: 1px solid var(--line); }
+.qa div:last-child { border-bottom: 0; }
+.qa dt { font-weight: 600; font-size: 15px; }
+.qa dd { margin: 2px 0 0; color: var(--muted); font-size: 15px; }
+dl.qa { margin: 0; }
+.recipe { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 6px; }
+.footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 16px; }
+</style>
+
+<div class="wrap">
+
+  <header class="top">
+    <div class="kicker">REST API interview prep &middot; Java / Spring Boot &middot; GET question 2</div>
+    <h1>Customer Orders GET API</h1>
+    <p class="sub">A second read-only question, one level harder than the Product Catalog. Same four steps: design it, code it, test it, then reuse the shape for any parent-child GET question.</p>
+    <nav class="stepnav" aria-label="Steps">
+      <a href="#step1"><b>1</b>Design</a>
+      <a href="#step2"><b>2</b>Code</a>
+      <a href="#step3"><b>3</b>Test</a>
+      <a href="#step4"><b>4</b>Reuse</a>
+    </nav>
+  </header>
+
+  <section class="question" aria-labelledby="q-title">
+    <h2 id="q-title">The question</h2>
+    <p>Build a <strong>read-only</strong> Order History API for an online store.</p>
+    <ol>
+      <li><code>GET /api/v1/customers/{customerId}/orders</code> returns that customer's orders, newest first, with pagination.</li>
+      <li>It accepts optional filters: <code>status</code>, and a date range with <code>from</code> and <code>to</code>. Any combination must work.</li>
+      <li><code>GET /api/v1/customers/{customerId}/orders/{orderId}</code> returns one order. An order that belongs to a different customer counts as not found.</li>
+      <li>The response shows the customer's name and a computed <code>totalAmount</code> (quantity &times; unit price). It does not show <code>unitPrice</code>.</li>
+      <li>Use Controller, Service, Repository and DTO layers.</li>
+    </ol>
+  </section>
+
+  <section class="newbox" aria-labelledby="new-title">
+    <h2 id="new-title">What is new compared to the Product question</h2>
+    <ul>
+      <li><strong>Nested URL.</strong> The orders live under a customer, so the customer id is part of the path.</li>
+      <li><strong>Several optional filters</strong> that can be combined in any way, handled with one query.</li>
+      <li><strong>Ownership check.</strong> Order 5 must not be readable through customer 1.</li>
+      <li><strong>Computed field</strong> and a <strong>related entity</strong> (customer name) in the DTO.</li>
+    </ul>
+  </section>
+
+  <!-- ============ STEP 1 ============ -->
+  <section class="step" id="step1">
+    <div class="step-head">
+      <div class="num">1</div>
+      <div>
+        <h2>Design</h2>
+        <p class="lede">Say this out loud before you type anything. It takes one minute and shows the interviewer you plan first.</p>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3>Decisions</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Decision</th><th>Answer</th></tr></thead>
+          <tbody>
+            <tr><td>Resources (nouns)</td><td><code>Customer</code> (parent) and <code>CustomerOrder</code> (child)</td></tr>
+            <tr><td>Endpoints</td><td><code>GET /api/v1/customers/{customerId}/orders</code> and <code>GET /api/v1/customers/{customerId}/orders/{orderId}</code></td></tr>
+            <tr><td>Path or query?</td><td>Ids identify things, so they go in the <strong>path</strong>. Filters narrow a list, so <code>status</code>, <code>from</code>, <code>to</code>, <code>page</code>, <code>size</code> go in the <strong>query string</strong>.</td></tr>
+            <tr><td>Success</td><td><span class="pill p200">200</span> for both. A customer with no matching orders still gets 200 and an empty list.</td></tr>
+            <tr><td>Failure</td><td><span class="pill p404">404</span> customer or order not found &nbsp; <span class="pill p400">400</span> bad status, bad date, or <code>from</code> after <code>to</code></td></tr>
+            <tr><td>Entities</td><td><code>Customer</code>, <code>CustomerOrder</code>, enum <code>OrderStatus</code></td></tr>
+            <tr><td>DTO</td><td><code>OrderResponse</code>, with computed <code>totalAmount</code> and <code>customerName</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3>Relationship between the entities</h3>
+      <div class="rel">
+        <div class="ent"><b>Customer</b><span>id, name</span></div>
+        <div class="link">1 &mdash; many</div>
+        <div class="ent"><b>CustomerOrder</b><span>id, productName, quantity, unitPrice, status, orderDate, customer</span></div>
+      </div>
+      <p class="note">The foreign key <code>customer_id</code> sits on the order table. In Java the order holds a <code>@ManyToOne</code> reference to its customer.</p>
+    </div>
+
+    <div class="block">
+      <h3>Class design</h3>
+      <ol class="flow">
+        <li class="edge"><span class="role">Client</span><span class="cls">GET /customers/1/orders</span><span class="job">Sends the request</span></li>
+        <li><span class="role">Controller</span><span class="cls">CustomerOrderController</span><span class="job">HTTP only. Reads path and query values.</span></li>
+        <li><span class="role">Service</span><span class="cls">CustomerOrderService</span><span class="job">Checks customer, validates dates, maps to DTO</span></li>
+        <li><span class="role">Repository</span><span class="cls">CustomerOrderRepository</span><span class="job">One filter query, one lookup by id + customer</span></li>
+        <li class="edge"><span class="role">Database</span><span class="cls">customer_orders</span><span class="job">Rows</span></li>
+      </ol>
+      <p class="note"><strong>Entities</strong> stay below the Service. <strong>DTO</strong> <code>OrderResponse</code> is what goes up and out. The Service also uses <code>CustomerRepository</code> for the "does this customer exist" check.</p>
+    </div>
+  </section>
+
+  <!-- ============ STEP 2 ============ -->
+  <section class="step" id="step2">
+    <div class="step-head">
+      <div class="num">2</div>
+      <div>
+        <h2>Code</h2>
+        <p class="lede">Write it bottom-up: data, entities, DTO, repositories, exceptions, service, controller, then the error handler.</p>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="filelabel"><h3>Database setup</h3><span class="tag">H2, for practice</span></div>
+      <div class="code">
+        <div class="codebar"><span>src/main/resources/application.properties</span><button type="button">Copy</button></div>
+        <pre>spring.datasource.url=jdbc:h2:mem:shop
+spring.jpa.hibernate.ddl-auto=create
+spring.jpa.defer-datasource-initialization=true
+spring.sql.init.mode=always</pre>
+      </div>
+      <div class="code">
+        <div class="codebar"><span>src/main/resources/data.sql</span><button type="button">Copy</button></div>
+        <pre>INSERT INTO customers (name) VALUES ('Asha Rao');
+INSERT INTO customers (name) VALUES ('Vikram Shah');
+
+INSERT INTO customer_orders (customer_id, product_name, quantity, unit_price, status, order_date) VALUES (1, 'Wireless Mouse',       2,   799.00, 'DELIVERED', '2026-09-05');
+INSERT INTO customer_orders (customer_id, product_name, quantity, unit_price, status, order_date) VALUES (1, 'Mechanical Keyboard',  1,  4499.00, 'SHIPPED',   '2026-10-12');
+INSERT INTO customer_orders (customer_id, product_name, quantity, unit_price, status, order_date) VALUES (1, 'USB-C Cable',         3,   299.00, 'CANCELLED', '2026-10-20');
+INSERT INTO customer_orders (customer_id, product_name, quantity, unit_price, status, order_date) VALUES (1, '27-inch Monitor',     1, 15999.00, 'PLACED',    '2026-11-10');
+INSERT INTO customer_orders (customer_id, product_name, quantity, unit_price, status, order_date) VALUES (2, 'Laptop Stand',        1,  1999.00, 'DELIVERED', '2026-10-02');</pre>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="filelabel"><h3>Entities and enum</h3><span class="tag">mirror the tables</span></div>
+      <div class="code">
+        <div class="codebar"><span>OrderStatus.java</span><button type="button">Copy</button></div>
+        <pre>public enum OrderStatus { PLACED, SHIPPED, DELIVERED, CANCELLED }</pre>
+      </div>
+      <div class="code">
+        <div class="codebar"><span>Customer.java</span><button type="button">Copy</button></div>
+        <pre>@Entity
+@Table(name = "customers")
+public class Customer {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
+    private String name;
+
+    protected Customer() {}
+
+    public Long getId() { return id; }
+    public String getName() { return name; }
+}</pre>
+      </div>
+      <div class="code">
+        <div class="codebar"><span>CustomerOrder.java</span><button type="button">Copy</button></div>
+        <pre>@Entity
+@Table(name = "customer_orders")      // "Order" is a reserved word in SQL and JPQL, so use another name
+public class CustomerOrder {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+    @Column(nullable = false)
+    private String productName;
+
+    private int quantity;
+
+    @Column(nullable = false)
+    private BigDecimal unitPrice;
+
+    @Enumerated(EnumType.STRING)      // store the name, not the ordinal number
+    @Column(nullable = false)
+    private OrderStatus status;
+
+    @Column(nullable = false)
+    private LocalDate orderDate;
+
+    protected CustomerOrder() {}
+
+    // getters only: a read-only API needs no setters
+    public Long getId() { return id; }
+    public Customer getCustomer() { return customer; }
+    public String getProductName() { return productName; }
+    public int getQuantity() { return quantity; }
+    public BigDecimal getUnitPrice() { return unitPrice; }
+    public OrderStatus getStatus() { return status; }
+    public LocalDate getOrderDate() { return orderDate; }
+}</pre>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="filelabel"><h3>DTO</h3><span class="tag">what the client sees</span></div>
+      <div class="code">
+        <div class="codebar"><span>OrderResponse.java</span><button type="button">Copy</button></div>
+        <pre>public record OrderResponse(Long id, String customerName, String productName,
+                            int quantity, BigDecimal totalAmount,
+                            OrderStatus status, LocalDate orderDate) {}</pre>
+      </div>
+      <p class="note"><code>unitPrice</code> is gone. <code>totalAmount</code> and <code>customerName</code> are new. Neither exists as a column on the order table.</p>
+    </div>
+
+    <div class="block">
+      <div class="filelabel"><h3>Repositories</h3><span class="tag">queries only</span></div>
+      <div class="code">
+        <div class="codebar"><span>CustomerRepository.java</span><button type="button">Copy</button></div>
+        <pre>public interface CustomerRepository extends JpaRepository&lt;Customer, Long&gt; {
+    // existsById(id) is already provided
+}</pre>
+      </div>
+      <div class="code">
+        <div class="codebar"><span>CustomerOrderRepository.java</span><button type="button">Copy</button></div>
+        <pre>public interface CustomerOrderRepository extends JpaRepository&lt;CustomerOrder, Long&gt; {
+
+    // One query for every combination of optional filters.
+    // "(:x is null or column = :x)" means: skip this filter when the value is null.
+    @EntityGraph(attributePaths = "customer")      // load the customer in the same query (avoids N+1)
+    @Query("""
+            select o from CustomerOrder o
+            where o.customer.id = :customerId
+              and (:status is null or o.status = :status)
+              and (:fromDate is null or o.orderDate &gt;= :fromDate)
+              and (:toDate is null or o.orderDate &lt;= :toDate)
+            """)
+    Page&lt;CustomerOrder&gt; search(@Param("customerId") Long customerId,
+                               @Param("status") OrderStatus status,
+                               @Param("fromDate") LocalDate fromDate,
+                               @Param("toDate") LocalDate toDate,
+                               Pageable pageable);
+
+    // Id AND owner in one lookup: an order of another customer simply is not found
+    @EntityGraph(attributePaths = "customer")
+    Optional&lt;CustomerOrder&gt; findByIdAndCustomerId(Long id, Long customerId);
+}</pre>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="filelabel"><h3>Exceptions</h3></div>
+      <div class="code">
+        <div class="codebar"><span>ResourceNotFoundException.java</span><button type="button">Copy</button></div>
+        <pre>public class ResourceNotFoundException extends RuntimeException {
+    public ResourceNotFoundException(String message) { super(message); }
+}</pre>
+      </div>
+      <div class="code">
+        <div class="codebar"><span>BadRequestException.java</span><button type="button">Copy</button></div>
+        <pre>public class BadRequestException extends RuntimeException {
+    public BadRequestException(String message) { super(message); }
+}</pre>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="filelabel"><h3>Service</h3><span class="tag">checks + mapping</span></div>
+      <div class="code">
+        <div class="codebar"><span>CustomerOrderService.java</span><button type="button">Copy</button></div>
+        <pre>@Service
+public class CustomerOrderService {
+
+    private final CustomerOrderRepository orderRepo;
+    private final CustomerRepository customerRepo;
+
+    public CustomerOrderService(CustomerOrderRepository orderRepo, CustomerRepository customerRepo) {
+        this.orderRepo = orderRepo;
+        this.customerRepo = customerRepo;
+    }
+
+    @Transactional(readOnly = true)
+    public Page&lt;OrderResponse&gt; list(Long customerId, OrderStatus status,
+                                    LocalDate fromDate, LocalDate toDate, Pageable pageable) {
+        if (fromDate != null &amp;&amp; toDate != null &amp;&amp; fromDate.isAfter(toDate)) {
+            throw new BadRequestException("'from' must not be after 'to'");
+        }
+        ensureCustomerExists(customerId);
+        return orderRepo.search(customerId, status, fromDate, toDate, pageable)
+                .map(this::toResponse);
+    }
+
+    @Transactional(readOnly = true)
+    public OrderResponse getOne(Long customerId, Long orderId) {
+        ensureCustomerExists(customerId);
+        CustomerOrder o = orderRepo.findByIdAndCustomerId(orderId, customerId)
+                .orElseThrow(() -&gt; new ResourceNotFoundException(
+                        "Order " + orderId + " not found for customer " + customerId));
+        return toResponse(o);
+    }
+
+    private void ensureCustomerExists(Long customerId) {
+        if (!customerRepo.existsById(customerId)) {
+            throw new ResourceNotFoundException("Customer not found with id: " + customerId);
+        }
+    }
+
+    private OrderResponse toResponse(CustomerOrder o) {
+        BigDecimal total = o.getUnitPrice().multiply(BigDecimal.valueOf(o.getQuantity()));
+        return new OrderResponse(o.getId(), o.getCustomer().getName(), o.getProductName(),
+                o.getQuantity(), total, o.getStatus(), o.getOrderDate());
+    }
+}</pre>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="filelabel"><h3>Controller</h3><span class="tag">HTTP only</span></div>
+      <div class="code">
+        <div class="codebar"><span>CustomerOrderController.java</span><button type="button">Copy</button></div>
+        <pre>@RestController
+@RequestMapping("/api/v1/customers/{customerId}/orders")
+public class CustomerOrderController {
+
+    private final CustomerOrderService service;
+
+    public CustomerOrderController(CustomerOrderService service) {
+        this.service = service;
+    }
+
+    @GetMapping
+    public Page&lt;OrderResponse&gt; list(
+            @PathVariable Long customerId,
+            @RequestParam(required = false) OrderStatus status,
+            @RequestParam(name = "from", required = false)
+                @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fromDate,
+            @RequestParam(name = "to", required = false)
+                @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate toDate,
+            @PageableDefault(size = 10, sort = "orderDate", direction = Sort.Direction.DESC) Pageable pageable) {
+        return service.list(customerId, status, fromDate, toDate, pageable);
+    }
+
+    @GetMapping("/{orderId}")
+    public OrderResponse getOne(@PathVariable Long customerId, @PathVariable Long orderId) {
+        return service.getOne(customerId, orderId);
+    }
+}</pre>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="filelabel"><h3>Global exception handler</h3><span class="tag">turns exceptions into 404 / 400</span></div>
+      <div class="code">
+        <div class="codebar"><span>GlobalExceptionHandler.java</span><button type="button">Copy</button></div>
+        <pre>public record ApiError(int status, String message, Instant timestamp) {}
+
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity&lt;ApiError&gt; notFound(ResourceNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(new ApiError(404, ex.getMessage(), Instant.now()));
+    }
+
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity&lt;ApiError&gt; badRequest(BadRequestException ex) {
+        return ResponseEntity.badRequest()
+                .body(new ApiError(400, ex.getMessage(), Instant.now()));
+    }
+
+    // Covers an unknown status (?status=abc), a bad date (?from=15-11-2026) and a non-numeric id
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity&lt;ApiError&gt; badType(MethodArgumentTypeMismatchException ex) {
+        return ResponseEntity.badRequest()
+                .body(new ApiError(400, "Invalid value for: " + ex.getName(), Instant.now()));
+    }
+}</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STEP 3 ============ -->
+  <section class="step" id="step3">
+    <div class="step-head">
+      <div class="num">3</div>
+      <div>
+        <h2>Test</h2>
+        <p class="lede">Run the app and call each URL in Postman or the browser. Check the status code first, then the body. The results below use the sample data above.</p>
+      </div>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Request</th><th>Status</th><th>Expected result</th></tr></thead>
+        <tbody>
+          <tr><td><code>GET /api/v1/customers/1/orders</code></td><td><span class="pill p200">200</span></td><td>4 orders, newest first (Monitor, Cable, Keyboard, Mouse)</td></tr>
+          <tr><td><code>GET /api/v1/customers/1/orders?status=SHIPPED</code></td><td><span class="pill p200">200</span></td><td>1 order: the Mechanical Keyboard</td></tr>
+          <tr><td><code>GET /api/v1/customers/1/orders?from=2026-10-01&amp;to=2026-10-31</code></td><td><span class="pill p200">200</span></td><td>2 orders: the Cable and the Keyboard</td></tr>
+          <tr><td><code>GET /api/v1/customers/1/orders?status=DELIVERED&amp;from=2026-09-01</code></td><td><span class="pill p200">200</span></td><td>1 order: the Wireless Mouse</td></tr>
+          <tr><td><code>GET /api/v1/customers/1/orders?status=SHIPPED&amp;from=2026-11-01</code></td><td><span class="pill p200">200</span></td><td>Empty page. Valid request, no matches.</td></tr>
+          <tr><td><code>GET /api/v1/customers/1/orders/2</code></td><td><span class="pill p200">200</span></td><td><code>{"id":2,"customerName":"Asha Rao","productName":"Mechanical Keyboard","quantity":1,"totalAmount":4499.00,"status":"SHIPPED","orderDate":"2026-10-12"}</code></td></tr>
+          <tr><td><code>GET /api/v1/customers/1/orders/1</code></td><td><span class="pill p200">200</span></td><td><code>"totalAmount": 1598.00</code> (2 &times; 799.00)</td></tr>
+          <tr><td><code>GET /api/v1/customers/1/orders/5</code></td><td><span class="pill p404">404</span></td><td>Order 5 exists but belongs to customer 2</td></tr>
+          <tr><td><code>GET /api/v1/customers/99/orders</code></td><td><span class="pill p404">404</span></td><td><code>Customer not found with id: 99</code></td></tr>
+          <tr><td><code>GET /api/v1/customers/1/orders?from=2026-11-01&amp;to=2026-10-01</code></td><td><span class="pill p400">400</span></td><td><code>'from' must not be after 'to'</code></td></tr>
+          <tr><td><code>GET /api/v1/customers/1/orders?status=shipped</code></td><td><span class="pill p400">400</span></td><td>Enum matching is case-sensitive. Use <code>SHIPPED</code>.</td></tr>
+          <tr><td><code>GET /api/v1/customers/1/orders?from=15-11-2026</code></td><td><span class="pill p400">400</span></td><td>Dates must be ISO: <code>yyyy-MM-dd</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="block">
+      <h3>Self-check before you say "done"</h3>
+      <ul class="checks">
+        <li>Parent id is in the path, filters are in the query string</li>
+        <li>Single order is looked up by order id <strong>and</strong> customer id</li>
+        <li>Unknown customer gives 404, no orders gives 200 with an empty list</li>
+        <li>Bad enum, bad date and <code>from</code> after <code>to</code> give 400</li>
+        <li>DTO hides <code>unitPrice</code> and adds <code>totalAmount</code></li>
+        <li>Customer is fetched with the order (<code>@EntityGraph</code>), not one query per row</li>
+        <li>Money is <code>BigDecimal</code>, never <code>double</code></li>
+        <li>List is paginated with a default sort</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <h3>Follow-up questions to expect</h3>
+      <dl class="qa">
+        <div><dt>Why look up the order by id and customer id together?</dt><dd>Looking up by order id alone would let anyone read another customer's order by guessing ids. This is a classic access-control bug. Returning 404 also avoids confirming that the order exists.</dd></div>
+        <div><dt>Why 404 for an unknown customer but 200 for a customer with no orders?</dt><dd>A missing customer is a missing resource. An empty list is a valid answer to "which orders match?".</dd></div>
+        <div><dt>What is the N+1 problem here, and how did you avoid it?</dt><dd>Reading <code>order.getCustomer().getName()</code> on a lazy relation fires one extra query per row. <code>@EntityGraph(attributePaths = "customer")</code> loads the customer in the same query.</dd></div>
+        <div><dt>What if there are 6 optional filters?</dt><dd>Switch from the <code>is null or</code> query to JPA Specifications or Querydsl, so each filter is a small piece added only when present.</dd></div>
+        <div><dt>The <code>:x is null</code> trick fails on PostgreSQL. Why?</dt><dd>Some databases cannot infer the type of a null parameter in <code>:x is null</code>. Fixes: cast the parameter in the query, or use Specifications. It works on H2, which is why it is fine for the interview.</dd></div>
+        <div><dt>Why is the entity not called <code>Order</code>?</dt><dd><code>ORDER</code> is a reserved word in SQL and JPQL (<code>order by</code>). Use <code>CustomerOrder</code> or set <code>@Table(name = "orders")</code> and avoid the name in JPQL.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ STEP 4 ============ -->
+  <section class="step" id="step4">
+    <div class="step-head">
+      <div class="num">4</div>
+      <div>
+        <h2>Reuse</h2>
+        <p class="lede">Any "list the children of a parent, with filters" question is this same shape. Only the pieces below change.</p>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3>What changes, what stays</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Thing that changes</th><th>Orders example</th><th>Where you edit it</th></tr></thead>
+          <tbody>
+            <tr><td>Parent and child nouns</td><td>Customer, CustomerOrder</td><td>Entities, URL, class names</td></tr>
+            <tr><td>Filters</td><td><code>status</code>, <code>from</code>, <code>to</code></td><td>Controller params, repository <code>@Query</code></td></tr>
+            <tr><td>Computed or joined DTO fields</td><td><code>totalAmount</code>, <code>customerName</code></td><td>Service <code>toResponse</code></td></tr>
+            <tr><td>Business validation</td><td><code>from</code> not after <code>to</code></td><td>Start of the service method</td></tr>
+            <tr><td><strong>Stays the same</strong></td><td>Parent exists check, owner-aware lookup, 404/400 handler, pagination</td><td>Copy as is</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3>The 6-step recipe for a parent-child GET</h3>
+      <ol class="recipe">
+        <li>Name the parent and child. Put the parent id in the path: <code>/parents/{parentId}/children</code>.</li>
+        <li>List the filters the question mentions. Each becomes an optional <code>@RequestParam</code>.</li>
+        <li>Repository: one <code>@Query</code> with <code>(:x is null or ...)</code> per filter, plus <code>findByIdAndParentId</code> for the single lookup.</li>
+        <li>Service: validate input combinations, check the parent exists, call the repository, map to the DTO.</li>
+        <li>DTO: drop internal fields, add computed and joined fields.</li>
+        <li>Handler: map not-found to 404 and bad input to 400. Add <code>@EntityGraph</code> if the DTO touches a lazy relation.</li>
+      </ol>
+    </div>
+
+    <div class="block">
+      <h3>Which filter technique to pick</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>How many optional filters</th><th>Use</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td>None or one</td><td>Derived method name</td><td><code>findByCustomerIdAndStatus(id, status, pageable)</code></td></tr>
+            <tr><td>Two to four</td><td>One <code>@Query</code> with the null-check pattern</td><td><code>search(...)</code> in this question</td></tr>
+            <tr><td>Five or more, or user-built searches</td><td>JPA Specification or Querydsl</td><td><code>repo.findAll(spec, pageable)</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3>Pattern map: same shape, new domain</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Domain</th><th>URL</th><th>Filters</th><th>Computed DTO field</th></tr></thead>
+          <tbody>
+            <tr><td>Bank account transactions</td><td><code>/accounts/{accountId}/transactions</code></td><td><code>type</code>, <code>from</code>, <code>to</code></td><td>signed amount (debit negative)</td></tr>
+            <tr><td>Hospital appointments</td><td><code>/patients/{patientId}/appointments</code></td><td><code>status</code>, <code>doctor</code>, date range</td><td>doctor name, duration</td></tr>
+            <tr><td>Library loans</td><td><code>/members/{memberId}/loans</code></td><td><code>returned</code>, date range</td><td><code>overdue</code> (true or false), days late</td></tr>
+            <tr><td>Course enrolments</td><td><code>/students/{studentId}/enrolments</code></td><td><code>semester</code>, <code>status</code></td><td>course title, credits</td></tr>
+            <tr><td>Expense tracker</td><td><code>/users/{userId}/expenses</code></td><td><code>category</code>, <code>minAmount</code>, date range</td><td>amount with currency label</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3>Worked example with a new question</h3>
+      <p class="note"><strong>"Get a bank account's transactions, filtered by type and date range, newest first. Debits are shown as negative amounts."</strong> Only these pieces change. The service keeps its shape: validate, check the account exists, call the repository, map to the DTO.</p>
+      <div class="code">
+        <div class="codebar"><span>Only the parts that change</span><button type="button">Copy</button></div>
+        <pre>// Repository
+@EntityGraph(attributePaths = "account")
+@Query("""
+        select t from AccountTransaction t
+        where t.account.id = :accountId
+          and (:type is null or t.type = :type)
+          and (:fromDate is null or t.txnDate &gt;= :fromDate)
+          and (:toDate is null or t.txnDate &lt;= :toDate)
+        """)
+Page&lt;AccountTransaction&gt; search(@Param("accountId") Long accountId,
+                                @Param("type") TransactionType type,
+                                @Param("fromDate") LocalDate fromDate,
+                                @Param("toDate") LocalDate toDate,
+                                Pageable pageable);
+
+// DTO
+public record TransactionResponse(Long id, TransactionType type,
+                                  BigDecimal signedAmount, LocalDate txnDate) {}
+
+// Service: the computed field
+private TransactionResponse toResponse(AccountTransaction t) {
+    BigDecimal signed = t.getType() == TransactionType.DEBIT
+            ? t.getAmount().negate()
+            : t.getAmount();
+    return new TransactionResponse(t.getId(), t.getType(), signed, t.getTxnDate());
+}
+
+// Controller
+@GetMapping
+public Page&lt;TransactionResponse&gt; list(@PathVariable Long accountId,
+        @RequestParam(required = false) TransactionType type,
+        @RequestParam(name = "from", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fromDate,
+        @RequestParam(name = "to", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate toDate,
+        @PageableDefault(size = 10, sort = "txnDate", direction = Sort.Direction.DESC) Pageable pageable) {
+    return service.list(accountId, type, fromDate, toDate, pageable);
+}</pre>
+      </div>
+    </div>
+  </section>
+
+  <p class="footer">Stack: Java 17, Spring Boot 3.x (<code>jakarta.*</code> imports), Spring Data JPA, H2. Part of the REST API interview prep series. The first question is the Product Catalog GET API.</p>
+</div>
+
+<script>
+document.querySelectorAll('.code').forEach(function (box) {
+  var btn = box.querySelector('button');
+  var pre = box.querySelector('pre');
+  if (!btn || !pre) return;
+  btn.addEventListener('click', function () {
+    var done = function (label) {
+      btn.textContent = label;
+      setTimeout(function () { btn.textContent = 'Copy'; }, 1500);
+    };
+    var fallback = function () {
+      try {
+        var r = document.createRange();
+        r.selectNodeContents(pre);
+        var s = window.getSelection();
+        s.removeAllRanges();
+        s.addRange(r);
+      } catch (e) {}
+      done('Selected');
+    };
+    try {
+      navigator.clipboard.writeText(pre.innerText).then(function () { done('Copied'); }, fallback);
+    } catch (e) { fallback(); }
+  });
+});
+</script>
+
+</body></html>

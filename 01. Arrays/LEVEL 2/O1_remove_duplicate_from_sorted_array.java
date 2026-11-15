@@ -10,6 +10,5 @@ public class O1_remove_duplicate_from_sorted_array {
             }
         }
         return i+1;
-        
     }
 }
