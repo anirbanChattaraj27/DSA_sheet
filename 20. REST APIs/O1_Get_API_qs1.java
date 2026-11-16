@@ -1,3 +1,12 @@
+/*
+QS 1. Build a read-only Product Catalog REST API.
+	1. GET /api/v1/products/{id} returns one product, or 404 if it doesn’t exist.
+	2. GET /api/v1/products returns all products, with an optional category filter and pagination.
+	3. Don’t expose DB fields directly. The response should show inStock (true/false) instead of the raw stock count.
+    
+    Use Controller, Service, Repository and DTO layers.
+*/
+
 import java.math.BigDecimal;
 
 import jakarta.persistence.Column;
