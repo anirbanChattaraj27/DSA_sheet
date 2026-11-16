@@ -18,7 +18,6 @@ public class O1_Prefix_sum_arr {
 
         int sum = 0;
         ArrayList<Integer> list = new ArrayList<>();
-        
 
         for(int i=0; i<arr.length; i++){
             sum += arr[i];
@@ -26,7 +25,7 @@ public class O1_Prefix_sum_arr {
         }
         return list;
     }
-
+ 
     public static void main(String[] args) {
         int[] arr = {30, 10, 10, 5, 50};
         List<Integer> prefixSum = prefSum(arr);
